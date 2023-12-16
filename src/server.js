@@ -1,10 +1,26 @@
-import express from 'express';
+const express = require('express');
+const next = require('next');
 
-const app = express();
-const PORT = Number(process.env.PORT) || 9000;
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dev });
+const handle = app.getRequestHandler();
 
-const start = async () => {
-    return {string: 'Server Started'}
-}
+app.prepare().then(() => {
+  const server = express();
 
-start();
+  server.get('/hello', (req, res) => {
+    return res.send({string: 'Hello World from express'});
+  });
+
+  server.get('*', (req, res) => {
+    return handle(req, res);
+  });
+
+  server.listen(9000, (err) => {
+    if (err) throw err;
+    console.log('> Ready on http://localhost 9000');
+  });
+}).catch((ex) => {
+  console.error(ex.stack);
+  process.exit(1);
+});
