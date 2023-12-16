@@ -1,0 +1,44 @@
+{
+    "firstName": "Shawn",
+    "lastName": "Stringfield",
+    "email": "shawn.stringfield@gmail.com",
+    "phone": "(202) 215-1120",
+    "summary": "A brief summary about yourself",
+    "skills": [
+        "Skill 1",
+        "Skill 2",
+        "Skill 3"
+    ],
+    "experience": [
+        {
+            "jobTitle": "Software Developer",
+            "company": "Company 1",
+            "startDate": "2019-01-01",
+            "endDate": "2020-12-31",
+            "description": "Job description",
+            "accomplishments": [
+                "Accomplishment 1",
+                "Accomplishment 2"
+            ]
+        },
+        {
+            "jobTitle": "Senior Software Developer",
+            "company": "Company 2",
+            "startDate": "2021-01-01",
+            "endDate": "Present",
+            "description": "Job description",
+            "accomplishments": [
+                "Accomplishment 1",
+                "Accomplishment 2"
+            ]
+        }
+    ],
+    "education": [
+        {
+            "degree": "Bachelor's Degree in Computer Science",
+            "school": "University 1",
+            "startDate": "2015-01-01",
+            "endDate": "2019-12-31"
+        }
+    ]
+}

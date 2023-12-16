@@ -37,3 +37,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Tooling
 Using NGrok for local tunneling. 
+
+## Goal of the app
+- Journal
+- Calendar
+- Resume
+- Dashboard
+- Life Tracker
