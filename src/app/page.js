@@ -1,15 +1,20 @@
 import React from "react";
-import {Button} from '@nextui-org/button'; 
 import { supabase } from "../../supabase";
 
 export default async function Home() {
-  const { data, error } = await supabase.from("notes").select();
-  console.log('supabase data', data);
-  console.log('error', error);
+  const { data } = await supabase.from("notes").select();
+
   return (
     <div>
       <div>
-          <Button color="primary">Click me</Button>
+       {data.map((note) => {
+          return (
+            <div key={note.id}>
+              <h2>{note.title}</h2>
+              <p>{note.content}</p>
+            </div>
+          )
+       })}
       </div>
     </div>
   )
