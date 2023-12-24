@@ -19,7 +19,7 @@
     },
     { "Tools": ["Git", "GitHub", "Webpack", "Vite", "Vitest", "Figma"] }
   ],
-  "Experience": [
+  "experience": [
     {
       "jobTitle": "Software Developer",
       "company": "Fevo",
