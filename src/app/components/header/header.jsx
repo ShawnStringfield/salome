@@ -1,10 +1,8 @@
-import { Logo } from "../logo/logo";
+import { Logo } from '../logo/Logo';
 export const Header = () => {
   return (
-    <div className="container">
-      <div className="container p-8">
-        <Logo />
-      </div>
-    </div>
+    <>
+      <Logo classes="mt-10 mb-10" />
+    </>
   );
 };

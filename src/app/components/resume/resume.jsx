@@ -1,7 +1,8 @@
-import { jsonImporter } from "@/lib/jsonImporter";
+import { jsonImporter } from '@/lib/jsonImporter';
+import { Chip } from '@nextui-org/react';
 
 export const Resume = async () => {
-  const resume = await jsonImporter("/src/api/resume.json");
+  const resume = await jsonImporter('/src/api/resume.json');
   const { summary } = resume;
 
   const renderSkills = () => {
@@ -10,49 +11,48 @@ export const Resume = async () => {
       const heading = Object.keys(skill)[0];
 
       return (
-        <div key={skill}>
-          <div className={`${headingStyle} mt-5 mb-1`}>{heading}</div>
-          {skills.map((skill) => {
-            return (
-              <span className="skill mr-5" key={skill}>
-                {skill}
+        <div className="mb-5" key={skill}>
+          <div className={`${headingStyle}`}>{heading}</div>
+          <div className="leading-4">
+            {skills.map((skill) => (
+              <span className="text-sm text-slate-400" key={skill}>
+                {skill}{' '}
               </span>
-            );
-          })}
+            ))}
+          </div>
         </div>
       );
     });
   };
 
   const renderHistory = () => {
-    return resume.experience.map(
-      ({ jobTitle, company, startDate, endDate, description }) => {
-        return (
-          <div className="experience mb-4">
-            <div className="font-bold">Job Title: {jobTitle}</div>
-            <div>Company: {company}</div>
-            <div>Start Date: {startDate}</div>
-            <div>End Date: {endDate}</div>
-            <div>Description: {description}</div>
+    return resume.experience.map(({ jobTitle, company, startDate, endDate, description }, index) => {
+      return (
+        <div key={index} className="experience mb-4">
+          <div className="mb-4 mt-10">
+            <Chip color="primary" radius="sm" variant="bordered">
+              {startDate} - {endDate}
+            </Chip>
           </div>
-        );
-      }
-    );
+          <div className="font-bold">{jobTitle}</div>
+          <div className="text-slate-400">{company}</div>
+          <div className="mt-4">{description}</div>
+        </div>
+      );
+    });
   };
 
   return (
-    <div className="container mx-auto">
-      <div className="container p-8">{summary}</div>
-      <div className="container p-8 skills">
-        <div className="text-6xl font-bold mb-6">Skillz</div>
+    <>
+      <div className="mb-20">{summary}</div>
+      <div className="">
+        <div className="text-6xl font-bold mb-6">Skills</div>
         {renderSkills()}
-      </div>
-      <div className="ontainer p-8 history">
         <div className="text-6xl font-bold mb-6">History</div>
         {renderHistory()}
       </div>
-    </div>
+    </>
   );
 };
 
-const headingStyle = `text-2xl font-bold`;
+const headingStyle = `text-mg leading-6 mb-2 font-bold`;

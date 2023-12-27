@@ -1,11 +1,11 @@
-import React from "react";
-import { Comfortaa } from "next/font/google";
+import React from 'react';
+import { Comfortaa } from 'next/font/google';
 
-const comfortaa = Comfortaa({ subsets: ["latin"] });
+const comfortaa = Comfortaa({ subsets: ['latin'] });
 
-export const Logo = () => {
+export const Logo = ({ classes }) => {
   return (
-    <div className={`${comfortaa.className} logo`}>
+    <div className={`${classes} ${comfortaa.className} logo`}>
       <div className={`${leadTitleStyle}`}>
         <div>Shawn</div>
         <div>Stringfield</div>
@@ -15,4 +15,4 @@ export const Logo = () => {
   );
 };
 
-const leadTitleStyle = `text-4xl/9 font-bold`;
+const leadTitleStyle = `text-4xl font-bold`;
