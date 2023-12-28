@@ -4,7 +4,7 @@
     "commonjs": true,
     "es2021": true
   },
-  "extends": ["airbnb-base", "next/core-web-vitals"],
+  "extends": "next/core-web-vitals",
   "parserOptions": {
     "ecmaVersion": 12
   },

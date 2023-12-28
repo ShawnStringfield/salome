@@ -1,23 +1,25 @@
-import { Providers } from "./providers";
-import { Inter } from "next/font/google";
-import { Header } from "./components/header/header";
-import "./globals.css";
+import { NextUIProviders } from './NextUIProviders';
+import { AuthProviders } from './components/auth/AuthProviders';
+import { Inter } from 'next/font/google';
+import { Header } from './components/header/header';
+import { NavBar } from './components/nav/NavBar';
+import { getServerSession } from 'next-auth';
 
-const inter = Inter({ subsets: ["latin"] });
+import './globals.css';
+const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
-  title: "Salome",
-  description: "I come in peace",
-};
-
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getServerSession();
   return (
     <html lang="en">
       <body className={`${inter.className} container w-full max-w-3xl p-10 text-slate-600 `}>
-        <Providers>
-          <Header />
-          {children}
-        </Providers>
+        <NextUIProviders>
+          <AuthProviders session={session}>
+            <Header />
+            <NavBar />
+            {children}
+          </AuthProviders>
+        </NextUIProviders>
       </body>
     </html>
   );
