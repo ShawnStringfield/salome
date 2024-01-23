@@ -5,10 +5,10 @@ import { supabase } from '@/supabase';
 
 export const NavBar = async () => {
   const {
-    data: { session },
-  } = await supabase.auth.getSession();
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  console.log('session', session);
+  console.log('user', user);
 
   return <SignIn />;
 };
