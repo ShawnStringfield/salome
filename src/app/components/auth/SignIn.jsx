@@ -1,22 +1,13 @@
 'use client';
 
-import React from 'react';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import React, { useEffect } from 'react';
+import { supabase } from '@/supabase';
 
-export const SignIn = () => {
-  const { data: session } = useSession();
-
-  if (session && session.user) {
-    return (
-      <>
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
-  );
+export const SignIn = async () => {
+  const handleClick = () => {
+    supabase.auth.signInWithOAuth({
+      provider: 'google',
+    });
+  };
+  return <div onClick={handleClick}>Sign In</div>;
 };

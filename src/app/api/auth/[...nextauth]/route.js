@@ -1,3 +1,4 @@
+import { SupabaseAdapter } from '@auth/supabase-adapter';
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
@@ -9,21 +10,21 @@ export const authOptions = {
           ...profile,
           id: profile.sub,
           image: profile.picture,
-          role: 'admin',
         };
       },
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  callbacks: {
+  callbacks: { 
     async session({session, token}) {
       session.accessToken = token.accessToken;
+      session.userID = token.sub;
       return session;
     },
-    async signIn({ account, profile }) {
+    async signIn({ account, user }) {
       if (account.provider === "google") {
-        return profile.email_verified;
+        return user.email_verified;
       }
       return true;
     },
@@ -34,6 +35,10 @@ export const authOptions = {
       return token;
     }
   },
+  adaptor: SupabaseAdapter({
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    secret: process.env.SUPABASE_SERVICE_ROLE_KEY,
+  }),
 
   secret: process.env.NEXTAUTH_SECRET
 };

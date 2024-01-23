@@ -3,7 +3,7 @@
   "tabWidth": 2,
   "semi": true,
   "singleQuote": true,
-  "html.format.wrapLineLength": 100,
+  "html.format.wrapLineLength": 600,
   "prettier.disableLanguages": [
     "html"
   ]
