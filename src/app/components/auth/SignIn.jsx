@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { supabase } from '@/supabase';
 
 export const SignIn = async () => {
-  const handleClick = () => {
+  const signInWithGoogle = () => {
     supabase.auth.signInWithOAuth({
       provider: 'google',
     });
   };
-  return <div onClick={handleClick}>Sign In</div>;
+  return <div onClick={signInWithGoogle}>Sign In</div>;
 };
