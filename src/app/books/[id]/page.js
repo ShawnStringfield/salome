@@ -2,7 +2,7 @@ import axios from 'axios';
 import Image from 'next/image';
 
 export default async function Page({ params }) {
-  const { highlights, bookTitle, author, lastHighlighted, lastSynced, bookmarked, bookCover, url } = await axios.get(`http://localhost:3000/api/integrations/notion/highlights/${params.id}`).then((res) => res.data);
+  const { highlights, bookTitle, author, lastHighlighted, lastSynced, bookmarked, bookCover, url, highlightCount } = await axios.get(`http://localhost:3000/api/integrations/notion/highlights/${params.id}`).then((res) => res.data);
 
   return (
     <div>
@@ -16,6 +16,7 @@ export default async function Page({ params }) {
           Link back to notion
         </a>
       </div>
+      <div>Number of hightlights {highlightCount}</div>
       {/* TODO:: Replace with Image component */}
       <img src={bookCover} alt={bookTitle} width="100" height="100" />
       {highlights.map((highlight, index) => {
