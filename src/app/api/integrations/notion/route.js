@@ -1,12 +1,9 @@
 import { Client } from '@notionhq/client';
 
-const notion = new Client({ auth: 'secret_owczMRL3fHPG6gWRmfXuMTN7N8Tru6OAQEaFTTXkGJd' });
+const notion = new Client({ auth: process.env.NOTION_SECRET });
 const booksFilter = { property: 'Category', select: { equals: 'Books' } };
 const booksSorts = [{ property: 'Title', direction: 'ascending' }];
-const books = await notion.databases.query({ database_id: '7486254ca5e447519c22de8557ad5f91', filter: booksFilter, sorts: booksSorts });
-const booksCount = books.results.length;
-const block = await notion.blocks.retrieve({ block_id: 'd72ba4d9-be21-43bd-9c8a-3263a1b3980b' });
-const page = await notion.pages.retrieve({ page_id: 'd72ba4d9-be21-43bd-9c8a-3263a1b3980b' });
+const books = await notion.databases.query({ database_id: process.env.NOTION_BOOKS_DATABASE_ID, filter: booksFilter, sorts: booksSorts });
 
 export async function GET() {
   const bookList = books.results.map((page) => {

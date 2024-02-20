@@ -1,7 +1,7 @@
 import { Client } from '@notionhq/client';
 
 export default async function Page({ params }) {
-  const notion = new Client({ auth: 'secret_owczMRL3fHPG6gWRmfXuMTN7N8Tru6OAQEaFTTXkGJd' });
+  const notion = new Client({ auth: process.env.NOTION_SECRET });
 
   let content;
 
@@ -9,7 +9,8 @@ export default async function Page({ params }) {
     return children.results.map((child) => {
       if (child.paragraph) {
         if (child.paragraph.rich_text.length) {
-          content = child.paragraph.rich_text[0].plain_text;
+          if (child.paragraph.rich_text[0].plain_text.includes('Tags:')) return;
+          content = child.paragraph.rich_text[0].plain_text.slice(0, -1);
         }
       }
       return content;
@@ -22,7 +23,7 @@ export default async function Page({ params }) {
     <div>
       {h.map((highlight, index) => {
         return (
-          <div className="mb-4" key={index}>
+          <div className="mb-10" key={index}>
             <div>{highlight}</div>
           </div>
         );
