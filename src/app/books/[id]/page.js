@@ -1,27 +1,24 @@
-import { Client } from '@notionhq/client';
+import axios from 'axios';
+import Image from 'next/image';
 
 export default async function Page({ params }) {
-  const notion = new Client({ auth: process.env.NOTION_SECRET });
-
-  let content;
-
-  const highlights = notion.blocks.children.list({ block_id: params.id }).then((children) => {
-    return children.results.map((child) => {
-      if (child.paragraph) {
-        if (child.paragraph.rich_text.length) {
-          if (child.paragraph.rich_text[0].plain_text.includes('Tags:')) return;
-          content = child.paragraph.rich_text[0].plain_text.slice(0, -1);
-        }
-      }
-      return content;
-    });
-  });
-
-  const h = await highlights;
+  const { highlights, bookTitle, author, lastHighlighted, lastSynced, bookmarked, bookCover, url } = await axios.get(`http://localhost:3000/api/integrations/notion/highlights/${params.id}`).then((res) => res.data);
 
   return (
     <div>
-      {h.map((highlight, index) => {
+      <h2>{bookTitle}</h2>
+      <h2>{author}</h2>
+      <div>lastHighlighted {lastHighlighted}</div>
+      <div>lastSynced {lastSynced}</div>
+      <div>bookmarked {bookmarked}</div>
+      <div>
+        <a href={url} target="_blank">
+          Link back to notion
+        </a>
+      </div>
+      {/* TODO:: Replace with Image component */}
+      <img src={bookCover} alt={bookTitle} width="100" height="100" />
+      {highlights.map((highlight, index) => {
         return (
           <div className="mb-10" key={index}>
             <div>{highlight}</div>

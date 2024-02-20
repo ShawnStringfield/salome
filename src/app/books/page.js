@@ -12,9 +12,9 @@ export default async function Page() {
         return (
           <div className="book mb-4" key={book.id}>
             <Link href={`/books/${book.id}`}>
-              <h2>
+              <h1>
                 {book.pageTitle} ({book.highLightCount})
-              </h2>
+              </h1>
               <p>Author {book.author}</p>
               <p> {book.lastHighlighted}</p>
               <p>{book.lastSynced}</p>
