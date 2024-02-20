@@ -4,12 +4,12 @@ const notion = new Client({ auth: 'secret_owczMRL3fHPG6gWRmfXuMTN7N8Tru6OAQEaFTT
 const booksFilter = { property: 'Category', select: { equals: 'Books' } };
 const booksSorts = [{ property: 'Title', direction: 'ascending' }];
 const books = await notion.databases.query({ database_id: '7486254ca5e447519c22de8557ad5f91', filter: booksFilter, sorts: booksSorts });
-const booksCount = 0;
+const booksCount = books.results.length;
 const block = await notion.blocks.retrieve({ block_id: 'd72ba4d9-be21-43bd-9c8a-3263a1b3980b' });
 const page = await notion.pages.retrieve({ page_id: 'd72ba4d9-be21-43bd-9c8a-3263a1b3980b' });
 
 export async function GET() {
-  const bookList = books.results.map((page, index) => {
+  const bookList = books.results.map((page) => {
     const props = page.properties;
     const pageTitle = props.Title.title[0].plain_text;
     const tags = props.Tags.multi_select.length ? props.Tags.multi_select : null;
@@ -17,16 +17,6 @@ export async function GET() {
     const lastHighlighted = props['Last Highlighted'].date ? props['Last Highlighted'].date.start : null;
     const lastSynced = props['Last Synced'].date ? props['Last Synced'].date.start : null;
     const highlightCount = props.Highlights ? props.Highlights.number : null;
-
-    // we need the block id to get the children
-    // const blockId = 'd72ba4d9-be21-43bd-9c8a-3263a1b3980b';
-    // notion.blocks.children.list({ block_id: blockId }).then((children) => {
-    //   children.results.forEach((child) => {
-    //     if (child.paragraph) {
-    //       if (child.paragraph.rich_text.length) console.log('child', child.paragraph.rich_text[0].plain_text);
-    //     }
-    //   });
-    // });
 
     return {
       id: page.id,
@@ -36,6 +26,7 @@ export async function GET() {
       lastHighlighted: lastHighlighted,
       highLightCount: highlightCount,
       lastSynced: lastSynced,
+      bookmarked: props.Bookmark.checkbox,
     };
   });
 

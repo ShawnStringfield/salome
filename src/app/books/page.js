@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Link from 'next/link';
 
 export default async function Page() {
   // TODO:: Next.js api calls strips the id from the response. Find out why. Until then, use Axios
@@ -10,14 +11,18 @@ export default async function Page() {
       {books.map((book) => {
         return (
           <div className="book mb-4" key={book.id}>
-            <h2>{book.pageTitle}</h2>
-            <p>{book.author}</p>
-            <p> {book.lastHighlighted}</p>
-            <p>{book.lastSynced}</p>
-            <p>{book.highLightCount}</p>
+            <Link href={`/books/${book.id}`}>
+              <h2>
+                {book.pageTitle} ({book.highLightCount})
+              </h2>
+              <p>Author {book.author}</p>
+              <p> {book.lastHighlighted}</p>
+              <p>{book.lastSynced}</p>
+            </Link>
           </div>
         );
       })}
+      books
     </>
   );
 }
