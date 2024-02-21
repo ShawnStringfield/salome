@@ -8,7 +8,7 @@ export default async function Page() {
   const books = await axios.get('http://localhost:3000/api/integrations/notion/booklist').then((res) => res.data);
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-5">
+    <div className="grid grid-cols-2 grid-cols-5">
       {books.map((book) => {
         return (
           <Link href={`/books/${book.id}`} key={book.id}>

@@ -1,6 +1,5 @@
 import { NextUIProviders } from './NextUIProviders';
 import { Inter } from 'next/font/google';
-import { Header } from './components/header/header';
 import { NavBar } from './components/nav/NavBar';
 
 import './globals.css';
@@ -10,9 +9,8 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} container w-full p-10 text-slate-600 `}>
-            <Header />
-            <NavBar />
-            {children}
+        <NavBar />
+        {children}
       </body>
     </html>
   );

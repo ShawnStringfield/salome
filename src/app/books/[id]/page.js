@@ -2,7 +2,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Link from 'next/link';
-import { AvatarWithBadge } from '../../components/avatar/avatar';
+import { AvatarWithBadge } from '../../components/avatar/AvatarWithBadge';
 import { FaHeart } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa';
 
