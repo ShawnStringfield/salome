@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Link from 'next/link';
+import { Card, CardBody, CardFooter, Avatar, Badge } from '@nextui-org/react';
 
 export default async function Page() {
   // TODO:: Next.js api calls strips the id from the response. Find out why. Until then, use Axios
@@ -7,23 +8,18 @@ export default async function Page() {
   const books = await axios.get('http://localhost:3000/api/integrations/notion/booklist').then((res) => res.data);
 
   return (
-    <>
+    <div className="grid grid-cols-2 sm:grid-cols-5">
       {books.map((book) => {
-        // console.log('books', book);
         return (
-          <div className="book mb-4" key={book.id}>
-            <Link href={`/books/${book.id}`}>
-              <h1>
-                {book.bookTitle} ({book.highLightCount})
-              </h1>
-              <p>Author {book.author}</p>
-              <p> {book.lastHighlighted}</p>
-              <p>{book.lastSynced}</p>
-            </Link>
-          </div>
+          <Link href={`/books/${book.id}`} key={book.id}>
+            <Card className="my-5 w-48" isPressable isFooterBlurred radius="md">
+              <CardBody className="overflow-visible p-0">
+                <img src={book.bookCover} alt={book.bookTitle} width={100} height={300} className="w-full object-cover h-[275px]" />
+              </CardBody>
+            </Card>
+          </Link>
         );
       })}
-      books
-    </>
+    </div>
   );
 }

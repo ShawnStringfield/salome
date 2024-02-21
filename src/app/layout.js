@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} container w-full max-w-3xl p-10 text-slate-600 `}>
+      <body className={`${inter.className} container w-full p-10 text-slate-600 `}>
         <NextUIProviders>
             <Header />
             <NavBar />

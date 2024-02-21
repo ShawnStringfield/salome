@@ -17,7 +17,7 @@ const getBookDetails = async (book) => {
     bookTitle: bookTitle,
     author: author,
     lastHighlighted: lastHighlighted,
-    highLightCount: highlightCount,
+    highlightCount: highlightCount,
     lastSynced: lastSynced,
     bookmarked: props.Bookmark.checkbox,
     bookCover: bookCover,
