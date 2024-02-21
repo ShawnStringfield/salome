@@ -3,7 +3,6 @@ const notion = new Client({ auth: process.env.NOTION_SECRET });
 
 export const getBlock = async (id) => {
   const { results } = await notion.blocks.children.list({ block_id: id });
-  console.log('results', results);
 
   return results
     .map((block) => {

@@ -10,11 +10,9 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} container w-full p-10 text-slate-600 `}>
-        <NextUIProviders>
             <Header />
             <NavBar />
             {children}
-        </NextUIProviders>
       </body>
     </html>
   );
