@@ -1,6 +1,7 @@
 'use client';
 
-import { supabase } from '@/supabase';
+import { supabase } from '@/src/app/supabase';
+import Link from 'next/link';
 import { Logo } from '../logo/logo';
 import { Avatar } from '@nextui-org/react';
 import { AuthButton } from '../auth/AuthButton';
@@ -12,6 +13,7 @@ export const NavBar = () => {
 
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
+      console.log('navbar session', session);
       if (!session) setCurrentUser(null);
       if (session) {
         setCurrentUser({
@@ -30,6 +32,11 @@ export const NavBar = () => {
           <Logo classes="mt-10 mb-10" />
         </NavbarBrand>
         <NavbarContent justify="end">
+          <NavbarItem>
+            <Link href="/books/newbook">
+              <div>Add Book</div>
+            </Link>
+          </NavbarItem>
           <NavbarItem>
             <AuthButton user={currentUser} />
           </NavbarItem>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Link from 'next/link';
-import { Card, CardBody, CardFooter, Avatar, Badge } from '@nextui-org/react';
+import { Card, CardBody } from '@nextui-org/react';
 
 export default async function Page() {
   // TODO:: Next.js api calls strips the id from the response. Find out why. Until then, use Axios
