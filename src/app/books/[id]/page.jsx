@@ -1,28 +1,17 @@
-import axios from 'axios';
-import { cookies } from 'next/headers';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Link from 'next/link';
 import { AvatarWithBadge } from '../../components/avatar/AvatarWithBadge';
 import { FaHeart } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa';
-import { AddBookToDB } from '../addBookToDB';
+import { AddBookToDB } from '../AddBookToDB';
+import { getBook } from '../../api/integrations/notion/booksFromReadWise';
 
 dayjs.extend(relativeTime);
 
 export default async function Page({ params }) {
-  const { highlights, bookTitle, author, lastHighlighted, lastSynced, bookmarked, bookCover, url, highlightCount } = await axios.get(`http://localhost:3000/api/integrations/notion/highlights/${params.id}`).then((res) => res.data);
-
-  // Necessary for getting user from supabase on BE
-  const cookieStore = cookies();
-  const supabase = createServerComponentClient({ cookies: () => cookieStore });
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  console.log('user from book page', user);
+  const book = await getBook(params.id);
+  const { highlights, bookTitle, author, lastHighlighted, lastSynced, bookmarked, bookCover, url, highlightCount } = book;
 
   return (
     <div>
@@ -47,7 +36,7 @@ export default async function Page({ params }) {
                   book_cover: bookCover,
                   bookmarked: bookmarked,
                   url: url,
-                  id: params.id,
+                  book_id: params.id,
                 }}
               />
             </div>

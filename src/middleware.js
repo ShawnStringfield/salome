@@ -6,12 +6,16 @@ export async function middleware(req) {
   const supabase = createMiddlewareClient({ req, res });
 
   const {
-    data: { session, error },
-  } = await supabase.auth.getSession();
+    data: { user, error },
+  } = await supabase.auth.getUser();
 
-  if (session) {
+  if (user) {
     console.log('YOU ARE AUTHENTICATED');
-    // console.log('middleware session', session);
+    // console.log('middleware user', user);
+  }
+
+  if (!user && req.nextUrl.pathname !== '/') {
+    return NextResponse.redirect(new URL('/', req.url));
   }
 
   if (error) {

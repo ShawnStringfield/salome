@@ -1,5 +1,5 @@
 import { Client } from '@notionhq/client';
-import { getBlock } from './blockHelpers';
+import { getBlock } from '../blockHelpers';
 
 const notion = new Client({ auth: process.env.NOTION_SECRET });
 

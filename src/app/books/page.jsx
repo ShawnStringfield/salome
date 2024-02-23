@@ -1,11 +1,9 @@
-import axios from 'axios';
 import Link from 'next/link';
 import { Card, CardBody } from '@nextui-org/react';
+import { getBookList } from '../api/integrations/notion/booksFromReadWise';
 
 export default async function Page() {
-  // TODO:: Next.js api calls strips the id from the response. Find out why. Until then, use Axios
-  // const books = await fetch('http://localhost:3000/api/integrations/notion').then((res) => res.json());
-  const books = await axios.get('http://localhost:3000/api/integrations/notion/booklist').then((res) => res.data);
+  const books = await getBookList();
 
   return (
     <div className="grid grid-cols-2 grid-cols-5">
