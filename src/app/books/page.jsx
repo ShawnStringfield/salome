@@ -1,21 +1,28 @@
 import Link from 'next/link';
-import { Card, CardBody } from '@nextui-org/react';
-import { getBookList } from '../api/integrations/notion/booksFromReadWise';
+import { cookies } from 'next/headers';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 
 export default async function Page() {
-  const books = await getBookList();
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
+
+  const { data, error } = await supabase.from('books').select();
 
   return (
-    <div className="grid grid-cols-2 grid-cols-5">
-      {books.map((book) => {
+    <div className="px-6">
+      {data.map(({ book_id, title, book_cover, url, bookmarked }) => {
         return (
-          <Link href={`/books/${book.id}`} key={book.id}>
-            <Card className="my-5 w-48" isPressable isFooterBlurred radius="md">
-              <CardBody className="overflow-visible p-0">
-                <img src={book.bookCover} alt={book.bookTitle} width={100} height={300} className="w-full object-cover h-[275px]" />
-              </CardBody>
-            </Card>
-          </Link>
+          <div key={book_id} className="flex">
+            <div>{<img src={book_cover} width="50" height="150" />}</div>
+            <div>{title}</div>
+            <div>Number of highlights</div>
+            <div>
+              <Link href={url} target="_blank">
+                url
+              </Link>
+            </div>
+            <div>Bookmarked: {bookmarked}</div>
+          </div>
         );
       })}
     </div>

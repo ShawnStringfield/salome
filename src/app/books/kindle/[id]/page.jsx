@@ -1,11 +1,11 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Link from 'next/link';
-import { AvatarWithBadge } from '../../components/avatar/AvatarWithBadge';
+import { AvatarWithBadge } from '../../../components/avatar/AvatarWithBadge';
 import { FaHeart } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa';
-import { AddBookToDB } from '../AddBookToDB';
-import { getBook } from '../../api/integrations/notion/booksFromReadWise';
+import { AddBookToDB } from '../../AddBookToDB';
+import { getBook } from '../../../api/integrations/notion/booksFromReadWise';
 
 dayjs.extend(relativeTime);
 

@@ -33,8 +33,8 @@ export const NavBar = () => {
         </NavbarBrand>
         <NavbarContent justify="end">
           <NavbarItem>
-            <Link href="/books/newbook">
-              <div>Add Book</div>
+            <Link href="/books">
+              <div>Books</div>
             </Link>
           </NavbarItem>
           <NavbarItem>
