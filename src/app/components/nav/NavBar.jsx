@@ -1,12 +1,8 @@
 'use client';
 
 import { supabase } from '@/src/app/supabase';
-import Link from 'next/link';
-import { Logo } from '../logo/logo';
-import { Avatar } from '@nextui-org/react';
-import { AuthButton } from '../auth/AuthButton';
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@nextui-org/react';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export const NavBar = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -25,24 +21,5 @@ export const NavBar = () => {
     });
   }, [setCurrentUser]);
 
-  return (
-    <>
-      <Navbar height="125px" maxWidth="full" className="mb-20">
-        <NavbarBrand>
-          <Logo classes="mt-10 mb-10" />
-        </NavbarBrand>
-        <NavbarContent justify="end">
-          <NavbarItem>
-            <Link href="/books">
-              <div>Books</div>
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <AuthButton user={currentUser} />
-          </NavbarItem>
-          <NavbarItem>{currentUser ? <Avatar src={currentUser.avatar_url} size="lg" /> : <></>}</NavbarItem>
-        </NavbarContent>
-      </Navbar>
-    </>
-  );
+  return <div>NavBar</div>;
 };
