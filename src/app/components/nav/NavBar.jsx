@@ -2,14 +2,15 @@
 
 import { supabase } from '@/src/app/supabase';
 import { useState, useEffect } from 'react';
-import { Logo } from '../logo/logo';
 import { Avatar } from '@chakra-ui/react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
+import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
+import { Logo } from '../logo/logo';
+import { AuthButton } from '../auth/AuthButton';
 import Link from 'next/link';
-
 import navbar from './navbar.module.css';
 
-export const NavBar = () => {
+export const NavBar = (props) => {
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
@@ -31,7 +32,19 @@ export const NavBar = () => {
       <Link href="/">
         <Logo />
       </Link>
-      <Avatar bg="purple" color="white" name={currentUser?.name || 'Shawn Stringfield'} size="lg" src={currentUser?.avatar_url} />
+      <Menu>
+        <MenuButton>
+          <Avatar name={currentUser?.name || 'Shawn Stringfield'} size="lg" src={currentUser?.avatar_url} />
+        </MenuButton>
+        <MenuList>
+          <MenuItem>
+            <AuthButton user={currentUser} />
+          </MenuItem>
+          <MenuItem>
+            <Link href="/books">Books</Link>
+          </MenuItem>
+        </MenuList>
+      </Menu>
     </Flex>
   );
 };
