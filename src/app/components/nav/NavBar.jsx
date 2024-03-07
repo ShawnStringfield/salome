@@ -2,7 +2,12 @@
 
 import { supabase } from '@/src/app/supabase';
 import { useState, useEffect } from 'react';
+import { Logo } from '../logo/logo';
+import { Avatar } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import Link from 'next/link';
+
+import navbar from './navbar.module.css';
 
 export const NavBar = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -21,5 +26,12 @@ export const NavBar = () => {
     });
   }, [setCurrentUser]);
 
-  return <div>NavBar</div>;
+  return (
+    <Flex className={navbar.container} alignItems="center" justifyContent="space-between">
+      <Link href="/">
+        <Logo />
+      </Link>
+      <Avatar bg="purple" color="white" name={currentUser?.name || 'Shawn Stringfield'} size="lg" src={currentUser?.avatar_url} />
+    </Flex>
+  );
 };

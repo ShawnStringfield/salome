@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import Link from 'next/link';
-import { AvatarWithBadge } from '../../../components/avatar/AvatarWithBadge';
+import { AvatarWithBadge } from '../../../components/avatar/Avatar';
 import { FaHeart } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa';
 import { AddBookToDB } from '../../AddBookToDB';
