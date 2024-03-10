@@ -11,6 +11,7 @@ const getBookDetails = async (book) => {
   const lastSynced = props['Last Synced'].date ? props['Last Synced'].date.start : null;
   const highlightCount = props.Highlights ? props.Highlights.number : null;
   const bookCover = book.cover.external.url;
+  const tag = props.Tag.select ? props.Tag.select.name : null;
 
   return {
     id: book.id,
@@ -22,6 +23,7 @@ const getBookDetails = async (book) => {
     bookmarked: props.Bookmark.checkbox,
     bookCover: bookCover,
     url: book.url,
+    tag: tag,
   };
 };
 

@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { supabase } from "@/src/app/supabase";
-import { Button } from '@nextui-org/react';
+import { supabase } from '@/src/app/supabase';
 
 export const AddBookToDB = ({ book }) => {
   const [isBookInDB, setIsBookInDB] = useState(true);
@@ -14,9 +13,9 @@ export const AddBookToDB = ({ book }) => {
     if (error) console.log('error from setUser function in AddBookToDB', error);
   };
 
-  const setBookStatus = async ({book_id}) => {
+  const setBookStatus = async ({ book_id }) => {
     const { data, error } = await supabase.from('books').select().eq('book_id', book_id);
-    const bookInDB = data.filter(book => book.book_id === book_id).length ? true : false;
+    const bookInDB = data.filter((book) => book.book_id === book_id).length ? true : false;
     if (error) {
       console.log('error from setBookStatus', error);
     } else setIsBookInDB(bookInDB);
@@ -36,8 +35,8 @@ export const AddBookToDB = ({ book }) => {
   });
 
   return (
-    <Button isDisabled={isBookInDB} onClick={() => saveBook(book)} color="primary">
+    <div onClick={() => saveBook(book)} color="primary">
       Add to Database
-    </Button>
+    </div>
   );
 };
