@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import { FaHeart } from 'react-icons/fa';
-import { FaRegHeart } from 'react-icons/fa';
-import { AddBookToDB } from '../../../utils/AddBookToDB';
-import { getBook } from '../../../../../api/integrations/notion/booksFromReadWise';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { AddBookToDB } from '@/src/app/(features)/books';
+import { getBook } from '@/src/app/(features)/books';
 
 export default async function Page({ params }) {
   const book = await getBook(params.id);
@@ -33,7 +32,9 @@ export default async function Page({ params }) {
                   url: url,
                   book_id: params.id,
                 }}
-              />
+              >
+                Add
+              </AddBookToDB>
             </div>
           </div>
         </div>

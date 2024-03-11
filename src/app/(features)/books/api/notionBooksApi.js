@@ -1,7 +1,9 @@
-import { Client } from '@notionhq/client';
-import { getBlock } from '../blockHelpers';
+'use server';
 
+const { Client } = require('@notionhq/client');
 const notion = new Client({ auth: process.env.NOTION_SECRET });
+
+import { getBlock } from '@/src/app/api/integrations/notion/blockHelpers';
 
 const getBookDetails = async (book) => {
   const props = book.properties;
@@ -49,4 +51,16 @@ export const getBook = async (id) => {
   const bookDetails = await getBookDetails(book);
   bookDetails.highlights = await getBlock(id);
   return bookDetails;
+};
+
+export const AddBookmarkToNotionDB = async (book, flag) => {
+  const response = await notion.pages.update({
+    page_id: book.id,
+    properties: {
+      Bookmark: {
+        checkbox: flag,
+      },
+    },
+  });
+  return response;
 };

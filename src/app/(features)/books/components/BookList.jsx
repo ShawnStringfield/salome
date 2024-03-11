@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { Container, Avatar, Flex, Box, Badge } from '@chakra-ui/react';
 import { FaLink } from 'react-icons/fa';
-import { getBookList } from '../../../../api/integrations/notion/booksFromReadWise';
-import { Bookmark } from '../bookmark';
-import { AddBookmarkToDB } from '../../utils/AddBookmarkToDB';
+import { getBookList } from '@/src/app/(features)/books/api/booksApi';
+import { Bookmark } from '@/src/app/(features)/books';
 
 export const BookList = async () => {
   const books = await getBookList();
@@ -33,7 +32,7 @@ export const BookList = async () => {
                 </Link>
               </Box>
               <Box>
-                <Bookmark updateBook={AddBookmarkToDB} book={book} />
+                <Bookmark book={book} />
               </Box>
             </Flex>
           </Flex>
@@ -42,5 +41,3 @@ export const BookList = async () => {
     </Container>
   );
 };
-
-export default BookList;

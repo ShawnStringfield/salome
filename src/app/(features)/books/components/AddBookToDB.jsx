@@ -3,10 +3,11 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/src/app/supabase';
 
-export const AddBookToDB = ({ book }) => {
+export const AddBookToDB = ({ book, children }) => {
   const [isBookInDB, setIsBookInDB] = useState(true);
   const [userID, setUserID] = useState(null);
 
+  // Double check for refactoring
   const setUser = async () => {
     const { data, error } = await supabase.auth.getUser();
     setUserID(data.user.id);
@@ -36,7 +37,7 @@ export const AddBookToDB = ({ book }) => {
 
   return (
     <div onClick={() => saveBook(book)} color="primary">
-      Add to Database
+      {children}
     </div>
   );
 };
