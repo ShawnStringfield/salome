@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
-import { AddBookmarkToDB } from '@/src/app/(features)/books';
+import { addBookmarkToNotionDB } from '@/src/app/(features)/books';
 
 export const Bookmark = ({ book }) => {
   const [bookmarked, setBookmarked] = useState(book.bookmarked);
   const handleBookUpdate = (book) => {
     setBookmarked((book.bookmarked = !book.bookmarked));
-    AddBookmarkToDB(book, book.bookmarked).then((res) => {
+    addBookmarkToNotionDB(book, book.bookmarked).then((res) => {
       setBookmarked(res.properties.Bookmark.checkbox);
     });
   };

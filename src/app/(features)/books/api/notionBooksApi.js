@@ -53,7 +53,7 @@ export const getBook = async (id) => {
   return bookDetails;
 };
 
-export const AddBookmarkToNotionDB = async (book, flag) => {
+export const addBookmarkToNotionDB = async (book, flag) => {
   const response = await notion.pages.update({
     page_id: book.id,
     properties: {
