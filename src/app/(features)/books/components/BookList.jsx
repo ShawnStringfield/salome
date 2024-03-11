@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import { Container, Avatar, Flex, Box, Badge } from '@chakra-ui/react';
 import { FaLink } from 'react-icons/fa';
-import { getBookList } from '@/src/app/(features)/books/api/booksApi';
-import { Bookmark } from '@/src/app/(features)/books';
+import { Bookmark, getBookList } from '@/src/app/(features)/books';
 
 export const BookList = async () => {
   const books = await getBookList();

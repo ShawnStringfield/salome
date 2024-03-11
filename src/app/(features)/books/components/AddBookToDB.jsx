@@ -1,42 +1,20 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { supabase } from '@/src/app/supabase';
+import { setBookStatus } from '@/src/app/(features)/books';
+import { setUser } from '@/src/app/(features)/auth';
 
 export const AddBookToDB = ({ book, children }) => {
   const [isBookInDB, setIsBookInDB] = useState(true);
   const [userID, setUserID] = useState(null);
 
-  // Double check for refactoring
-  const setUser = async () => {
-    const { data, error } = await supabase.auth.getUser();
-    setUserID(data.user.id);
-    if (error) console.log('error from setUser function in AddBookToDB', error);
-  };
-
-  const setBookStatus = async ({ book_id }) => {
-    const { data, error } = await supabase.from('books').select().eq('book_id', book_id);
-    const bookInDB = data.filter((book) => book.book_id === book_id).length ? true : false;
-    if (error) {
-      console.log('error from setBookStatus', error);
-    } else setIsBookInDB(bookInDB);
-  };
-
-  const saveBook = async (book) => {
-    book.id = userID;
-    const { error } = await supabase.from('books').insert(book);
-    if (error) {
-      console.log('error from saveBook', error);
-    } else setIsBookInDB(true);
-  };
-
   useEffect(() => {
-    setUser();
+    setUser().then(({ user }) => setUserID(user.id));
     setBookStatus(book);
   });
 
   return (
-    <div onClick={() => saveBook(book)} color="primary">
+    <div onClick={() => saveBook(book, userID)} color="primary">
       {children}
     </div>
   );
