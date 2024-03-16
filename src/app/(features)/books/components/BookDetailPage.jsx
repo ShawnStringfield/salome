@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { format } from 'date-fns';
 import { Image, Container, Box, Flex, Stack, Text } from '@chakra-ui/react';
 import { getBook, AddBookToDB } from '@/src/app/(features)/books';
-import { Bookmark } from '@/src/app/(features)/books';
+import { BookMark } from '@/src/app/(features)/books';
 
 export const BookDetailPage = async ({ params }) => {
   const book = await getBook(params.id);
@@ -20,7 +20,7 @@ export const BookDetailPage = async ({ params }) => {
           <Flex fontSize={'lg'} fontWeight={'bold '}>
             <Box mr={2}>{bookTitle}</Box>
             <Box alignSelf={'center'} lineHeight={0}>
-              <Bookmark book={book} />
+              <BookMark book={book} />
             </Box>
           </Flex>
           <Box>{author}</Box>
