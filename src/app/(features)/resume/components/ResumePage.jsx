@@ -1,6 +1,7 @@
 import { Container, Box, Flex, Heading, Tag, Text } from '@chakra-ui/react';
 import { jsonImporter } from '@/src/app/lib/jsonImporter';
 import resumestyles from './resume.module.css';
+import { formatShortDate } from '@/src/app/lib/dates';
 
 export const ResumePage = async () => {
   const resume = await jsonImporter('/src/app/(features)/resume/api/resume.json');
@@ -8,15 +9,17 @@ export const ResumePage = async () => {
 
   const renderSkills = () => {
     return (
-      <Box className={resumestyles.skills}>
+      <Box className={resumestyles.section}>
         <Heading as="h2">Skills</Heading>
         {resume.skills.map((skill) => {
           const skills = skill[Object.keys(skill)];
           const heading = Object.keys(skill)[0];
 
           return (
-            <Box className={resumestyles.section} key={skill}>
-              <Heading as="h3">{heading}</Heading>
+            <Flex className={resumestyles.skillssection} key={skill}>
+              <Heading mr={2} as="h3">
+                {heading}
+              </Heading>
               <Box>
                 {skills.map((skill) => (
                   <Tag mr={3} key={skill}>
@@ -24,7 +27,7 @@ export const ResumePage = async () => {
                   </Tag>
                 ))}
               </Box>
-            </Box>
+            </Flex>
           );
         })}
       </Box>
@@ -33,13 +36,13 @@ export const ResumePage = async () => {
 
   const renderHistory = () => {
     return (
-      <Box>
+      <Box className={resumestyles.section}>
         <Heading as="h2">History</Heading>
         {resume.experience.map(({ jobTitle, company, startDate, endDate, description }, index) => {
           return (
-            <Box mb={20} key={index}>
+            <Box mb={75} key={index}>
               <Box fontSize={'sm'} color={'gray.500'} mb={1}>
-                {startDate} - {endDate}
+                {formatShortDate(startDate)} - {formatShortDate(endDate)}
               </Box>
 
               <Box lineHeight={0}>

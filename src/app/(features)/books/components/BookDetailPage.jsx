@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { format } from 'date-fns';
-import { Image, Container, Box, Flex, Stack, Button, Text } from '@chakra-ui/react';
+import { Image, Container, Box, Flex, Stack, Text } from '@chakra-ui/react';
 import { getBook, AddBookToDB } from '@/src/app/(features)/books';
 import { Bookmark } from '@/src/app/(features)/books';
 
