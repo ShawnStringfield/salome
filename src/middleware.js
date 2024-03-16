@@ -17,10 +17,10 @@ export async function middleware(req) {
     console.log('YOU ARE NOT AUTHENTICATED');
   }
 
-  if (!user && req.nextUrl.pathname !== '/resume') {
-    console.log('redirecting to /resume');
-    return NextResponse.redirect(new URL('/resume', req.url));
-  }
+  // if (!user && req.nextUrl.pathname !== '/resume') {
+  //   console.log('redirecting to /resume');
+  //   return NextResponse.redirect(new URL('/resume', req.url));
+  // }
 
   if (error) {
     console.log('middleware error', error);
