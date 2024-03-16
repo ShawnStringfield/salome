@@ -1,5 +1,5 @@
-import { BookDetails } from '@/src/app/(features)/books';
+import { BookDetailPage } from '@/src/app/(features)/books';
 
 export default async function Page({ params }) {
-  return <BookDetails params={params} />;
+  return <BookDetailPage params={params} />;
 }

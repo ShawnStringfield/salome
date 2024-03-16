@@ -13,6 +13,7 @@ export const AuthButton = ({ user }) => {
   };
 
   const signOut = async () => {
+    console.log('click');
     const { error } = await supabase.auth.signOut();
     console.log('error', error);
   };

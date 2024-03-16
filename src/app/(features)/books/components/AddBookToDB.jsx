@@ -1,21 +1,29 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { setBookStatus } from '@/src/app/(features)/books';
+import { setBookStatus, saveBook } from '@/src/app/(features)/books';
+import { Button } from '@chakra-ui/react';
 import { setUser } from '@/src/app/(features)/auth';
 
 export const AddBookToDB = ({ book, children }) => {
   const [isBookInDB, setIsBookInDB] = useState(true);
+  const [error, setError] = useState(null);
   const [userID, setUserID] = useState(null);
 
   useEffect(() => {
     setUser().then(({ user }) => setUserID(user.id));
-    setBookStatus(book);
+    setBookStatus(book).then((resp) => setIsBookInDB(resp));
   });
 
+  const handleSaveBook = () => {
+    saveBook(book, userID).then((resp) => {
+      if (resp.error) setError(resp.error);
+    });
+  };
+
   return (
-    <div onClick={() => saveBook(book, userID)} color="primary">
+    <Button isDisabled={isBookInDB} bg={'blue.400'} textColor={'white'} size="sm" onClick={handleSaveBook}>
       {children}
-    </div>
+    </Button>
   );
 };
