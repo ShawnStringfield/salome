@@ -38,8 +38,8 @@ export const NavBar = (props) => {
           <MenuItem>
             <AuthButton user={currentUser} />
           </MenuItem>
-          <MenuItem>
-            <Link href="/books">Books</Link>
+          <MenuItem as="a" href="/books">
+            Books
           </MenuItem>
         </MenuList>
       </Menu>

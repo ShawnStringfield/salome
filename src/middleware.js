@@ -11,11 +11,15 @@ export async function middleware(req) {
 
   if (user) {
     console.log('YOU ARE AUTHENTICATED');
-    // console.log('middleware user', user);
   }
 
-  if (!user && req.nextUrl.pathname !== '/') {
-    return NextResponse.redirect(new URL('/', req.url));
+  if (!user) {
+    console.log('YOU ARE NOT AUTHENTICATED');
+  }
+
+  if (!user && req.nextUrl.pathname !== '/resume') {
+    console.log('redirecting to /resume');
+    return NextResponse.redirect(new URL('/resume', req.url));
   }
 
   if (error) {
