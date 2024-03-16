@@ -1,10 +1,9 @@
 {
   "trailingComma": "es5",
   "tabWidth": 2,
+  "useTabs": false,
+  "jsxSingleQuote": true,
   "semi": true,
   "singleQuote": true,
-  "html.format.wrapLineLength": 600,
-  "prettier.disableLanguages": [
-    "html"
-  ]
+  "html.format.wrapLineLength": 600
 }

@@ -10,14 +10,25 @@ export default async function Page() {
 
   return (
     <div className="px-6">
-      {data.map(({ book_id, title, book_cover, url, bookmarked }) => {
+      {data.map(({ id, title, book_cover, url, bookmarked }) => {
         return (
-          <div key={book_id}>
-            <div>{<img src={book_cover} width="50" height="150" />}</div>
+          <div key={id}>
+            <div>
+              {
+                <img
+                  src={book_cover}
+                  width="50"
+                  height="150"
+                />
+              }
+            </div>
             <div>{title}</div>
             <div>Number of highlights</div>
             <div>
-              <Link href={url} target="_blank">
+              <Link
+                href={url}
+                target="_blank"
+              >
                 url
               </Link>
             </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Icon, Box } from '@chakra-ui/react';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 import { addBookmarkToNotionDB } from '@/src/app/(features)/books';
 
@@ -12,5 +13,19 @@ export const Bookmark = ({ book }) => {
       setBookmarked(res.properties.Bookmark.checkbox);
     });
   };
-  return <div onClick={() => handleBookUpdate(book)}>{bookmarked ? <FaBookmark /> : <FaRegBookmark />}</div>;
+  return (
+    <Box onClick={() => handleBookUpdate(book)}>
+      {bookmarked ? (
+        <Icon
+          as={FaBookmark}
+          color={'blue.400'}
+        />
+      ) : (
+        <Icon
+          as={FaRegBookmark}
+          color={'blue.400'}
+        />
+      )}
+    </Box>
+  );
 };
