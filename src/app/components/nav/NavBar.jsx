@@ -2,7 +2,7 @@
 
 import { supabase } from '@/src/app/supabase';
 import { useState, useEffect } from 'react';
-import { Container, Flex, Menu, MenuButton, MenuList, MenuItem, Avatar } from '@chakra-ui/react';
+import { Flex, Menu, MenuButton, MenuList, MenuItem, Avatar } from '@chakra-ui/react';
 import { Logo } from '../display/logo/logo';
 import { AuthButton } from '../auth/AuthButton';
 import Link from 'next/link';
