@@ -1,34 +1,19 @@
 import Link from 'next/link';
-import { cookies } from 'next/headers';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { getBooks } from '@/src/app/(features)/books';
 
 export default async function Page() {
-  const cookieStore = cookies();
-  const supabase = createServerComponentClient({ cookies: () => cookieStore });
-
-  const { data, error } = await supabase.from('books').select();
+  const books = await getBooks('f58e103b-423d-4111-a380-b81618ca3cab');
 
   return (
     <div className="px-6">
-      {data.map(({ id, title, book_cover, url, bookmarked }) => {
+      {books.map(({ id, title, book_cover, url, bookmarked }) => {
         return (
           <div key={id}>
-            <div>
-              {
-                <img
-                  src={book_cover}
-                  width="50"
-                  height="150"
-                />
-              }
-            </div>
+            <div>{<img src={book_cover} width="50" height="150" />}</div>
             <div>{title}</div>
             <div>Number of highlights</div>
             <div>
-              <Link
-                href={url}
-                target="_blank"
-              >
+              <Link href={url} target="_blank">
                 url
               </Link>
             </div>

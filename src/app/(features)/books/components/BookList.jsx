@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Container, Flex, Box, Text } from '@chakra-ui/react';
-import { Bookmark, getBookList } from '@/src/app/(features)/books';
+import { BookMark, getBookList } from '@/src/app/(features)/books';
 
 export const BookList = () => {
   const [books, setBooks] = useState([]);
@@ -31,7 +31,7 @@ export const BookList = () => {
             </Box>
             <Flex flex={1} justify="flex-end">
               <Box>
-                <Bookmark book={book} />
+                <BookMark book={book} />
               </Box>
             </Flex>
           </Flex>

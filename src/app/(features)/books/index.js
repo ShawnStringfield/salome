@@ -1,5 +1,5 @@
 export { addBookmarkToNotionDB, getBook, getBookList } from '@/src/app/(features)/books/api/notionBooksApi';
-export { setBookStatus, saveBook } from '@/src/app/(features)/books/api/booksApi';
+export { getBooks, setBookStatus, saveBook } from '@/src/app/(features)/books/api/booksApi';
 export { BookList } from '@/src/app/(features)/books/components/BookList';
 export { BookMark } from '@/src/app/(features)/books/components/BookMark';
 export { AddBookToDB } from '@/src/app/(features)/books/components/AddBookToDB';

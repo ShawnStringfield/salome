@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { setBookStatus, saveBook } from '@/src/app/(features)/books';
 import { Button } from '@chakra-ui/react';
-import { setUser } from '@/src/app/(features)/auth';
+import { getUser } from '@/src/app/(features)/auth';
 
 export const AddBookToDB = ({ book, children }) => {
   const [isBookInDB, setIsBookInDB] = useState(true);
@@ -11,7 +11,7 @@ export const AddBookToDB = ({ book, children }) => {
   const [userID, setUserID] = useState(null);
 
   useEffect(() => {
-    setUser().then(({ user }) => setUserID(user.id));
+    getUser().then(({ user }) => setUserID(user.id));
     setBookStatus(book).then((resp) => setIsBookInDB(resp));
   });
 

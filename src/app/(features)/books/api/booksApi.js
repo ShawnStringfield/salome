@@ -1,11 +1,12 @@
-import { supabase } from '@/src/app/supabase';
+'use server';
 
-export const setBookStatus = async ({ id }) => {
-  const { data, error } = await supabase.from('books').select().eq('id', id);
-  const bookInDB = data.filter((book) => book.id === id).length ? true : false;
+import { supabase } from '@/src/app/lib/supabaseServer';
+
+export const getBooks = async (userID) => {
+  const { data, error } = await supabase.from('books').select().eq('user_id', userID);
   if (error) {
-    console.log('error from setBookStatus', error);
-  } else return bookInDB;
+    return {error: error};
+  } else return data;
 };
 
 export const saveBook = async (book, userID) => {
@@ -14,4 +15,12 @@ export const saveBook = async (book, userID) => {
   if (error) {
     return {error: error};
   } else return true;
+};
+
+export const setBookStatus = async ({ id }) => {
+  const { data, error } = await supabase.from('books').select().eq('id', id);
+  const bookInDB = data.filter((book) => book.id === id).length ? true : false;
+  if (error) {
+    console.log('error from setBookStatus', error);
+  } else return bookInDB;
 };

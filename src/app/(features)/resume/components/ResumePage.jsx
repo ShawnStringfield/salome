@@ -11,12 +11,12 @@ export const ResumePage = async () => {
     return (
       <Box className={resumestyles.section}>
         <Heading as="h2">Skills</Heading>
-        {resume.skills.map((skill) => {
+        {resume.skills.map((skill, index) => {
           const skills = skill[Object.keys(skill)];
           const heading = Object.keys(skill)[0];
 
           return (
-            <Flex className={resumestyles.skillssection} key={skill}>
+            <Flex className={resumestyles.skillssection} key={index}>
               <Heading mr={2} as="h3">
                 {heading}
               </Heading>

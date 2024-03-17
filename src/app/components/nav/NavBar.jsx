@@ -1,19 +1,19 @@
 'use client';
 
-import { supabase } from '@/src/app/supabase';
+import { supabase } from '@/src/app/lib/supabaseClient';
+import { AuthButton } from '../../(features)/auth';
 import { useState, useEffect } from 'react';
 import { Flex, Menu, MenuButton, MenuList, MenuItem, Avatar } from '@chakra-ui/react';
 import { Logo } from '../display/logo/logo';
-import { AuthButton } from '../auth/AuthButton';
+
 import Link from 'next/link';
 import navbar from './navbar.module.css';
 
-export const NavBar = (props) => {
-  const [currentUser, setCurrentUser] = useState({});
+export const NavBar = () => {
+  const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
-      console.log('navbar session', session);
       if (!session) setCurrentUser(null);
       if (session) {
         setCurrentUser({
@@ -32,7 +32,7 @@ export const NavBar = (props) => {
       </Link>
       <Menu>
         <MenuButton>
-          <Avatar name={currentUser?.name || 'Shawn Stringfield'} size="lg" src={currentUser?.avatar_url} />
+          <Avatar name={currentUser?.name} size="lg" src={currentUser?.avatar_url} />
         </MenuButton>
         <MenuList>
           <MenuItem>
