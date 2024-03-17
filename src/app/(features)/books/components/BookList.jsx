@@ -13,7 +13,7 @@ export const BookList = () => {
   }, [books.length]);
 
   return (
-    <Container maxW="4xl">
+    <Container>
       {books.map((book) => {
         return (
           <Flex key={book.id} align="center" p={2} border="1px" borderColor="gray.100" my={5} borderRadius="md">

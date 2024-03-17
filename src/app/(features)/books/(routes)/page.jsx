@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { getBooks } from '@/src/app/(features)/books';
+import { Container } from '@chakra-ui/react';
 
 export default async function Page() {
   const books = await getBooks();
 
   return (
-    <div className="px-6">
+    <Container>
       {books.map(({ id, title, book_cover, url, bookmarked }) => {
         return (
           <div key={id}>
@@ -21,6 +22,6 @@ export default async function Page() {
           </div>
         );
       })}
-    </div>
+    </Container>
   );
 }

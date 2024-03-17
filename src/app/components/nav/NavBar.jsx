@@ -3,7 +3,7 @@
 import { supabase } from '@/src/app/lib/supabaseClient';
 import { AuthButton } from '../../(features)/auth';
 import { useState, useEffect } from 'react';
-import { Flex, Menu, MenuButton, MenuList, MenuItem, Avatar } from '@chakra-ui/react';
+import { Container, Flex, Menu, MenuButton, MenuList, MenuItem, Avatar } from '@chakra-ui/react';
 import { Logo } from '../display/logo/logo';
 
 import Link from 'next/link';
@@ -26,23 +26,25 @@ export const NavBar = () => {
   }, [setCurrentUser]);
 
   return (
-    <Flex className={navbar.container} alignItems="center" justifyContent="space-between">
-      <Link href="/">
-        <Logo />
-      </Link>
-      <Menu>
-        <MenuButton>
-          <Avatar name={currentUser?.name} size="lg" src={currentUser?.avatar_url} />
-        </MenuButton>
-        <MenuList>
-          <MenuItem>
-            <AuthButton user={currentUser} />
-          </MenuItem>
-          <MenuItem as="a" href="/books">
-            Books
-          </MenuItem>
-        </MenuList>
-      </Menu>
-    </Flex>
+    <Container w="100%" py={5} centerContent={true} className={navbar.container}>
+      <Flex w={'6xl'} justify="space-between">
+        <Link href="/">
+          <Logo />
+        </Link>
+        <Menu>
+          <MenuButton>
+            <Avatar name={currentUser?.name} size="lg" src={currentUser?.avatar_url} />
+          </MenuButton>
+          <MenuList>
+            <MenuItem>
+              <AuthButton user={currentUser} />
+            </MenuItem>
+            <MenuItem as="a" href="/books">
+              Books
+            </MenuItem>
+          </MenuList>
+        </Menu>
+      </Flex>
+    </Container>
   );
 };
