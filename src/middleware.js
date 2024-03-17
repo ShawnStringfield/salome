@@ -17,15 +17,15 @@ export async function middleware(req) {
     console.log('YOU ARE NOT AUTHENTICATED');
   }
 
-  // if (!user && req.nextUrl.pathname === '/books') {
-  //   // Quick redirects here for routes that require authentication
-  //   return NextResponse.redirect(new URL('/resume', req.url));
-  // }
+  if (!user && req.nextUrl.pathname === '/books') {
+    // Quick redirects here for routes that require authentication
+    return NextResponse.redirect(new URL('/resume', req.url));
+  }
 
-  // if (!user && req.nextUrl.pathname === '/books/kindle') {
-  //   // Quick redirects here for routes that require authentication
-  //   return NextResponse.redirect(new URL('/resume', req.url));
-  // }
+  if (!user && req.nextUrl.pathname === '/books/kindle') {
+    // Quick redirects here for routes that require authentication
+    return NextResponse.redirect(new URL('/resume', req.url));
+  }
 
   if (error) {
     console.log('middleware error', error);

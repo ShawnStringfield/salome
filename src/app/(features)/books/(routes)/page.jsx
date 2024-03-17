@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getBooks } from '@/src/app/(features)/books';
 
 export default async function Page() {
-  const books = await getBooks('f58e103b-423d-4111-a380-b81618ca3cab');
+  const books = await getBooks();
 
   return (
     <div className="px-6">

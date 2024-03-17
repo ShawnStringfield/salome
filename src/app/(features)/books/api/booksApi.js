@@ -2,18 +2,25 @@
 
 import { supabase } from '@/src/app/lib/supabaseServer';
 
-export const getBooks = async (userID) => {
-  const { data, error } = await supabase.from('books').select().eq('user_id', userID);
+export const getBooks = async () => {
+  const user = (await supabase.auth.getUser()).data.user;
+  if (!user) return { error: 'User not authenticated' };
+
+  const { data, error } = await supabase.from('books').select().eq('user_id', user.id);
+
   if (error) {
-    return {error: error};
+    return { error: error };
   } else return data;
 };
 
-export const saveBook = async (book, userID) => {
-  book.user_id = userID;
+export const saveBook = async (book) => {
+  const user = (await supabase.auth.getUser()).data.user;
+  if (!user) return { error: 'User not authenticated' };
+
+  book.user_id = user.id;
   const { error } = await supabase.from('books').insert(book);
   if (error) {
-    return {error: error};
+    return { error: error };
   } else return true;
 };
 
