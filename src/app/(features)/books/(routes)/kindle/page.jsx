@@ -1,5 +1,5 @@
-import { BookList } from '@/src/app/(features)/books';
+import { BookList, getBookList } from '@/src/app/(features)/books';
 
 export default async function Page() {
-  return <BookList />;
+  return <BookList getBookList={getBookList} />;
 }

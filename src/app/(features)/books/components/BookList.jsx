@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Container, Flex, Box, Text } from '@chakra-ui/react';
-import { BookMark, getBookList } from '@/src/app/(features)/books';
+import { BookMark } from '@/src/app/(features)/books';
 
-export const BookList = () => {
+export const BookList = ({ getBookList }) => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {

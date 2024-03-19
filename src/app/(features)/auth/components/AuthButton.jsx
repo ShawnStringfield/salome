@@ -1,17 +1,17 @@
 'use client';
 
 import React from 'react';
-import { supabase } from '@/src/app/lib/supabaseClient';
+import { supabaseClient } from '@/src/app/lib/supabaseClient';
 
 export const AuthButton = ({ user }) => {
   const signInWithGoogle = async () => {
-    supabase.auth.signInWithOAuth({
+    supabaseClient.auth.signInWithOAuth({
       provider: 'google',
     });
   };
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await supabaseClient.auth.signOut();
     console.log('error', error);
   };
 

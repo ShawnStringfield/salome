@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { format } from 'date-fns';
 import { Image, Container, Box, Flex, Stack, Text } from '@chakra-ui/react';
-import { getBook, AddBookToDB } from '@/src/app/(features)/books';
+import { getBook, AddBookToDB, saveBook, setBookStatus } from '@/src/app/(features)/books';
 import { BookMark } from '@/src/app/(features)/books';
 
 export const BookDetailPage = async ({ params }) => {
@@ -26,6 +26,8 @@ export const BookDetailPage = async ({ params }) => {
           <Box>{author}</Box>
           <Flex my={2} align="center">
             <AddBookToDB
+              saveBook={saveBook}
+              setBookStatus={setBookStatus}
               book={{
                 category: category || '',
                 title: bookTitle,

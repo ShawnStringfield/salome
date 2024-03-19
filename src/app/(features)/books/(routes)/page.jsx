@@ -1,25 +1,34 @@
 import Link from 'next/link';
-import { getBooks } from '@/src/app/(features)/books';
-import { Container } from '@chakra-ui/react';
+import { getBooks, BookMark } from '@/src/app/(features)/books';
+import { Container, Text } from '@chakra-ui/react';
+import { List, ListContainer, ListItem, ListColumn } from '@/src/app/components/List';
 
 export default async function Page() {
   const books = await getBooks();
 
+  console.log('books', books);
+
   return (
     <Container>
-      {books.map(({ id, title, book_cover, url, bookmarked }) => {
+      {books.map((book) => {
         return (
-          <div key={id}>
-            {/* <div>{<img src={book_cover} width="50" height="150" />}</div> */}
-            <div>{title}</div>
-            <div>Number of highlights</div>
-            <div>
-              <Link href={url} target="_blank">
-                url
-              </Link>
-            </div>
-            <div>Bookmarked: {bookmarked}</div>
-          </div>
+          <List key={book.id}>
+            <ListContainer>
+              <ListColumn>
+                <ListItem>
+                  <Text fontWeight={'bold'}>{book.title}</Text>
+                </ListItem>
+                <ListItem type="text">
+                  {book.author} {book.category ? '•' : ''} {book.category}
+                </ListItem>
+              </ListColumn>
+              <ListColumn flexEnd={true}>
+                <ListItem>
+                  <BookMark dataSource="supabase" book={book} />
+                </ListItem>
+              </ListColumn>
+            </ListContainer>
+          </List>
         );
       })}
     </Container>

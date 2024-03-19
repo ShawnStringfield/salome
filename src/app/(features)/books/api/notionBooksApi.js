@@ -46,10 +46,15 @@ export const getBookList = async () => {
 };
 
 export const getBook = async (id) => {
-  const book = await notion.pages.retrieve({ page_id: id });
-  const bookDetails = await getBookDetails(book);
-  bookDetails.highlights = await getBlock(id);
-  return bookDetails;
+  try {
+    const book = await notion.pages.retrieve({ page_id: id });
+    const bookDetails = await getBookDetails(book);
+    bookDetails.highlights = await getBlock(id);
+    return bookDetails;
+  } catch (error) {
+    console.error('error', error);
+  }
+  
 };
 
 export const addBookmarkToNotionDB = async (book, flag) => {

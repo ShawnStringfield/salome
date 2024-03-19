@@ -1,6 +1,6 @@
 'use client';
 
-import { supabase } from '@/src/app/lib/supabaseClient';
+import { supabaseClient } from '@/src/app/lib/supabaseClient';
 import { AuthButton } from '../../(features)/auth';
 import { useState, useEffect } from 'react';
 import { Container, Flex, Menu, MenuButton, MenuList, MenuItem, Avatar } from '@chakra-ui/react';
@@ -13,7 +13,7 @@ export const NavBar = () => {
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
-    supabase.auth.onAuthStateChange((event, session) => {
+    supabaseClient.auth.onAuthStateChange((event, session) => {
       if (!session) setCurrentUser(null);
       if (session) {
         setCurrentUser({

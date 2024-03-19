@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { setBookStatus, saveBook } from '@/src/app/(features)/books';
+
 import { Button } from '@chakra-ui/react';
 
-export const AddBookToDB = ({ book, children }) => {
+export const AddBookToDB = ({ book, children, saveBook, setBookStatus }) => {
   const [isBookInDB, setIsBookInDB] = useState(true);
   const [error, setError] = useState(null);
 

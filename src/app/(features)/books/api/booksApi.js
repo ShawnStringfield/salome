@@ -1,12 +1,17 @@
 'use server';
 
-import { supabase } from '@/src/app/lib/supabaseServer';
+import { cookies } from 'next/headers';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+// import { supabaseServer } from '@/src/app/lib/supabaseServer';
+import { getUser } from '../../auth';
 
 export const getBooks = async () => {
-  const user = (await supabase.auth.getUser()).data.user;
+  const cookieStore = cookies();
+  const supabaseServer = createServerComponentClient({ cookies: () => cookieStore });
+  const user = await getUser();
   if (!user) return { error: 'User not authenticated' };
 
-  const { data, error } = await supabase.from('books').select().eq('user_id', user.id);
+  const { data, error } = await supabaseServer.from('books').select().eq('user_id', user.id);
 
   if (error) {
     return { error: error };
@@ -14,20 +19,24 @@ export const getBooks = async () => {
 };
 
 export const saveBook = async (book) => {
-  const user = (await supabase.auth.getUser()).data.user;
+  const cookieStore = cookies();
+  const supabaseServer = createServerComponentClient({ cookies: () => cookieStore });
+  const user = await getUser();
   if (!user) return { error: 'User not authenticated' };
 
   book.user_id = user.id;
-  const { error } = await supabase.from('books').insert(book);
+  const { error } = await supabaseServer.from('books').insert(book);
   if (error) {
     return { error: error };
   } else return true;
 };
 
 export const setBookStatus = async ({ id }) => {
-  const { data, error } = await supabase.from('books').select().eq('id', id);
+  const cookieStore = cookies();
+  const supabaseServer = createServerComponentClient({ cookies: () => cookieStore });
+  const { data, error } = await supabaseServer.from('books').select().eq('id', id);
   const bookInDB = data.filter((book) => book.id === id).length ? true : false;
   if (error) {
     console.log('error from setBookStatus', error);
-  } else return bookInDB;
+ } else return bookInDB;
 };
