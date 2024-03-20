@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { Button } from '@chakra-ui/react';
 
-export const AddBookToDB = ({ book, children, saveBook, setBookStatus }) => {
+export const AddBookToDB = ({ children, saveBookToDB, setBookStatus, book }) => {
   const [isBookInDB, setIsBookInDB] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,7 +13,7 @@ export const AddBookToDB = ({ book, children, saveBook, setBookStatus }) => {
   });
 
   const handleSaveBook = () => {
-    saveBook(book).then((resp) => {
+    saveBookToDB(book).then((resp) => {
       if (resp.error) setError(resp.error);
     });
   };

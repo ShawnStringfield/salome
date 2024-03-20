@@ -1,5 +1,6 @@
-import { BookList, getBookList } from '@/src/app/(features)/books';
+import { BookList, getAllBooksFromNotionDB } from '@/src/app/(features)/books';
 
 export default async function Page() {
-  return <BookList getBookList={getBookList} />;
+  const books = await getAllBooksFromNotionDB();
+  return <BookList datasource={'notion'} books={books} />;
 }

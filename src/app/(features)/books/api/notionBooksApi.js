@@ -5,9 +5,9 @@ const notion = new Client({ auth: process.env.NOTION_SECRET });
 
 import { getBlock } from '@/src/app/api/integrations/notion/blockHelpers';
 
-const getBookDetails = async (book) => {
+const getBookProps = async (book) => {
   const props = book.properties;
-  const bookTitle = props.Title.title[0].plain_text;
+  const title = props.Title.title[0].plain_text;
   const author = props.Author.rich_text.length ? props.Author.rich_text[0].plain_text : null;
   const lastHighlighted = props['Last Highlighted'].date ? props['Last Highlighted'].date.start : null;
   const lastSynced = props['Last Synced'].date ? props['Last Synced'].date.start : null;
@@ -17,7 +17,7 @@ const getBookDetails = async (book) => {
 
   return {
     id: book.id,
-    bookTitle: bookTitle,
+    title: title,
     author: author,
     lastHighlighted: lastHighlighted,
     highlightCount: highlightCount,
@@ -29,7 +29,7 @@ const getBookDetails = async (book) => {
   };
 };
 
-export const getBookList = async () => {
+export const getAllBooksFromNotionDB = async () => {
   const booksFilter = { property: 'Category', select: { equals: 'Books' } };
   const booksSorts = [{ property: 'Title', direction: 'ascending' }];
   const queryOptions = {
@@ -40,21 +40,16 @@ export const getBookList = async () => {
   const books = await notion.databases.query(queryOptions);
   return await Promise.all(
     books.results.map(async (book) => {
-      return getBookDetails(book);
+      return getBookProps(book);
     })
   );
 };
 
-export const getBook = async (id) => {
-  try {
+export const getBookFromNotionDB = async (id) => {
     const book = await notion.pages.retrieve({ page_id: id });
-    const bookDetails = await getBookDetails(book);
+    const bookDetails = await getBookProps(book);
     bookDetails.highlights = await getBlock(id);
-    return bookDetails;
-  } catch (error) {
-    console.error('error', error);
-  }
-  
+    return bookDetails;  
 };
 
 export const addBookmarkToNotionDB = async (book, flag) => {

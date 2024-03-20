@@ -1,40 +1,50 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Container, Flex, Box, Text } from '@chakra-ui/react';
+import { Container, Text } from '@chakra-ui/react';
+import { List, ListContainer, ListItem, ListColumn } from '@/src/app/components/List';
 import { BookMark } from '@/src/app/(features)/books';
+import { slugify } from '@/src/app/utils/strings';
 
-export const BookList = ({ getBookList }) => {
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    getBookList().then((books) => setBooks(books));
-  }, [books.length]);
-
+export const BookList = ({ books, datasource }) => {
   return (
     <Container>
       {books.map((book) => {
-        return (
-          <Flex key={book.id} align="center" p={2} border="1px" borderColor="gray.100" my={5} borderRadius="md">
-            <Box>
-              <Link href={`/books/kindle/${book.id}`}>
-                <Text fontWeight={'bold'}>{book.bookTitle}</Text>
-                <Text>{book.author}</Text>
-              </Link>
-            </Box>
+        const booksURL = `/books/${slugify(book.title)}`;
+        const kindleHightlightsURL = `/books/kindle/${slugify(book.title)}`;
+        let path;
 
-            <Box flex={8} align="right">
-              <Text fontSize={'sm'} color={'gray.600'}>
-                {book.category}
-              </Text>
-            </Box>
-            <Flex flex={1} justify="flex-end">
-              <Box>
-                <BookMark book={book} />
-              </Box>
-            </Flex>
-          </Flex>
+        switch (datasource) {
+          case 'supabase':
+            path = booksURL;
+            break;
+          case 'notion':
+            path = kindleHightlightsURL;
+            break;
+        }
+        return (
+          <List key={book.id}>
+            <ListContainer>
+              <Link
+                href={{
+                  pathname: path,
+                  query: { id: book.id },
+                }}
+              >
+                <ListColumn>
+                  <ListItem>
+                    <Text fontWeight={'bold'}>{book.title}</Text>
+                  </ListItem>
+                  <ListItem type="text">
+                    {book.author} {book.category ? '•' : ''} {book.category}
+                  </ListItem>
+                </ListColumn>
+              </Link>
+              <ListColumn flexEnd={true}>
+                <ListItem>
+                  <BookMark datasource={datasource} book={book} />
+                </ListItem>
+              </ListColumn>
+            </ListContainer>
+          </List>
         );
       })}
     </Container>

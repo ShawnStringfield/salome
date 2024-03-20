@@ -1,52 +1,49 @@
 import Link from 'next/link';
-import { format } from 'date-fns';
-import { Image, Container, Box, Flex, Stack, Text } from '@chakra-ui/react';
-import { getBook, AddBookToDB, saveBook, setBookStatus } from '@/src/app/(features)/books';
+import { Container, Box, Flex } from '@chakra-ui/react';
+import { AddBookToDB, saveBookToDB, setBookStatus } from '@/src/app/(features)/books';
 import { BookMark } from '@/src/app/(features)/books';
 
-export const BookDetailPage = async ({ params }) => {
-  const book = await getBook(params.id);
-  const { highlights, bookTitle, author, lastHighlighted, lastSynced, bookmarked, bookCover, url, category } = book;
+export const BookDetailPage = async ({ book, datasource }) => {
+  console.log('datasource', datasource);
+  const { highlights = [], title, author, bookmarked, bookCover, url, category, id } = book;
 
   return (
     <Container maxW="6xl">
       <Flex align="center" mb={20} w={'full'}>
-        <Box mr={5}>
-          <Link href={url} target="_blank">
-            <Image borderRadius="lg" htmlWidth={300} src={bookCover} alt={bookTitle} />
-          </Link>
-        </Box>
         <Box w={'full'}>
           <Flex fontSize={'lg'} fontWeight={'bold '}>
-            <Box mr={2}>{bookTitle}</Box>
+            <Box mr={2}>
+              <Link href={url} target="_blank">
+                {title}
+              </Link>
+            </Box>
             <Box alignSelf={'center'} lineHeight={0}>
-              <BookMark book={book} />
+              <BookMark datasource={datasource} book={book} />
             </Box>
           </Flex>
-          <Box>{author}</Box>
-          <Flex my={2} align="center">
+          <Box>
+            {author} {category ? '•' : ''} {category}
+          </Box>
+        </Box>
+        {datasource === 'notion' && (
+          <Box w="full" align="end" lineHeight={3}>
             <AddBookToDB
-              saveBook={saveBook}
+              saveBookToDB={saveBookToDB}
               setBookStatus={setBookStatus}
               book={{
-                category: category || '',
-                title: bookTitle,
+                category: category,
+                title: title,
                 author: author,
                 book_cover: bookCover,
                 bookmarked: bookmarked,
                 url: url,
-                id: params.id,
+                id: id,
               }}
             >
               Add Book
             </AddBookToDB>
-          </Flex>
-        </Box>
-        <Stack w="full" align="end" lineHeight={3}>
-          <Text fontSize={'small'}>Last highlighted {format(new Date(lastHighlighted), 'MMMM dd, yyyy')}</Text>
-          <Text fontSize={'small'}>Last synced {format(new Date(lastSynced), 'MMMM dd, yyyy')}</Text>
-          <Text fontSize={'small'}>{category}</Text>
-        </Stack>
+          </Box>
+        )}
       </Flex>
 
       {highlights.map((highlight, index) => {

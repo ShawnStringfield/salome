@@ -9,7 +9,6 @@ export const getUser = async () => {
   const supabaseServer = createServerComponentClient({ cookies: () => cookieStore });
 
   const { data, error } = await supabaseServer.auth.getUser();
-  console.log('data', data);
   if (error) return error;
   return data.user;
 };

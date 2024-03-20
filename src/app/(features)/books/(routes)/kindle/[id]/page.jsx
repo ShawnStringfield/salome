@@ -1,6 +1,6 @@
-import { BookDetailPage } from '@/src/app/(features)/books';
-import { getBookList } from '@/src/app/(features)/books';
+import { BookDetailPage, getBookFromNotionDB } from '@/src/app/(features)/books';
 
-export default async function Page({ params }) {
-  return <BookDetailPage getBookList={getBookList} params={params} />;
+export default async function Page({ searchParams }) {
+  const book = await getBookFromNotionDB(searchParams.id);
+  return <BookDetailPage datasource="notion" book={book} />;
 }
