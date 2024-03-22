@@ -6,12 +6,11 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 - Using NGrok for local tunneling.
 - https://nextui.org/
-- Design Library: nextui.org
 
 ## Goal of the app
 
 - Journal
+- Sync books from Kindle via Notion
 - Calendar
-- Resume
 - Dashboard
 - Life Tracker
