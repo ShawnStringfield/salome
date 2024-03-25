@@ -4,12 +4,10 @@ import { NavBar } from './components/nav/NavBar';
 
 import './theme/vars.css';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
+      <body>
         <Providers>
           <NavBar />
           {children}

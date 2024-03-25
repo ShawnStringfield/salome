@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import { Container, Box, Flex } from '@chakra-ui/react';
 import { AddBookToDB, saveBookToDB, setBookStatus } from '@/src/app/(features)/books';
-import { BookMark } from '@/src/app/(features)/books';
+import { BookMark, AddHighlightForm, addHighlightToDB } from '@/src/app/(features)/books';
 
 export const BookDetailPage = async ({ book, datasource }) => {
-  console.log('datasource', datasource);
   const { highlights = [], title, author, bookmarked, bookCover, url, category, id } = book;
 
   return (
@@ -46,7 +45,13 @@ export const BookDetailPage = async ({ book, datasource }) => {
         )}
       </Flex>
 
-      {highlights.map((highlight, index) => {
+      {datasource === 'supabase' && (
+        <Box>
+          <AddHighlightForm addHighlightToDB={addHighlightToDB} bookId={id} />
+        </Box>
+      )}
+
+      {[].map((highlight, index) => {
         return (
           <Box my={7} key={index}>
             {highlight}

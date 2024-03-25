@@ -8,6 +8,7 @@ export const getBookFromDB = async ({ id }) => {
   const cookieStore = cookies();
   const supabaseServer = createServerComponentClient({ cookies: () => cookieStore });
   const { data, error } = await supabaseServer.from('books').select().eq('id', id);
+  console.log('data', data);
   if (error) {
     return { error: error };
   } else return data[0];
@@ -59,4 +60,15 @@ export const setBookStatus = async ({ id }) => {
   if (error) {
     console.log('error from setBookStatus', error);
  } else return bookInDB;
+};
+
+export const addHighlightToDB = async (highlight) => {
+  const cookieStore = cookies();
+  const supabaseServer = createServerComponentClient({ cookies: () => cookieStore });
+  const user = await getUser();
+  if (!user) return { error: 'User not authenticated' };
+  const { data, error } = await supabaseServer.from('book_highlights').insert(highlight);
+  if (error) {
+    return { error: error };
+  } else return data;
 };

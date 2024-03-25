@@ -10,14 +10,16 @@ export const ResumePage = async () => {
   const renderSkills = () => {
     return (
       <Box className={resumestyles.section}>
-        <Heading as="h2">Skills</Heading>
+        <Heading as="h2" size={'h2'}>
+          Skills
+        </Heading>
         {resume.skills.map((skill, index) => {
           const skills = skill[Object.keys(skill)];
           const heading = Object.keys(skill)[0];
 
           return (
             <Flex className={resumestyles.skillssection} key={index}>
-              <Heading mr={2} as="h3">
+              <Heading mr={2} as="h3" size={'h3'}>
                 {heading}
               </Heading>
               <Box>
@@ -37,16 +39,20 @@ export const ResumePage = async () => {
   const renderHistory = () => {
     return (
       <Box className={resumestyles.section}>
-        <Heading as="h2">History</Heading>
+        <Heading as="h2" size={'h2'}>
+          History
+        </Heading>
         {resume.experience.map(({ jobTitle, company, startDate, endDate, description }, index) => {
           return (
             <Box mb={75} key={index}>
-              <Box fontSize={'sm'} color={'gray.500'} mb={1}>
+              <Text size={'xs'} color={'gray.500'} lineHeight={'none'}>
                 {formatShortDate(startDate)} - {formatShortDate(endDate)}
-              </Box>
+              </Text>
 
               <Box lineHeight={0}>
-                <Heading as="h3">{jobTitle}</Heading>
+                <Heading as="h3" size={'h3'}>
+                  {jobTitle}
+                </Heading>
               </Box>
 
               <Text fontWeight={'bold'}>{company}</Text>
@@ -62,7 +68,7 @@ export const ResumePage = async () => {
     <>
       <Container className={resumestyles.resumepage} maxW="4xl">
         <Box my={5}>
-          <Heading as="h1" size={'2xl'}>
+          <Heading as="h1" size="h1">
             Summary
           </Heading>
           <Box>{summary}</Box>
