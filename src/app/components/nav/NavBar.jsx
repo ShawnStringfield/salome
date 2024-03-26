@@ -26,8 +26,8 @@ export const NavBar = () => {
   }, [setCurrentUser]);
 
   return (
-    <Container w="100%" py={5} centerContent={true} className={navbar.container}>
-      <Flex w={'6xl'} justify="space-between">
+    <Container py={5} centerContent={true} className={navbar.container}>
+      <Flex w={'2xl'} justify="space-between">
         <Link href="/">
           <Logo />
         </Link>

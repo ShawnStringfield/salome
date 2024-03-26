@@ -1,6 +1,6 @@
 export const typography = {
   fonts: {
-    heading: '"Comfortaa", sans-serif',
+    heading: `"Work Sans", sans-serif`,
     body: '"Inter", sans-serif',
   },
   fontSizes: {

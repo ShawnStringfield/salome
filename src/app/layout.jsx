@@ -1,5 +1,4 @@
 import { Providers } from './providers';
-import { Inter } from 'next/font/google';
 import { NavBar } from './components/nav/NavBar';
 
 import './theme/vars.css';
