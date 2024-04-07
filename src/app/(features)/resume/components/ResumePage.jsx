@@ -1,7 +1,7 @@
 import { Container, Box, Flex, Heading, Tag, Text } from '@chakra-ui/react';
-import { jsonImporter } from '@/src/app/lib/jsonImporter';
+import { jsonImporter } from '../../../lib/jsonImporter';
 import resumestyles from './resume.module.css';
-import { formatShortDate } from '@/src/app/utils/dates';
+import { formatShortDate } from '../../../utils/dates';
 
 export const ResumePage = async () => {
   const resume = await jsonImporter('/src/app/(features)/resume/api/resume.json');

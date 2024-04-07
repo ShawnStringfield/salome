@@ -30,5 +30,3 @@ export const theme = extendTheme({
     Heading,
   },
 });
-
-console.log('theme', theme);

@@ -1,4 +1,4 @@
-import { BookDetailPage, getBookFromNotionDB } from '@/src/app/(features)/books';
+import { BookDetailPage, getBookFromNotionDB } from '../../../';
 
 export default async function Page({ searchParams }) {
   const book = await getBookFromNotionDB(searchParams.id);
