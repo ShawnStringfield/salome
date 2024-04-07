@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { supabaseServer } from '@/src/app/lib/supabaseServer';
+import { supabaseServer } from '../../../lib/supabaseServer';
 
 export const getUser = async () => {
   const cookieStore = cookies();

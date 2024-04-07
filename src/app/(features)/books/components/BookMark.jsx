@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Icon, Box } from '@chakra-ui/react';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
-import { addBookmarkToDB, addBookmarkToNotionDB } from '@/src/app/(features)/books';
+import { addBookmarkToDB, addBookmarkToNotionDB } from '../../books';
 
 export const BookMark = ({ book, datasource }) => {
   const [bookmarked, setBookmarked] = useState(book.bookmarked);

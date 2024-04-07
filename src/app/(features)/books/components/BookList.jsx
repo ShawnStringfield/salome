@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { Container, Text } from '@chakra-ui/react';
-import { List, ListContainer, ListItem, ListColumn } from '@/src/app/components/List';
-import { BookMark } from '@/src/app/(features)/books';
-import { slugify } from '@/src/app/utils/strings';
+import { List, ListContainer, ListItem, ListColumn } from '../../../components/List';
+import { BookMark } from '../components/BookMark';
+import { slugify } from '../../../utils/strings';
+
+// What is happening with this version of node and why can't I use the abosolute path?
 
 export const BookList = ({ books, datasource }) => {
   return (

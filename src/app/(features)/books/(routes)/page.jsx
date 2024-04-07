@@ -1,4 +1,4 @@
-import { getAllBooksFromDB, BookList } from '@/src/app/(features)/books';
+import { getAllBooksFromDB, BookList } from '../index';
 
 export default async function Page() {
   const books = await getAllBooksFromDB();

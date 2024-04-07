@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Container, Box, Flex } from '@chakra-ui/react';
-import { AddBookToDB, saveBookToDB, setBookStatus } from '@/src/app/(features)/books';
-import { BookMark, AddHighlightForm, addHighlightToDB } from '@/src/app/(features)/books';
+import { AddBookToDB, saveBookToDB, setBookStatus, addHighlightToDB, AddHighlightForm, BookMark } from '../';
 
 export const BookDetailPage = async ({ book, datasource }) => {
   const { highlights = [], title, author, bookmarked, bookCover, url, category, id } = book;

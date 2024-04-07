@@ -3,7 +3,7 @@
 const { Client } = require('@notionhq/client');
 const notion = new Client({ auth: process.env.NOTION_SECRET });
 
-import { getBlock } from '@/src/app/api/integrations/notion/blockHelpers';
+import { getBlock } from '../../../api/integrations/notion/blockHelpers';
 
 const getBookProps = async (book) => {
   const props = book.properties;

@@ -1,2 +1,2 @@
-export {getUser} from '@/src/app/(features)/auth/api/authApi';
-export {AuthButton} from '@/src/app/(features)/auth/components/AuthButton';
+export {getUser} from './api/authApi';
+export {AuthButton} from './components/AuthButton';
