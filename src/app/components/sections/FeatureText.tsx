@@ -35,7 +35,7 @@ export const FeatureText = ({ title, text, subTitle, footerLeft, footerRight, co
           </Box>
           {isMobile ? (
             <Flex>
-              <Box>{footerLeft}</Box>
+              {/* <Box>{footerLeft}</Box> */}
               <Flex flex={1} justifyContent={'flex-end'} color={colors[colorScheme].textColor}>
                 <Text fontSize={'md'}>{footerRight}</Text>
               </Flex>
