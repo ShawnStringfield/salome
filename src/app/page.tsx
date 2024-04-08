@@ -59,7 +59,7 @@ export default function Home() {
           </Flex>
         ),
       })}
-      <Container my={18} p={8} maxW={['full', 'full', '3xl']}>
+      <Container my={18} p={8} maxW={['full', 'full', '2xl']}>
         <SimpleGrid columns={[1, 1, 2]} spacing={8}>
           {resume.map((item: ResumeItem) =>
             item.experience.map((exp: Experience, index: number) => {
