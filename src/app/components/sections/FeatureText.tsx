@@ -15,7 +15,7 @@ export const FeatureText = ({ title, text, subTitle, footerLeft, footerRight, co
   const [isMobile] = useMediaQuery('(min-width: 480px)');
 
   return (
-    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.25, duration: 0.5, ease: 'linear' }}>
+    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, ease: 'linear' }}>
       <Card size={['sm', 'md', 'lg']} h={350}>
         <CardBody>
           <Box>
