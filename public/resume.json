@@ -19,21 +19,21 @@
         "company": "Fevo (Contract)",
         "startDate": "2023/2/01",
         "endDate": "2023/12/31",
-        "description": "Leveraged React to revamp and improve the checkout process, while also augmenting and integrating administrative functionalities for event promoters managing their bookings online."
+        "description": "Leveraged React to revamp the checkout process and enhance administrative functions for event promoters managing bookings online, streamlining user experience."
       },
       {
         "jobTitle": "Senior Frontend Engineer",
         "company": "CDC (Contract)",
         "startDate": "2022/4/01",
         "endDate": "2022/12/01",
-        "description": "Specialized in visualizing health statistics through interactive and engaging charts, graphs, and visuals, simplifying complex data. Developed a consistent design language with defined color palettes, typography, and UI layouts, enhancing user experience and visual appeal."
+        "description": "Specialized in presenting health statistics with interactive charts that simplify complex data. Developed a unified design language using specific color palettes, typography, and UI layouts."
       },
       {
         "jobTitle": "Senior Frontend Engineer",
         "company": "Ford Motor Company (Contract)",
         "startDate": "2021/11/01",
         "endDate": "2022/4/01",
-        "description": "Primarily contributed to the front/end team, while also establishing all endpoints on the backend API using Node. Collaborated closely with the development manager to understand requirements for implementing Ford's collision detection software. Independently designed the UI and established a design system for use by other developers."
+        "description": "Contributed to both front-end and backend (Node.js) for Ford's collision detection software, designed the UI, and developed a design system for team use."
       },
       {
         "jobTitle": "Senior Frontend Engineer",
@@ -54,7 +54,7 @@
         "company": "AARP",
         "startDate": "2016/6/01",
         "endDate": "2018/10/31",
-        "description": "Responsible for maintaining the front end code base for AARP’s StayingSharp product, which is a collection of brain games used to help individuals sharpen cognitive abilities. Tools used to maintain this application are React, Webpack, SASS and Jest for Unit Testing"
+        "description": "Managed the front-end codebase of AARP's StayingSharp, a suite of brain games enhancing cognitive skills, using React, Webpack, SASS, and Jest for unit testing."
       },
       {
         "jobTitle": "Frontend Developer",
@@ -65,31 +65,31 @@
       },
       {
         "jobTitle": "Frontend Developer",
-        "company": "Financial Industry Regulatory Authority (FINRA)",
+        "company": "FINRA",
         "startDate": "2013/7/01",
         "endDate": "2014/9/15",
-        "description": "Responsible for working with a team of UX designers to aid in implementing new user interfaces and enhancing current applications within an Agile environment. Develop interactive prototypes and user interface design based off of wireframes and user flows provided by the UX designers."
+        "description": "Collaborated with UX designers to implement and enhance user interfaces in an Agile environment, creating interactive prototypes and designs from wireframes and user flows."
       },
       {
         "jobTitle": "Frontend Developer",
         "company": "American Institute of Research (AIR)",
         "startDate": "2012/7/01",
         "endDate": "2013/6/01",
-        "description": "I handled all the front-end work for the American Institute of Research’s Assessment division’s testing app. My job was to write JavaScript that fetched test items from our databases and displayed them for clients. They could then play around with and tweak this data using rich text editors, which I also set up. Plus, I was on the hook for creating plugins for our CKEDITOR."
+        "description": "I managed the front-end for the American Institute of Research’s Assessment division’s testing app, writing JavaScript to retrieve and display test items from our databases. I also implemented rich text editors and developed plugins for our CKEditor."
       },
       {
         "jobTitle": "Frontend Developer",
         "company": "U.S. News and World Report",
         "startDate": "2011/4/01",
         "endDate": "2012/7/15",
-        "description": "Responsible for developing new templates and widgets for U.S. News data projects such as Best Colleges, Top Doctors, etc. Provided technical support and expertise to Web Producers who are responsible for embedding widgets into templates developed by me. Developed new site sections based on graphic mocks provided by the UI team using Python/Pylons to develop page templates and jQuery for interactivity."
+        "description": "Developed and optimized templates and widgets for U.S. News projects such as Best Colleges, providing comprehensive technical support and building new site sections with Python/Pylons and jQuery based on UI designs."
       },
       {
         "jobTitle": "Senior Multimedia Designer/Developer",
         "company": "University of Maryland University College",
         "startDate": "2006/6/15",
         "endDate": "2011/4/15",
-        "description": "Responsible for the day-to-day maintenance of UMUC’s website including overseeing the technical aspects of UMUC’s content management system (CommonSpot), events and marketing material. Accountable for creating mini–sites, promotional splash pages, interactive content, on-demand and live video streaming needs and html e-mails."
+        "description": "Oversaw daily maintenance of UMUC's website and CMS (CommonSpot), managed marketing content, and developed mini-sites, splash pages, interactive content, video streaming, and HTML emails."
       }
     ]
   }

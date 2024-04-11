@@ -52,7 +52,7 @@ export default function Home() {
     <>
       {Hero({
         title: 'Software Engineer',
-        subtext: 'Dynamic and innovative Front End Engineer with a passion for creating engaging user experiences and cutting-edge web applications. Leveraging expertise in modern web technologies and frameworks to deliver high-quality, responsive designs. Seeking to contribute technical proficiency and creativity to a forward-thinking team.',
+        subtext: "Imagine a world where every website you visit feels like coming home - intuitive, cozy, and just what you need. That's the world I build as a Front-End Engineer.",
         actions: (
           <Flex gridGap={4} justify={'center'}>
             {buttonActions()}
