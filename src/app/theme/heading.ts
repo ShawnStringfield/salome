@@ -3,7 +3,7 @@ import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system';
 const baseStyle = defineStyle({
   fontFamily: 'heading',
   fontWeight: 'bold',
-  color: 'gray.500',
+  color: 'brand.500',
 });
 
 const sizes = {

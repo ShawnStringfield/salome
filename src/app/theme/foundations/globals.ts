@@ -1,7 +1,10 @@
+import { background } from "@chakra-ui/react";
+
 export const globals = {
   global: {
     body: {
-      color: 'slate.500',
+      backgroundColor: 'brand.950',
+      color: 'white',
     },
   },
 };
