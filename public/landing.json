@@ -1,0 +1,45 @@
+{
+  "name": "Shawn Stringfield",
+  "tagline": "Elevating Human Connections Through Design",
+  "subTagline": "I believe technology should enhance, not disrupt, genuine human interactions.",
+  "servicesTagline": "Connecting users through visually stunning experiences",
+  "services": [
+    {
+      "icon": "TbRulerMeasure",
+      "title": "Design",
+      "description": "I design digital products that are intuitive, easy to use, and delightful to interact with."
+    },
+    {
+      "icon": "TbPhotoEdit",
+      "title": "Content Management",
+      "description": "Imagine updating your website as easily as posting on Facebook."
+    },
+    {
+      "icon": "RiPagesLine",
+      "title": "Landing Pages",
+      "description": "We design landing pages that do more than just look good—they're crafted to turn visitors into customers."
+    },
+    {
+      "icon": "CgWebsite",
+      "title": "Marketing Websites",
+      "description": "Our marketing websites are like having a seasoned salesperson who works 24/7."
+    }
+  ],
+  "whyChooseUsDescription": "Elevate Human Connections Through Design – At [Your Agency Name], we believe technology should enhance, not disrupt, genuine human interactions. Our designs go beyond aesthetics to create digital spaces that foster engagement, understanding, and unity. We're committed to crafting solutions where every interaction is an opportunity for connection. Choose us to transform your digital presence into a vibrant, engaging community.",
+  "whyChooseUs": [
+    {
+      "title": "Interface Design",
+      "description": "Our minimalist aesthetic defines our interfaces, with a focus on user-friendly layouts and intuitive navigation. Typography plays a crucial role, with meticulous attention to font choice, spacing, and hierarchy guiding users through our digital experiences smoothly."
+    },
+    {
+      "title": "Emotional Resonance",
+      "description": "We strategically use animations and interactive elements to surprise and delight users without overloading the senses. These elements add depth and dynamism to our minimalist designs, enhancing the user experience."
+    },
+    {
+      "title": "Innovative Development",
+      "description": "We leverage cutting-edge design and development techniques to ensure that each project isn't just visually appealing but also robust, functional, and future-ready. Our approach prioritizes seamless integration and scalability, preparing your digital presence to evolve with technological advancements and market demands."
+    }
+  ],
+  "connectTitle": "Let's Create Something Together",
+  "connectDescription": "Ready to elevate your digital presence? Contact us today to start your journey with [Your Agency Name], where technology meets humanity."
+}

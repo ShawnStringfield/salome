@@ -3,13 +3,14 @@ import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system';
 const baseStyle = defineStyle({
   fontFamily: 'heading',
   fontWeight: 'bold',
-  color: 'brand.500',
+  color: 'slate.500',
+  letterSpacing: ['-1px', '-1px', '-1px', '-1px', '-1px', '-1px']
 });
 
 const sizes = {
   h1: defineStyle({
     fontSize: ['DisplayMd', 'DisplayLg', 'Display2xl'],
-    lineHeight: ['0', '1rem', '5rem', '5.625rem'],
+    lineHeight: [null, null, '1rem', '5rem', '5.625rem'],
   }),
   h2: defineStyle({
     fontSize: ['DisplaySm', 'DisplayLg', 'DisplayXl'],
@@ -17,7 +18,7 @@ const sizes = {
   }),
   h3: defineStyle({
     fontSize: ['DisplayMd', null, 'DisplayLg'],
-    lineHeight: ['2.75rem'],
+    lineHeight: [null, null, '1rem', '3.25rem', '3.5rem'],
   }),
   h4: defineStyle({
     fontSize: ['DisplaySm', null, 'DisplayMd'],

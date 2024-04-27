@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Container, Text } from '@chakra-ui/react';
-import { List, ListContainer, ListItem, ListColumn } from '../../../components/List';
+import { List, ListContainer, ListItem, ListColumn } from '../../../components/list';
 import { BookMark } from '../components/BookMark';
 import { slugify } from '../../../utils/strings';
 
@@ -35,7 +35,7 @@ export const BookList = ({ books, datasource }) => {
                   <ListItem>
                     <Text fontWeight={'bold'}>{book.title}</Text>
                   </ListItem>
-                  <ListItem type="text">
+                  <ListItem type='text'>
                     {book.author} {book.category ? '•' : ''} {book.category}
                   </ListItem>
                 </ListColumn>

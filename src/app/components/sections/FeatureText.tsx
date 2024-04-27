@@ -1,6 +1,7 @@
 import { Flex, Heading, Box, Text, useMediaQuery, Card, CardBody } from '@chakra-ui/react';
 import { colors } from '../../theme/colorScheme';
 import { motion } from 'framer-motion';
+import React from 'react';
 
 type FeatureTextProps = {
   colorScheme?: string;
@@ -11,7 +12,14 @@ type FeatureTextProps = {
   footerRight?: React.ReactNode | string;
 };
 
-export const FeatureText = ({ title, text, subTitle, footerLeft, footerRight, colorScheme = 'brand' }: FeatureTextProps) => {
+export const FeatureText = ({
+  title,
+  text,
+  subTitle,
+  footerLeft,
+  footerRight,
+  colorScheme = 'brand',
+}: FeatureTextProps) => {
   const [isMobile] = useMediaQuery('(min-width: 480px)');
 
   return (
@@ -20,12 +28,12 @@ export const FeatureText = ({ title, text, subTitle, footerLeft, footerRight, co
         <CardBody>
           <Box>
             <Box>
-              <Text fontSize="lg" color={colors[colorScheme].textColor} fontWeight={600}>
+              <Text fontSize='lg' color={colors[colorScheme].textColor} fontWeight={600}>
                 {subTitle}
               </Text>
             </Box>
             <Box>
-              <Heading as="h6" size="h6">
+              <Heading as='h6' size='h6'>
                 {title}
               </Heading>
             </Box>
