@@ -45,7 +45,7 @@ const getIcon = (icon: string) => {
 
 export default function Home() {
   const [landingData, setLandingData] = useState<LandingDataTypes>({});
-  const [landingError, setLandingError] = useState(null);
+  const [landingError, setLandingError] = useState<Error | undefined>(undefined);
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const [isTablet] = useMediaQuery('(min-width: 768px) and (max-width: 1024px)');
   const [isDesktop] = useMediaQuery('(min-width: 1025px)');
@@ -60,7 +60,11 @@ export default function Home() {
         const response = await fetch('/landing.json');
         setLandingData(await response.json());
       } catch (error) {
-        return setLandingError(error);
+        if (error instanceof Error) {
+          setLandingError(error);
+        } else {
+          setLandingError(new Error('An unknown error occurred'));
+        }
       }
     };
     fetchLandingData();

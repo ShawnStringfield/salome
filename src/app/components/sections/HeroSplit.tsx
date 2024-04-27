@@ -1,13 +1,13 @@
 'use client';
 
 import React from 'react';
-import { Center, Heading, Text, Box, Flex, Avatar, useMediaQuery, chakra } from '@chakra-ui/react';
+import { Center, Heading, Text, Box, Flex, Avatar, useMediaQuery } from '@chakra-ui/react';
 import { Pulse } from '../blocks/buttons/Pulse';
 
 type HeroSplitProps = {
-  tagline: string;
-  subTagline: string;
-  name: string;
+  tagline?: string;
+  subTagline?: string;
+  name?: string;
   tagLineColor?: string;
   subTagLineColor?: string;
   pulseColor?: string;
@@ -16,8 +16,6 @@ type HeroSplitProps = {
 export const HeroSplit = ({ tagline, subTagline, name, tagLineColor, subTagLineColor, pulseColor }: HeroSplitProps) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const displayType = isMobile ? 'block' : 'flex';
-
-  const PulseButton = chakra(Pulse);
 
   return (
     <>
@@ -64,23 +62,6 @@ export const HeroSplit = ({ tagline, subTagline, name, tagLineColor, subTagLineC
           </Heading>
         </Box>
       </Box>
-      {/* <Box position={'relative'} top={50} left={'50%'}>
-        <PulseButton size={32} position={'absolute'}>
-          <Flex
-            bg={'tomato'}
-            w={32}
-            h={32}
-            borderRadius={'full'}
-            justify={'center'}
-            align={'center'}
-            color={'white'}
-            fontWeight={'bold'}
-            onClick={() => console.log('click')}
-          >
-            Button
-          </Flex>
-        </PulseButton>
-      </Box> */}
     </>
   );
 };
