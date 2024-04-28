@@ -33,7 +33,7 @@ export const HeroSplit = ({ tagline, subTagline, name, tagLineColor, subTagLineC
           <Flex order={1} flex={1}>
             <Box m={['0', '75px', '90px', '125px', '150px']}>
               <Pulse size={[100, 125, 150, 200, 250]} bgColor={pulseColor} borderStroke={2}>
-                <Avatar name={'Shawn Stringfield'} src={'me.jpg'} size={'full'} />
+                <Avatar bg={'blue.200'} src={'me.jpg'} size={'full'} />
               </Pulse>
             </Box>
           </Flex>
@@ -56,7 +56,8 @@ export const HeroSplit = ({ tagline, subTagline, name, tagLineColor, subTagLineC
             lineHeight={['1.75rem', '2rem', '3rem', '3.25rem', '3.5rem']}
           >
             <Text as={'span'} color={subTagLineColor}>
-              {tagline}: {''}
+              {tagline}
+              {tagline ? ':' : ''} {''}
             </Text>
             {subTagline}
           </Heading>
