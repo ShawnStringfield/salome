@@ -8,7 +8,7 @@ type Props = {
 
 export const MaxWidthContainer = ({ children, className }: Props) => {
   return (
-    <Container className={className} maxW={1440} w={'fit-content'} p={16}>
+    <Container className={className} maxW={1440} w={'fit-content'} p={[4, 4, 12, 16, 24]}>
       {children}
     </Container>
   );

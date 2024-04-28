@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { Services } from './components/sections/Services';
-import { Box, Heading, Text, SimpleGrid, chakra } from '@chakra-ui/react';
+import { Box, Heading, Text, SimpleGrid, Flex, Center, Hide, chakra } from '@chakra-ui/react';
 import { sendEmail } from './emails/send';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
+import { motion } from 'framer-motion';
 
 type LandingData = {
   name?: string;
@@ -43,66 +44,87 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
   };
 
   const MaxContainer = chakra(MaxWidthContainer);
-  const bottomMargin = 48;
+  const bottomMargin = [24, 28, 32];
 
   return (
     <>
-      <Box>
-        <MaxContainer>
-          <HeroSplit
-            tagLineColor={'blue.500'}
-            subTagLineColor={'slate.500'}
-            name={landingData.name}
-            tagline={landingData.tagline}
-            subTagline={landingData.subTagline}
-            pulseColor={'blue.500'}
-          />
-        </MaxContainer>
-      </Box>
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+        <Box>
+          <MaxContainer>
+            <HeroSplit
+              tagLineColor={'blue.500'}
+              subTagLineColor={'slate.500'}
+              name={landingData.name}
+              tagline={landingData.tagline}
+              subTagline={landingData.subTagline}
+              pulseColor={'blue.500'}
+            />
+          </MaxContainer>
+        </Box>
+      </motion.div>
 
-      <Box bg={'slate.200'} mb={bottomMargin} py={20}>
-        <MaxContainer>
-          <Services services={landingData.services ?? []} servicesTagline={landingData.servicesTagline || ''} />
-        </MaxContainer>
-      </Box>
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+        <Box bg={'slate.200'} my={[20]} py={[4, 8, 12]}>
+          <MaxContainer>
+            <Services services={landingData.services ?? []} servicesTagline={landingData.servicesTagline || ''} />
+          </MaxContainer>
+        </Box>
+      </motion.div>
 
-      <Box mb={bottomMargin}>
-        <MaxContainer>
-          <Heading as={'h3'} size={'h3'} mb={8} textAlign={'center'}>
-            Why Choose Us?
-          </Heading>
-          <Text mb={16}>{landingData.whyChooseUsDescription}</Text>
-          <SimpleGrid columns={3} spacing={20}>
-            {landingData.whyChooseUs?.map((whyChooseUs, index) => (
-              <Box key={index}>
-                <Heading as={'h6'} size={'h6'}>
-                  {whyChooseUs.title}
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+        <Box my={[28, 32, 44]} px={4}>
+          <MaxContainer>
+            <Heading as={'h3'} size={'h3'} mb={8} textAlign={'left'}>
+              Why Choose Us?
+            </Heading>
+            <Text mb={16}>{landingData.whyChooseUsDescription}</Text>
+            <SimpleGrid columns={[0, 2]} spacing={20}>
+              {landingData.whyChooseUs?.map((whyChooseUs, index) => (
+                <Box key={index}>
+                  <Heading as={'h6'} size={'h6'}>
+                    {whyChooseUs.title}
+                  </Heading>
+                  <Text>{whyChooseUs.description}</Text>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </MaxContainer>
+        </Box>
+      </motion.div>
+
+      <Hide>
+        <Box>
+          <MaxContainer w={'auto'} textAlign={'left'}>
+            <Center>
+              <Box w={['md', 'lg', 'xl']}>
+                <Heading as={'h3'} size={'h3'} mb={8}>
+                  Let’s Create Something Together
                 </Heading>
-                <Text>{whyChooseUs.description}</Text>
-              </Box>
-            ))}
-          </SimpleGrid>
-        </MaxContainer>
-      </Box>
 
-      <Box>
-        <MaxContainer w={'auto'} textAlign={'center'}>
-          <Heading as={'h3'} size={'h3'} mb={8}>
-            Let’s Create Something Together
-          </Heading>
-          <Text>
-            Ready to elevate your digital presence? Contact us today to start your journey with [Your Agency Name],
-            where technology meets humanity.
-          </Text>
-          <Box>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <input {...register('name')} type='text' placeholder='Name' />
-              <input {...register('email')} type='email' placeholder='Email' />
-              <input type='submit' />
-            </form>
-          </Box>
-        </MaxContainer>
-      </Box>
+                <Box>
+                  <Flex gap={16}>
+                    <Text>
+                      Ready to elevate your digital presence? Contact us today to start your journey with [Your Agency
+                      Name], where technology meets humanity.
+                    </Text>
+                    <Box>
+                      {' '}
+                      <Text>+1.202.215.1120</Text>
+                      <Text>info@shawnstringfield.com</Text>
+                    </Box>
+                  </Flex>
+
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <input {...register('name')} type='text' placeholder='Name' />
+                    <input {...register('email')} type='email' placeholder='Email' />
+                    <input type='submit' />
+                  </form>
+                </Box>
+              </Box>
+            </Center>
+          </MaxContainer>
+        </Box>
+      </Hide>
     </>
   );
 };

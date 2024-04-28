@@ -31,41 +31,20 @@ export const Services = ({
 }) => {
   const [isDesktop] = useMediaQuery('(min-width: 1025px)');
   const gridSpacing = isDesktop ? 24 : 16;
+  const mobileGridPadding = 12;
 
   const servicesMobileView = () => {
     return (
-      <>
-        <Box mb={8}>
+      <Box p={4}>
+        <Box>
           <Heading as={'h2'} size={'h2'}>
             Services
           </Heading>
         </Box>
 
-        {services?.map((service, index) => (
-          <Box key={index} mb={8}>
-            {getIcon(service.icon)}
-            <Heading as={'h6'} size={'h6'}>
-              {service.title}
-            </Heading>
-            <Text>{service.description}</Text>
-          </Box>
-        ))}
-      </>
-    );
-  };
-
-  const servicesTabletView = () => {
-    return (
-      <>
-        <Box mb={8}>
-          <Heading as={'h2'} size={'h2'}>
-            Services
-          </Heading>
-        </Box>
-
-        <SimpleGrid columns={2} spacing={gridSpacing}>
+        <SimpleGrid columns={[1, 2]} spacing={gridSpacing}>
           {services?.map((service, index) => (
-            <Box key={index} mb={8}>
+            <Box key={index}>
               {getIcon(service.icon)}
               <Heading as={'h6'} size={'h6'}>
                 {service.title}
@@ -74,7 +53,31 @@ export const Services = ({
             </Box>
           ))}
         </SimpleGrid>
-      </>
+      </Box>
+    );
+  };
+
+  const servicesTabletView = () => {
+    return (
+      <Box>
+        <Box>
+          <Heading as={'h2'} size={'h2'}>
+            Services
+          </Heading>
+        </Box>
+
+        <SimpleGrid columns={2} spacing={gridSpacing}>
+          {services?.map((service, index) => (
+            <Box key={index} my={mobileGridPadding}>
+              {getIcon(service.icon)}
+              <Heading as={'h6'} size={'h6'}>
+                {service.title}
+              </Heading>
+              <Text>{service.description}</Text>
+            </Box>
+          ))}
+        </SimpleGrid>
+      </Box>
     );
   };
 
