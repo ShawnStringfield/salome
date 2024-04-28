@@ -1,4 +1,5 @@
 import { Flex, Box, Heading, Text, useMediaQuery, SimpleGrid, Icon, Show } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 
 import { TbRulerMeasure } from 'react-icons/tb';
 import { TbPhotoEdit } from 'react-icons/tb';
@@ -44,13 +45,15 @@ export const Services = ({
 
         <SimpleGrid columns={[1, 2]} spacing={gridSpacing}>
           {services?.map((service, index) => (
-            <Box key={index}>
-              {getIcon(service.icon)}
-              <Heading as={'h6'} size={'h6'}>
-                {service.title}
-              </Heading>
-              <Text>{service.description}</Text>
-            </Box>
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} key={index}>
+              <Box>
+                {getIcon(service.icon)}
+                <Heading as={'h6'} size={'h6'}>
+                  {service.title}
+                </Heading>
+                <Text>{service.description}</Text>
+              </Box>
+            </motion.div>
           ))}
         </SimpleGrid>
       </Box>
@@ -68,13 +71,15 @@ export const Services = ({
 
         <SimpleGrid columns={2} spacing={gridSpacing}>
           {services?.map((service, index) => (
-            <Box key={index} my={mobileGridPadding}>
-              {getIcon(service.icon)}
-              <Heading as={'h6'} size={'h6'}>
-                {service.title}
-              </Heading>
-              <Text>{service.description}</Text>
-            </Box>
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} key={index}>
+              <Box my={mobileGridPadding}>
+                {getIcon(service.icon)}
+                <Heading as={'h6'} size={'h6'}>
+                  {service.title}
+                </Heading>
+                <Text>{service.description}</Text>
+              </Box>
+            </motion.div>
           ))}
         </SimpleGrid>
       </Box>
@@ -97,13 +102,15 @@ export const Services = ({
           <SimpleGrid columns={2} spacing={gridSpacing}>
             {services?.map((service, index) => {
               return (
-                <Box key={index}>
-                  {getIcon(service.icon)}
-                  <Heading as={'h6'} size={'h6'} mb={4}>
-                    {service.title}
-                  </Heading>
-                  <Text>{service.description}</Text>
-                </Box>
+                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} key={index}>
+                  <Box>
+                    {getIcon(service.icon)}
+                    <Heading as={'h6'} size={'h6'} mb={4}>
+                      {service.title}
+                    </Heading>
+                    <Text>{service.description}</Text>
+                  </Box>
+                </motion.div>
               );
             })}
           </SimpleGrid>

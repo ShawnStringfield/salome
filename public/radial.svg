@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 2560 2550" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <g id="Artboard1" transform="matrix(0.775758,0,0,1,0,0)">
+        <rect x="0" y="0" width="3300" height="2550" style="fill:none;"/>
+        <g transform="matrix(1.28906,0,0,1,685.781,891)">
+            <g opacity="0.5">
+                <g transform="matrix(3.26336,0,0,3.26336,-1606.12,-863.632)">
+                    <circle cx="720" cy="384" r="47.5" style="fill:none;stroke:rgb(201,201,201);stroke-opacity:0.5;stroke-width:1px;"/>
+                    <circle cx="720" cy="384" r="95.5" style="fill:none;stroke:rgb(201,201,201);stroke-opacity:0.5;stroke-width:1px;"/>
+                    <circle cx="720" cy="384" r="143.5" style="fill:none;stroke:rgb(201,201,201);stroke-opacity:0.5;stroke-width:1px;"/>
+                    <circle cx="720" cy="384" r="191.5" style="fill:none;stroke:rgb(201,201,201);stroke-opacity:0.5;stroke-width:1px;"/>
+                    <circle cx="720" cy="384" r="239.5" style="fill:none;stroke:rgb(201,201,201);stroke-opacity:0.5;stroke-width:1px;"/>
+                    <circle cx="720" cy="384" r="287.5" style="fill:none;stroke:rgb(201,201,201);stroke-opacity:0.5;stroke-width:1px;"/>
+                    <circle cx="720" cy="384" r="335.5" style="fill:none;stroke:rgb(201,201,201);stroke-opacity:0.5;stroke-width:1px;"/>
+                    <circle cx="720" cy="384" r="383.5" style="fill:none;stroke:rgb(201,201,201);stroke-opacity:0.5;stroke-width:1px;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

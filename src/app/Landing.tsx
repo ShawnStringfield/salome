@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Services } from './components/sections/Services';
-import { Box, Heading, Text, SimpleGrid, Flex, Center, Hide, chakra } from '@chakra-ui/react';
+import { Box, Heading, Text, SimpleGrid, Flex, Center, Hide, Container, chakra } from '@chakra-ui/react';
 import { sendEmail } from './emails/send';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
@@ -65,7 +65,15 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
       </motion.div>
 
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-        <Box bg={'slate.200'} my={[0, 0, 20]} py={[12, 8, 12]}>
+        <Box
+          bg={'slate.200'}
+          backgroundSize={'cover'}
+          backgroundImage="url('/radial.svg')"
+          backgroundPosition='left top'
+          backgroundRepeat='no-repeat'
+          backgroundBlendMode={'normal'}
+          py={8}
+        >
           <MaxContainer>
             <Services services={landingData.services ?? []} servicesTagline={landingData.servicesTagline || ''} />
           </MaxContainer>
