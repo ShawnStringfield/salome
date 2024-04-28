@@ -54,13 +54,13 @@ export const HeroSplit = ({ tagline, subTagline, name, tagLineColor, subTagLineC
             lineHeight={['1.75rem', '2rem', '3rem', '3.25rem', '3.5rem']}
           >
             <Text as={'span'} color={subTagLineColor}>
-              {tagline}
-              {tagline ? ':' : ''} {''}
+              {subTagline}
+              {/* {tagline ? ':' : ''} {''} */}
             </Text>
-            {subTagline}
+            {/* {subTagline} */}
           </Heading>
           <Flex justify={['center', 'center', 'left']}>
-            <Button bg={'tomato'} size={'lg'} px={8} mt={8}>
+            <Button size={'lg'} px={8} mt={8}>
               {"Let's Work Together"}
             </Button>
           </Flex>

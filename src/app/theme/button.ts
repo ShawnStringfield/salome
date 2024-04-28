@@ -5,9 +5,9 @@ const baseStyle = defineStyle({
 });
 
 const brand = defineStyle({
-  bg: 'brand.600',
+  bg: 'hsla(27, 100%, 50%, 1)',
   color: 'white',
-  _hover: { bg: 'brand.500' },
+  _hover: { bg: 'hsla(27, 100%, 45%, 1)' },
   _focus: { boxShadow: 'outline' },
   _active: { bg: 'brand.800' },
 });

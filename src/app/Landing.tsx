@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Services } from './components/sections/Services';
-import { Box, Heading, Text, SimpleGrid, Flex, Center, Hide, Container, chakra } from '@chakra-ui/react';
+import { Box, Heading, Text, SimpleGrid, Flex, Center, Hide, chakra } from '@chakra-ui/react';
 import { sendEmail } from './emails/send';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
@@ -51,6 +51,11 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
     <>
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
         <Box>
+          <MaxContainer w={'auto'} pt={[8, 8, 8]} pb={[0, 0, 0]} textAlign={['center', 'left', 'left']}>
+            <Text fontSize={'lg'} fontWeight={'bold'} color={'slate.400'}>
+              Freelance Designer // Developer
+            </Text>
+          </MaxContainer>
           <MaxContainer>
             <HeroSplit
               tagLineColor={'blue.500'}
@@ -90,7 +95,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
             <SimpleGrid columns={[0, 2]} spacing={20}>
               {landingData.whyChooseUs?.map((whyChooseUs, index) => (
                 <Box key={index}>
-                  <Heading as={'h6'} size={'h6'}>
+                  <Heading as={'h6'} size={'h6'} mb={4}>
                     {whyChooseUs.title}
                   </Heading>
                   <Text>{whyChooseUs.description}</Text>

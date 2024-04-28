@@ -7,7 +7,7 @@ const baseStyle = definePartsStyle({
   container: {
     bg: 'slate.200',
     color: 'slate.200',
-    border: '2px solid white',
+    border: '5px solid white',
   },
 });
 
