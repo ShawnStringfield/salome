@@ -8,6 +8,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
 
 type LandingData = {
   name?: string;
@@ -44,7 +46,6 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
   };
 
   const MaxContainer = chakra(MaxWidthContainer);
-  const bottomMargin = [24, 28, 32];
 
   return (
     <>
@@ -64,7 +65,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
       </motion.div>
 
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-        <Box bg={'slate.200'} my={[20]} py={[4, 8, 12]}>
+        <Box bg={'slate.200'} my={[0, 0, 20]} py={[12, 8, 12]}>
           <MaxContainer>
             <Services services={landingData.services ?? []} servicesTagline={landingData.servicesTagline || ''} />
           </MaxContainer>
@@ -72,7 +73,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
       </motion.div>
 
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-        <Box my={[28, 32, 44]} px={4}>
+        <Box my={[20, 24, 28]} px={4}>
           <MaxContainer>
             <Heading as={'h3'} size={'h3'} mb={8} textAlign={'left'}>
               Why Choose Us?
@@ -125,6 +126,23 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
           </MaxContainer>
         </Box>
       </Hide>
+
+      <Box bg={'slate.200'}>
+        <MaxContainer textAlign={'center'}>
+          <Heading as={'h3'} size={['xl', '2xl', '3xl']} color={'slate.500'} mb={8}>
+            info@shawnstringfield.com
+          </Heading>
+          <Heading as={'h3'} size={['xl', '2xl', '3xl']} color={'blue.500'}>
+            +1 202.215.1120
+          </Heading>
+
+          <Center mt={8}>
+            <Link href='https://www.linkedin.com/in/shawnstringfield' target='_blank'>
+              <Image src='/linkedin.svg' alt='linkedin' width={50} height={50} />
+            </Link>
+          </Center>
+        </MaxContainer>
+      </Box>
     </>
   );
 };

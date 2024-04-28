@@ -1,5 +1,5 @@
 import React from 'react';
-import { Center, Heading, Text, Box, Flex, Avatar, useMediaQuery, Show } from '@chakra-ui/react';
+import { Center, Heading, Text, Box, Flex, Avatar, useMediaQuery, Show, Button } from '@chakra-ui/react';
 import { Pulse } from '../blocks/buttons/Pulse';
 
 type HeroSplitProps = {
@@ -59,6 +59,11 @@ export const HeroSplit = ({ tagline, subTagline, name, tagLineColor, subTagLineC
             </Text>
             {subTagline}
           </Heading>
+          <Flex justify={['center', 'center', 'left']}>
+            <Button bg={'tomato'} size={'lg'} px={8} mt={8}>
+              {"Let's Work Together"}
+            </Button>
+          </Flex>
         </Box>
       </Box>
     </>
