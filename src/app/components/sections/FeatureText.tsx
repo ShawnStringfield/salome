@@ -18,13 +18,13 @@ export const FeatureText = ({
   subTitle,
   footerLeft,
   footerRight,
-  colorScheme = 'brand',
+  colorScheme = 'blue',
 }: FeatureTextProps) => {
   const [isMobile] = useMediaQuery('(min-width: 480px)');
 
   return (
     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1, ease: 'linear' }}>
-      <Card size={['sm', 'md', 'lg']} minH={250}>
+      <Card size={['sm', 'md', 'lg']} minH={250} fontSize={'16px'} lineHeight={'1.5rem'}>
         <CardBody>
           <Box>
             <Box>

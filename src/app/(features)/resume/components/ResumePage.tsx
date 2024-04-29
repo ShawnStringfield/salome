@@ -6,6 +6,7 @@ import { Hero } from '../../../components/sections/Hero';
 import { FeatureText } from '../../../components/sections/FeatureText';
 import Link from 'next/link';
 import { formatShortDate } from '../../../utils/dates';
+import { MarketingNav } from '../../../components/nav/MarketingNav';
 
 type Experience = {
   map: (arg0: (exp: Experience, index: number) => import('react/jsx-runtime').JSX.Element) => JSX.Element[];
@@ -50,6 +51,7 @@ export const ResumePage = () => {
 
   return (
     <>
+      <MarketingNav />
       {Hero({
         title: 'Software Engineer',
         subtext:

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Center, Heading, Text, Box, Flex, Avatar, useMediaQuery, Show, Button } from '@chakra-ui/react';
 import { Pulse } from '../blocks/buttons/Pulse';
+import Link from 'next/link';
 
 type HeroSplitProps = {
   tagline?: string;
@@ -55,14 +56,16 @@ export const HeroSplit = ({ tagline, subTagline, name, tagLineColor, subTagLineC
           >
             <Text as={'span'} color={subTagLineColor}>
               {subTagline}
-              {/* {tagline ? ':' : ''} {''} */}
+              {tagline ? ':' : ''} {''}
             </Text>
-            {/* {subTagline} */}
+            {subTagline}
           </Heading>
           <Flex justify={['center', 'center', 'left']}>
-            <Button size={'lg'} px={8} mt={8}>
-              {"Let's Work Together"}
-            </Button>
+            <Link href='/contact'>
+              <Button size={'lg'} px={8} mt={8}>
+                {"Let's Work Together"}
+              </Button>
+            </Link>
           </Flex>
         </Box>
       </Box>

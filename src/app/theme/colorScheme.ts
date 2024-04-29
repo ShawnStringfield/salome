@@ -12,6 +12,12 @@ export const colors: { [key: string]: Color } = {
     heroHeaderColor: 'white',
     heroHeaderSubColor: 'brand.400',
   },
+  blue: {
+    textColor: 'blue.500',
+    bgColor: 'blue.900',
+    heroHeaderColor: 'white',
+    heroHeaderSubColor: 'blue.400',
+  },
   slate: {
     textColor: 'red',
     bgColor: 'slate.100',

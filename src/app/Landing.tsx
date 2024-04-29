@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Services } from './components/sections/Services';
-import { Box, Heading, Text, SimpleGrid, Flex, Center, Hide, chakra } from '@chakra-ui/react';
+import { Box, Heading, Text, SimpleGrid, Flex, Center, Show, chakra } from '@chakra-ui/react';
 import { sendEmail } from './emails/send';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
@@ -10,6 +10,7 @@ import { HeroSplit } from './components/sections/HeroSplit';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MarketingNav } from './components/nav/MarketingNav';
 
 type LandingData = {
   name?: string;
@@ -50,23 +51,17 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
   return (
     <>
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-        <Box>
-          <MaxContainer w={'auto'} pt={[8, 8, 8]} pb={[0, 0, 0]} textAlign={['center', 'left', 'left']}>
-            <Text fontSize={'lg'} fontWeight={'bold'} color={'slate.400'}>
-              Freelance Designer // Developer
-            </Text>
-          </MaxContainer>
-          <MaxContainer>
-            <HeroSplit
-              tagLineColor={'blue.500'}
-              subTagLineColor={'slate.500'}
-              name={landingData.name}
-              tagline={landingData.tagline}
-              subTagline={landingData.subTagline}
-              pulseColor={'blue.500'}
-            />
-          </MaxContainer>
-        </Box>
+        <MarketingNav />
+        <MaxContainer>
+          <HeroSplit
+            tagLineColor={'blue.500'}
+            subTagLineColor={'slate.500'}
+            name={landingData.name}
+            tagline={landingData.tagline}
+            subTagline={landingData.subTagline}
+            pulseColor={'blue.500'}
+          />
+        </MaxContainer>
       </motion.div>
 
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
@@ -106,7 +101,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
         </Box>
       </motion.div>
 
-      <Hide>
+      <Show>
         <Box>
           <MaxContainer w={'auto'} textAlign={'left'}>
             <Center>
@@ -138,7 +133,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
             </Center>
           </MaxContainer>
         </Box>
-      </Hide>
+      </Show>
 
       <Box bg={'slate.200'}>
         <MaxContainer textAlign={'center'}>

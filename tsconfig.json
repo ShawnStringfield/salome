@@ -20,6 +20,14 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "src/app/page.jsx", "src/app/loading.js"],
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/app/page.jsx",
+    "src/app/loading.js",
+    "tailwind.config.ts"
+  ],
   "exclude": ["node_modules"]
 }
