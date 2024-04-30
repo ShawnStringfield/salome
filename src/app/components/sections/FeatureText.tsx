@@ -24,11 +24,11 @@ export const FeatureText = ({
 
   return (
     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1, ease: 'linear' }}>
-      <Card size={['sm', 'md', 'lg']} minH={250} fontSize={'16px'} lineHeight={'1.5rem'}>
+      <Card size={['sm', 'md', 'lg']} minH={250} lineHeight={'1.5rem'} color={'slate.500'}>
         <CardBody>
           <Box>
             <Box>
-              <Text fontSize='lg' color={colors[colorScheme].textColor} fontWeight={600}>
+              <Text fontSize='sm' color={colors[colorScheme].textColor} fontWeight={600}>
                 {subTitle}
               </Text>
             </Box>
@@ -38,12 +38,12 @@ export const FeatureText = ({
               </Heading>
             </Box>
             <Box my={4}>
-              <Text>{text}</Text>
+              <Text fontSize={'16px'}>{text}</Text>
             </Box>
           </Box>
           {isMobile ? (
             <Flex>
-              <Box>{footerLeft}</Box>
+              <Box fontSize={'sm'}>{footerLeft}</Box>
               <Flex flex={1} justifyContent={'flex-end'} color={colors[colorScheme].textColor}>
                 <Text fontSize={'md'}>{footerRight}</Text>
               </Flex>

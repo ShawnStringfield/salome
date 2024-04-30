@@ -2,18 +2,16 @@
 
 import React from 'react';
 import { Services } from './components/sections/Services';
-import { Box, Heading, Text, SimpleGrid, Flex, Center, Show, chakra } from '@chakra-ui/react';
-import { sendEmail } from './emails/send';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { Box, Heading, Text, SimpleGrid, Hide, chakra, Show } from '@chakra-ui/react';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
 import { MarketingNav } from './components/nav/MarketingNav';
+import { NavDrawer } from './components/sections/NavDrawer';
 
 type LandingData = {
   name?: string;
+  title?: string;
   tagline?: string;
   subTagline?: string;
   servicesTagline?: string;
@@ -33,30 +31,27 @@ type LandingDataTypes = {
   landingData: LandingData;
 };
 
-type Inputs = {
-  name: string;
-  email: string;
-};
-
 export const Landing = ({ landingData }: LandingDataTypes) => {
-  const { register, handleSubmit } = useForm<Inputs>();
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log('sent from client');
-    sendEmail(data.name, data.email);
-  };
-
   const MaxContainer = chakra(MaxWidthContainer);
 
   return (
     <>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
+        <Show breakpoint={'(max-width: 431px)'}>
+          <Box m={5}>
+            <NavDrawer />
+          </Box>
+        </Show>
+        <Hide breakpoint={'(max-width: 431px)'}>
+          <MarketingNav />
+        </Hide>
+      </motion.div>
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-        <MarketingNav />
         <MaxContainer>
           <HeroSplit
             tagLineColor={'blue.500'}
             subTagLineColor={'slate.500'}
-            name={landingData.name}
+            title={landingData.title}
             tagline={landingData.tagline}
             subTagline={landingData.subTagline}
             pulseColor={'blue.500'}
@@ -101,54 +96,9 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
         </Box>
       </motion.div>
 
-      <Show>
-        <Box>
-          <MaxContainer w={'auto'} textAlign={'left'}>
-            <Center>
-              <Box w={['md', 'lg', 'xl']}>
-                <Heading as={'h3'} size={'h3'} mb={8}>
-                  Let’s Create Something Together
-                </Heading>
-
-                <Box>
-                  <Flex gap={16}>
-                    <Text>
-                      Ready to elevate your digital presence? Contact us today to start your journey with [Your Agency
-                      Name], where technology meets humanity.
-                    </Text>
-                    <Box>
-                      {' '}
-                      <Text>+1.202.215.1120</Text>
-                      <Text>info@shawnstringfield.com</Text>
-                    </Box>
-                  </Flex>
-
-                  <form onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register('name')} type='text' placeholder='Name' />
-                    <input {...register('email')} type='email' placeholder='Email' />
-                    <input type='submit' />
-                  </form>
-                </Box>
-              </Box>
-            </Center>
-          </MaxContainer>
-        </Box>
-      </Show>
-
       <Box bg={'slate.200'}>
         <MaxContainer textAlign={'center'}>
-          <Heading as={'h3'} size={['xl', '2xl', '3xl']} color={'slate.500'} mb={8}>
-            info@shawnstringfield.com
-          </Heading>
-          <Heading as={'h3'} size={['xl', '2xl', '3xl']} color={'blue.500'}>
-            +1 202.215.1120
-          </Heading>
-
-          <Center mt={8}>
-            <Link href='https://www.linkedin.com/in/shawnstringfield' target='_blank'>
-              <Image src='/linkedin.svg' alt='linkedin' width={50} height={50} />
-            </Link>
-          </Center>
+          <Text>Let’s Create Something Together</Text>
         </MaxContainer>
       </Box>
     </>
