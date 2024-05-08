@@ -53,6 +53,7 @@ export const Pulse = ({
         >
           <AbsoluteCenter position={'absolute'} top={0} left={0} w={size} h={size} axis={'both'}>
             <Box
+              overflow={'hidden'}
               position='absolute'
               top={0}
               left={0}

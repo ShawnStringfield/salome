@@ -4,7 +4,7 @@ const baseStyle = defineStyle({
   fontFamily: 'heading',
   fontWeight: 'bold',
   color: 'slate.500',
-  letterSpacing: ['-1px', '-1px', '-1px', '-1px', '-1px', '-1px']
+  letterSpacing: [0, 0, 0, 0, 0, 0]
 });
 
 const sizes = {

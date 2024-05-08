@@ -1,5 +1,5 @@
 import React from 'react';
-import { Center, Heading, Text, Box, Flex, Avatar, useMediaQuery, Show, Button } from '@chakra-ui/react';
+import { Center, Heading, Text, Box, Flex, Avatar, useMediaQuery, Show, Button, Image } from '@chakra-ui/react';
 import { Pulse } from '../blocks/buttons/Pulse';
 import Link from 'next/link';
 
@@ -26,21 +26,32 @@ export const HeroSplit = ({
 
   return (
     <>
-      <Box display={displayType} py={[16, 16, 100, 100, 100, 150]} alignItems={'center'}>
+      <Box display={displayType} py={[16, 16, 100, 100, 100, 100]} alignItems={'center'}>
         <Show breakpoint={'(min-width: 40px) and (max-width: 932px)'}>
           <Center px={8}>
             <Box m={['0', '75px', '90px', '125px', '150px']} mt={[0, 16, 16]} mb={20}>
               <Pulse size={150} bgColor={pulseColor} borderStroke={2}>
-                <Avatar name={'Shawn Stringfield'} src={'me.jpg'} size={'full'} />
+                {/* <Avatar name={'Shawn Stringfield'} src={'me.jpg'} size={'full'} /> */}
+                <Image src={'/me2.jpg'} alt={'Shawn Stringfield'} width={250} height={250} />
               </Pulse>
             </Box>
           </Center>
         </Show>
         <Show breakpoint={'(min-width: 1025px)'}>
           <Flex order={1} flex={1}>
-            <Box m={['0', '75px', '90px', '125px', '150px']}>
+            <Box m={['0', '75px', '90px', '125px', '100px']}>
               <Pulse size={[100, 125, 150, 200, 250]} bgColor={pulseColor} borderStroke={2}>
-                <Avatar bg={'blue.200'} src={'me.jpg'} size={'full'} />
+                {/* <Avatar bg={'blue.200'} src={'me.jpg'} size={'full'} /> */}
+                <Image
+                  backgroundSize={'cover'}
+                  position={'absolute'}
+                  top={'-15px'}
+                  borderRadius={'full'}
+                  src={'/me2.jpg'}
+                  alt={'Shawn Stringfield'}
+                  width={250}
+                  height={'auto'}
+                />
               </Pulse>
             </Box>
           </Flex>

@@ -1,13 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Services } from './components/sections/Services';
-import { Box, Heading, Text, SimpleGrid, Hide, chakra, Show } from '@chakra-ui/react';
+import { Box, Flex, Heading, Text, SimpleGrid, Hide, chakra, Show } from '@chakra-ui/react';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
 import { motion } from 'framer-motion';
 import { MarketingNav } from './components/nav/MarketingNav';
 import { NavDrawer } from './components/sections/NavDrawer';
+import Image from 'next/image';
 
 type LandingData = {
   name?: string;
@@ -32,6 +33,16 @@ type LandingDataTypes = {
 };
 
 export const Landing = ({ landingData }: LandingDataTypes) => {
+  const [resume, setResume] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('/resume.json');
+      const data = await response.json();
+      setResume(data[0]);
+    };
+    fetchData();
+  }, []);
+
   const MaxContainer = chakra(MaxWidthContainer);
 
   return (
@@ -73,6 +84,29 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
             <Services services={landingData.services ?? []} servicesTagline={landingData.servicesTagline || ''} />
           </MaxContainer>
         </Box>
+      </motion.div>
+
+      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+        <MaxContainer w={'auto'}>
+          <Box>
+            {resume?.experience?.map((exp, index) => (
+              <Flex key={index} my={8} align={'center'}>
+                <Box>
+                  <Text color={'blue.500'} fontSize={'sm'}>
+                    {exp.company}
+                  </Text>
+                  <Heading as={'h6'} size={'h6'} mt={'-5px'}>
+                    {exp.jobTitle}
+                  </Heading>
+                </Box>
+
+                <Flex flex={1} justify={'end'} fontSize={'xs'}>
+                  {exp.startDate} - {exp.endDate}
+                </Flex>
+              </Flex>
+            ))}
+          </Box>
+        </MaxContainer>
       </motion.div>
 
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
