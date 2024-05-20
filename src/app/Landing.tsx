@@ -7,7 +7,7 @@ import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
 import { motion } from 'framer-motion';
 import { MarketingNav } from './components/nav/MarketingNav';
-import { NavDrawer } from './components/sections/NavDrawer';
+import { NavDrawer } from '../app/components/sections/NavDrawer';
 
 type LandingData = {
   name?: string;
