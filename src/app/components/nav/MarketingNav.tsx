@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Flex, Text, Button, chakra } from '@chakra-ui/react';
 import { usePathname } from 'next/navigation';
 import { MaxWidthContainer } from '../blocks/MaxWidthContainer';
