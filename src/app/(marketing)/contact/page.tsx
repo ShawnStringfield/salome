@@ -7,7 +7,7 @@ import { MaxWidthContainer } from '../../components/blocks/MaxWidthContainer';
 import { MarketingNav } from '../../components/nav/MarketingNav';
 import { sendEmail } from '../../emails/send';
 import { motion } from 'framer-motion';
-import { NavDrawer } from '../../components/sections/NavDrawer';
+import { NavDrawer } from '@/src/app/components/sections/NavDrawer';
 
 type Inputs = {
   name: string;
