@@ -8,7 +8,7 @@ import { FeatureText } from '../../../components/sections/FeatureText';
 import { formatShortDate } from '../../../utils/dates';
 import { MarketingNav } from '../../../components/nav/MarketingNav';
 import { motion } from 'framer-motion';
-import { NavDrawer } from '../../../components/sections/NavDrawer';
+import { NavDrawer } from '../../../components/sections/NavDrawer.tsx';
 
 type Experience = {
   map: (arg0: (exp: Experience, index: number) => import('react/jsx-runtime').JSX.Element) => JSX.Element[];

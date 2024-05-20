@@ -8,7 +8,6 @@ import { HeroSplit } from './components/sections/HeroSplit';
 import { motion } from 'framer-motion';
 import { MarketingNav } from './components/nav/MarketingNav';
 import { NavDrawer } from './components/sections/NavDrawer';
-// import Image from 'next/image';
 
 type LandingData = {
   name?: string;
