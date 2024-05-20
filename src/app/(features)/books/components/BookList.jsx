@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 import { Container, Text } from '@chakra-ui/react';
 import { List, ListContainer, ListItem, ListColumn } from '../../../components/list';
