@@ -64,7 +64,7 @@ export const NavDrawer = () => {
                       </Box>
                     </Button>
                   </Link>
-                  <Link href={'/contact'}>
+                  {/* <Link href={'/#contact'}>
                     <Button
                       _active={{ bg: 'slate.800' }}
                       _hover={{ bg: 'slate.800' }}
@@ -73,11 +73,11 @@ export const NavDrawer = () => {
                       size={'sm'}
                       my={4}
                     >
-                      <Box color={`${pathname === '/contact' ? 'blue.300' : 'white'} `} fontSize={'40px'}>
+                      <Box color={`${pathname === '/#contact' ? 'blue.300' : 'white'} `} fontSize={'40px'}>
                         Contact
                       </Box>
                     </Button>
-                  </Link>
+                  </Link> */}
                 </AbsoluteCenter>
               </Box>
             </DrawerBody>

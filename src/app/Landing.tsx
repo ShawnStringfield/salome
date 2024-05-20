@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import { Services } from './components/sections/Services';
-import { Box, Flex, Heading, Text, SimpleGrid, Hide, chakra, Show } from '@chakra-ui/react';
+import { Box, Heading, Text, Hide, chakra, Show, SimpleGrid } from '@chakra-ui/react';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
 import { motion } from 'framer-motion';
 import { MarketingNav } from './components/nav/MarketingNav';
 import { NavDrawer } from './components/sections/NavDrawer';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 type LandingData = {
   name?: string;
@@ -44,6 +44,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
   }, []);
 
   const MaxContainer = chakra(MaxWidthContainer);
+  console.log('resume', resume);
 
   return (
     <>
@@ -87,29 +88,6 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
       </motion.div>
 
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-        <MaxContainer w={'auto'}>
-          <Box>
-            {resume?.experience?.map((exp, index) => (
-              <Flex key={index} my={8} align={'center'}>
-                <Box>
-                  <Text color={'blue.500'} fontSize={'sm'}>
-                    {exp.company}
-                  </Text>
-                  <Heading as={'h6'} size={'h6'} mt={'-5px'}>
-                    {exp.jobTitle}
-                  </Heading>
-                </Box>
-
-                <Flex flex={1} justify={'end'} fontSize={'xs'}>
-                  {exp.startDate} - {exp.endDate}
-                </Flex>
-              </Flex>
-            ))}
-          </Box>
-        </MaxContainer>
-      </motion.div>
-
-      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
         <Box my={[20, 24, 28]} px={4}>
           <MaxContainer>
             <Heading as={'h3'} size={'h3'} mb={8} textAlign={'left'}>
@@ -130,9 +108,15 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
         </Box>
       </motion.div>
 
-      <Box bg={'slate.200'}>
+      <Box bg={'slate.200'} id={'contact'}>
         <MaxContainer textAlign={'center'}>
-          <Text>Let’s Create Something Together</Text>
+          <Heading as={'h4'} size={'h4'}>
+            {'Let’s Create Something Together'}
+          </Heading>
+          <Text my={2}>Phone: +1 (202) 215-1120</Text>
+          <Text>
+            <a href='mailto:info@shawnstringfield.com'>info@shawnstringfield.com</a>
+          </Text>
         </MaxContainer>
       </Box>
     </>

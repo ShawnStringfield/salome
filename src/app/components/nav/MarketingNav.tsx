@@ -17,7 +17,6 @@ export const MarketingNav = () => {
               Shawn Stringfield
             </Text>
           </Link>
-          <Text> • email me • call me</Text>
         </Flex>
         <Box>
           <Link href={'/resume'}>
@@ -25,9 +24,9 @@ export const MarketingNav = () => {
               <Box color={`${pathname === '/resume' ? 'blue.300' : ''} `}>Resume</Box>
             </Button>
           </Link>
-          <Link href={'/contact'}>
+          <Link href={'/#contact'}>
             <Button _hover={{ bg: 'slate.200' }} color='blue.500' variant={'ghost'} size={'sm'}>
-              <Box color={`${pathname === '/contact' ? 'blue.300' : ''} `}>Contact</Box>
+              <Box color={`${pathname === '/#contact' ? 'blue.300' : ''} `}>Contact</Box>
             </Button>
           </Link>
         </Box>

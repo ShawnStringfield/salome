@@ -1,5 +1,5 @@
 import React from 'react';
-import { Center, Heading, Text, Box, Flex, Avatar, useMediaQuery, Show, Button, Image } from '@chakra-ui/react';
+import { Center, Heading, Text, Box, Flex, useMediaQuery, Show, Button, Image, Avatar } from '@chakra-ui/react';
 import { Pulse } from '../blocks/buttons/Pulse';
 import Link from 'next/link';
 
@@ -31,8 +31,8 @@ export const HeroSplit = ({
           <Center px={8}>
             <Box m={['0', '75px', '90px', '125px', '150px']} mt={[0, 16, 16]} mb={20}>
               <Pulse size={150} bgColor={pulseColor} borderStroke={2}>
-                {/* <Avatar name={'Shawn Stringfield'} src={'me.jpg'} size={'full'} /> */}
-                <Image src={'/me2.jpg'} alt={'Shawn Stringfield'} width={250} height={250} />
+                <Avatar name={'Shawn Stringfield'} src={'me.jpg'} size={'full'} />
+                {/* <Image src={'/me.jpg'} alt={'Shawn Stringfield'} width={250} height={250} /> */}
               </Pulse>
             </Box>
           </Center>
@@ -41,11 +41,8 @@ export const HeroSplit = ({
           <Flex order={1} flex={1}>
             <Box m={['0', '75px', '90px', '125px', '100px']}>
               <Pulse size={[100, 125, 150, 200, 250]} bgColor={pulseColor} borderStroke={2}>
-                {/* <Avatar bg={'blue.200'} src={'me.jpg'} size={'full'} /> */}
                 <Image
                   backgroundSize={'cover'}
-                  position={'absolute'}
-                  top={'-15px'}
                   borderRadius={'full'}
                   src={'/me2.jpg'}
                   alt={'Shawn Stringfield'}
@@ -80,7 +77,7 @@ export const HeroSplit = ({
             {subTagline}
           </Heading>
           <Flex justify={['center', 'center', 'left']}>
-            <Link href='/contact'>
+            <Link href='#contact'>
               <Button size={'md'} mt={8}>
                 {"Let's Work Together"}
               </Button>
