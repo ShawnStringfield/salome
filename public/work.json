@@ -2,10 +2,18 @@
   "portfolio": [
     {
       "company": "Harmonia Connect",
-      "link": "https://harmoniaconnect.netlify.app",
+      "link": "https://harmoniaconnect.org/",
       "image": "/portfolio/harmonia.png",
       "alt": "Harmonia Connect",
-      "dateCreated": "2024-06-06",
+      "dateCreated": "2024-02-06",
+      "tech": ["React", "Node", "Express", "MongoDB"]
+    },
+    {
+      "company": "Solace Solstice Counseling",
+      "link": "https://solacesolstice.org",
+      "image": "/portfolio/solace.png",
+      "alt": "Solace Solstice Counseling",
+      "dateCreated": "2024-03-06",
       "tech": ["React", "Node", "Express", "MongoDB"]
     }
   ]

@@ -89,19 +89,21 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
       </motion.div>
 
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-        <div className='container mx-auto justify-center flex'>
+        <div className='container mx-auto justify-center sm:flex gap-8 px-8 sm:px-8'>
           {work.map((item: any, index) => {
             return (
               <Box key={index}>
                 <div className='container mx-auto py-16'>
                   <div className='flex'>
-                    <Heading as={'h5'} size={'h5'} className='mb-4 w-2/4'>
+                    <Heading as={'h6'} size={'h6'} className='mb-4 w-3/4'>
                       {item.company}
                     </Heading>
-                    <Text className='mb-4 justify-end w-2/4 text-right'>{item.dateCreated}</Text>
+                    <p className='text-sm mb-4 self-center justify-end w-1/4 text-right'>{item.dateCreated}</p>
                   </div>
-                  <Link href={item.link}>
-                    <Image width={600} height={0} src={item.image} alt={item.company} />
+                  <Link target='_blank' href={item.link}>
+                    <div className='rounded-md border-2 border-slate-200'>
+                      <Image width={600} height={0} src={item.image} alt={item.company} className='rounded-md' />
+                    </div>
                   </Link>
                 </div>
               </Box>
