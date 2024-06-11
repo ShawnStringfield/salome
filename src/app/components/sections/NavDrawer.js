@@ -50,6 +50,20 @@ export const NavDrawer = () => {
                       </Box>
                     </Button>
                   </Link>
+                  <Link href={'/portfolio'}>
+                    <Button
+                      _active={{ bg: 'slate.800' }}
+                      _hover={{ bg: 'slate.800' }}
+                      color='blue.500'
+                      variant={'ghost'}
+                      size={'sm'}
+                      my={4}
+                    >
+                      <Box color={`${pathname === '/portfolio' ? 'blue.300' : 'white'} `} fontSize={'40px'}>
+                        Portfolio
+                      </Box>
+                    </Button>
+                  </Link>
                   <Link href={'/resume'}>
                     <Button
                       _active={{ bg: 'slate.800' }}

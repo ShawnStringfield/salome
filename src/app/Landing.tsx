@@ -2,12 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { Services } from './components/sections/Services';
-import { Box, Heading, Text, Hide, chakra, Show, SimpleGrid } from '@chakra-ui/react';
+import { Box, Heading, Text, Hide, chakra, Show } from '@chakra-ui/react';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
 import { motion } from 'framer-motion';
 import { MarketingNav } from './components/nav/MarketingNav';
 import { NavDrawer } from './components/sections/NavDrawer';
+import Image from 'next/image';
+import Link from 'next/link';
 
 type LandingData = {
   name?: string;
@@ -32,18 +34,18 @@ type LandingDataTypes = {
 };
 
 export const Landing = ({ landingData }: LandingDataTypes) => {
-  const [resume, setResume] = useState([]);
+  const [work, setWork] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/resume.json');
-      const data = await response.json();
-      setResume(data[0]);
+      const work = await fetch('/work.json');
+      const workData = await work.json();
+      setWork(workData.portfolio);
     };
     fetchData();
   }, []);
 
   const MaxContainer = chakra(MaxWidthContainer);
-  console.log('resume', resume);
+  console.log('work', work);
 
   return (
     <>
@@ -87,24 +89,25 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
       </motion.div>
 
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-        <Box my={[20, 24, 28]} px={4}>
-          <MaxContainer>
-            <Heading as={'h3'} size={'h3'} mb={8} textAlign={'left'}>
-              Why Choose Us?
-            </Heading>
-            <Text mb={16}>{landingData.whyChooseUsDescription}</Text>
-            <SimpleGrid columns={[0, 2]} spacing={20}>
-              {landingData.whyChooseUs?.map((whyChooseUs, index) => (
-                <Box key={index}>
-                  <Heading as={'h6'} size={'h6'} mb={4}>
-                    {whyChooseUs.title}
-                  </Heading>
-                  <Text>{whyChooseUs.description}</Text>
-                </Box>
-              ))}
-            </SimpleGrid>
-          </MaxContainer>
-        </Box>
+        <div className='container mx-auto justify-center flex'>
+          {work.map((item: any, index) => {
+            return (
+              <Box key={index}>
+                <div className='container mx-auto py-16'>
+                  <div className='flex'>
+                    <Heading as={'h5'} size={'h5'} className='mb-4 w-2/4'>
+                      {item.company}
+                    </Heading>
+                    <Text className='mb-4 justify-end w-2/4 text-right'>{item.dateCreated}</Text>
+                  </div>
+                  <Link href={item.link}>
+                    <Image width={600} height={0} src={item.image} alt={item.company} />
+                  </Link>
+                </div>
+              </Box>
+            );
+          })}
+        </div>
       </motion.div>
 
       <Box bg={'slate.200'} id={'contact'}>

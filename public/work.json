@@ -1,0 +1,12 @@
+{
+  "portfolio": [
+    {
+      "company": "Harmonia Connect",
+      "link": "https://harmoniaconnect.netlify.app",
+      "image": "/portfolio/harmonia.png",
+      "alt": "Harmonia Connect",
+      "dateCreated": "2024-06-06",
+      "tech": ["React", "Node", "Express", "MongoDB"]
+    }
+  ]
+}

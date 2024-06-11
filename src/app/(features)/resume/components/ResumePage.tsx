@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Container, /* Button, Flex,*/ SimpleGrid, Hide, Show, Box } from '@chakra-ui/react';
-// import { Hero } from '../../../components/sections/Hero';
+import { Container, Button, Flex, SimpleGrid, Hide, Show, Box } from '@chakra-ui/react';
+import { Hero } from '../../../components/sections/Hero';
 import { FeatureText } from '../../../components/sections/FeatureText';
-// import Link from 'next/link';
+import Link from 'next/link';
 import { formatShortDate } from '../../../utils/dates';
 import { MarketingNav } from '../../../components/nav/MarketingNav';
 import { motion } from 'framer-motion';
@@ -30,15 +30,15 @@ type ResumeItem = {
   tools: string;
 };
 
-// const buttonActions = () => {
-//   return (
-//     <Link href='/resume.pdf'>
-//       <Button size={['md', 'lg', 'lg']} variant='brand'>
-//         Download Resume
-//       </Button>
-//     </Link>
-//   );
-// };
+const buttonActions = () => {
+  return (
+    <Link href='/resume.pdf'>
+      <Button size={['md', 'lg', 'lg']} variant='brand'>
+        Download Resume
+      </Button>
+    </Link>
+  );
+};
 
 export const ResumePage = () => {
   const [resume, setResume] = useState([]);
@@ -63,7 +63,7 @@ export const ResumePage = () => {
           <MarketingNav />
         </Hide>
       </motion.div>
-      {/* {Hero({
+      {Hero({
         title: 'Software Engineer',
         subtext:
           "Imagine a world where every website you visit feels like coming home - intuitive, cozy, and just what you need. That's the world I build as a Front-End Engineer.",
@@ -72,7 +72,7 @@ export const ResumePage = () => {
             {buttonActions()}
           </Flex>
         ),
-      })} */}
+      })}
       <Container my={18} p={8} maxW={['full', 'full', '2xl']}>
         <SimpleGrid columns={[1, 2, 2]} spacing={8}>
           {resume.map((item: ResumeItem) =>
