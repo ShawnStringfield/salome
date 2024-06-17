@@ -20,11 +20,11 @@ export const MarketingNav = () => {
           </Link>
         </Flex>
         <Box>
-          <Link href={'/portfolio'}>
+          {/* <Link href={'/portfolio'}>
             <Button _hover={{ bg: 'slate.200' }} color='blue.500' variant={'ghost'} size={'sm'}>
               <Box color={`${pathname === '/resume' ? 'blue.300' : ''} `}>Portfolio</Box>
             </Button>
-          </Link>
+          </Link> */}
           <Link href={'/resume'}>
             <Button _hover={{ bg: 'slate.200' }} color='blue.500' variant={'ghost'} size={'sm'}>
               <Box color={`${pathname === '/resume' ? 'blue.300' : ''} `}>Resume</Box>

@@ -50,7 +50,7 @@ export const NavDrawer = () => {
                       </Box>
                     </Button>
                   </Link>
-                  <Link href={'/portfolio'}>
+                  {/* <Link href={'/portfolio'}>
                     <Button
                       _active={{ bg: 'slate.800' }}
                       _hover={{ bg: 'slate.800' }}
@@ -63,7 +63,7 @@ export const NavDrawer = () => {
                         Portfolio
                       </Box>
                     </Button>
-                  </Link>
+                  </Link> */}
                   <Link href={'/resume'}>
                     <Button
                       _active={{ bg: 'slate.800' }}
