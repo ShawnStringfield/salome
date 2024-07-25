@@ -1,36 +1,7 @@
-import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
 import { NextResponse } from 'next/server';
 
 export async function middleware(req) {
   const res = NextResponse.next();
-  const supabase = createMiddlewareClient({ req, res });
-
-  const {
-    data: { user, error },
-  } = await supabase.auth.getUser();
-
-  if (user) {
-    console.log('YOU ARE AUTHENTICATED');
-  }
-
-  if (!user) {
-    console.log('YOU ARE NOT AUTHENTICATED');
-  }
-
-  if (!user && req.nextUrl.pathname === '/books') {
-    // Quick redirects here for routes that require authentication
-    return NextResponse.redirect(new URL('/resume', req.url));
-  }
-
-  if (!user && req.nextUrl.pathname === '/books/kindle') {
-    // Quick redirects here for routes that require authentication
-    return NextResponse.redirect(new URL('/resume', req.url));
-  }
-
-  if (error) {
-    console.log('middleware error', error);
-  }
-
   return res;
 }
 
