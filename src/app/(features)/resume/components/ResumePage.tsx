@@ -1,14 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Container, Button, Flex, SimpleGrid, Hide, Show, Box } from '@chakra-ui/react';
+import { Container, Button, Flex, SimpleGrid } from '@chakra-ui/react';
 import { Hero } from '../../../components/sections/Hero';
 import { FeatureText } from '../../../components/sections/FeatureText';
 import Link from 'next/link';
 import { formatShortDate } from '../../../utils/dates';
-import { MarketingNav } from '../../../components/nav/MarketingNav';
 import { motion } from 'framer-motion';
-import { NavDrawer } from '../../../components/sections/NavDrawer';
 
 type Experience = {
   map: (arg0: (exp: Experience, index: number) => import('react/jsx-runtime').JSX.Element) => JSX.Element[];
@@ -53,16 +51,7 @@ export const ResumePage = () => {
 
   return (
     <>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
-        <Show breakpoint={'(max-width: 431px)'}>
-          <Box m={5}>
-            <NavDrawer />
-          </Box>
-        </Show>
-        <Hide breakpoint={'(max-width: 431px)'}>
-          <MarketingNav />
-        </Hide>
-      </motion.div>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}></motion.div>
       {Hero({
         title: 'Software Engineer',
         subtext:

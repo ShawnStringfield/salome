@@ -2,12 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { Services } from './components/sections/Services';
-import { Box, Heading, Text, Hide, chakra, Show } from '@chakra-ui/react';
+import { Box, Heading, Text, chakra } from '@chakra-ui/react';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
 import { motion } from 'framer-motion';
-import { MarketingNav } from './components/nav/MarketingNav';
-import { NavDrawer } from './components/sections/NavDrawer';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -49,16 +47,6 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
 
   return (
     <>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
-        <Show breakpoint={'(max-width: 431px)'}>
-          <Box m={5}>
-            <NavDrawer />
-          </Box>
-        </Show>
-        <Hide breakpoint={'(max-width: 431px)'}>
-          <MarketingNav />
-        </Hide>
-      </motion.div>
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
         <MaxContainer>
           <HeroSplit
