@@ -24,10 +24,14 @@ export const Navigation = () => {
           <DrawerContent>
             <DrawerFooter className='pb-8'>
               <Link href={'/'}>
-                <div color={`${pathname === '/' ? 'blue.300' : 'white'} `}>Home</div>
+                <DrawerClose>
+                  <div color={`${pathname === '/' ? 'blue.300' : 'white'} `}>Home</div>
+                </DrawerClose>
               </Link>
               <Link href={'/resume'}>
-                <div color={`${pathname === '/resume' ? 'blue.300' : 'white'} `}>Resume</div>
+                <DrawerClose>
+                  <div color={`${pathname === '/resume' ? 'blue.300' : 'white'} `}>Resume</div>
+                </DrawerClose>
               </Link>
               <DrawerClose className='absolute top-5 right-5'>
                 <div>X</div>
