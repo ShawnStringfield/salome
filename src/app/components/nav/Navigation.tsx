@@ -40,7 +40,7 @@ export const Navigation = () => {
           </DrawerContent>
         </Drawer>
 
-        <div className='hidden sm:block container mx-auto text-base font-bold pt-8 px-16'>
+        <div className='hidden sm:block container mx-auto text-base font-bold pt-8 sm:pb-8 px-16'>
           <div className='flex'>
             <div className='flex items-center text-slate-400'>
               <div className='w-3 h-3 bg-blue-400 rounded-full mr-2' />

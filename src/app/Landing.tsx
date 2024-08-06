@@ -43,7 +43,6 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
   }, []);
 
   const MaxContainer = chakra(MaxWidthContainer);
-  console.log('work', work);
 
   return (
     <>
