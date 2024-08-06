@@ -48,14 +48,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
     <>
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
         <MaxContainer>
-          <HeroSplit
-            tagLineColor={'blue.500'}
-            subTagLineColor={'slate.500'}
-            title={landingData.title}
-            tagline={landingData.tagline}
-            subTagline={landingData.subTagline}
-            pulseColor={'blue.500'}
-          />
+          <HeroSplit title={landingData.title} tagline={landingData.tagline} subTagline={landingData.subTagline} />
         </MaxContainer>
       </motion.div>
 
