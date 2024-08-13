@@ -1,10 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Container, Button, Flex, SimpleGrid } from '@chakra-ui/react';
+import { Button, Flex } from '@chakra-ui/react';
 import { Hero } from '../../../components/sections/Hero';
 import { FeatureText } from '../../../components/sections/FeatureText';
 import Link from 'next/link';
+import { MaxWidthContainer } from '@/app/components/blocks/MaxWidthContainer';
 import { formatShortDate } from '../../../utils/dates';
 import { motion } from 'framer-motion';
 
@@ -62,8 +63,9 @@ export const ResumePage = () => {
           </Flex>
         ),
       })}
-      <Container my={18} p={8} maxW={['full', 'full', '2xl']}>
-        <SimpleGrid columns={[1, 2, 2]} spacing={8}>
+
+      <MaxWidthContainer>
+        <div className='grid grid-cols-2 gap-8'>
           {resume.map((item: ResumeItem) =>
             item.experience.map((exp: Experience, index: number) => {
               return (
@@ -78,8 +80,8 @@ export const ResumePage = () => {
               );
             })
           )}
-        </SimpleGrid>
-      </Container>
+        </div>
+      </MaxWidthContainer>
     </>
   );
 };

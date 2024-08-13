@@ -3,7 +3,6 @@ import { Providers } from './providers';
 import { Navigation } from './components/nav/Navigation';
 
 import './globals.css';
-// import './theme/vars.css';
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (

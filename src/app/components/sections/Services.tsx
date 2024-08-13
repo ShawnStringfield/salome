@@ -1,4 +1,3 @@
-import { Flex, Box, Heading, Text, useMediaQuery, SimpleGrid, Icon, Show } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 import { TbRulerMeasure } from 'react-icons/tb';
@@ -7,17 +6,16 @@ import { RiPagesLine } from 'react-icons/ri';
 import { CgWebsite } from 'react-icons/cg';
 
 const getIcon = (icon: string) => {
-  const color = 'slate.400';
-  const iconSize = 32;
+  const color = 'text-slate-400';
   switch (icon) {
     case 'TbRulerMeasure':
-      return <Icon as={TbRulerMeasure} fontSize={iconSize} color={color} />;
+      return <TbRulerMeasure className={`text-4xl ${color}`} />;
     case 'TbPhotoEdit':
-      return <Icon as={TbPhotoEdit} fontSize={iconSize} color={color} />;
+      return <TbPhotoEdit className={`text-4xl ${color}`} />;
     case 'RiPagesLine':
-      return <Icon as={RiPagesLine} fontSize={iconSize} color={color} />;
+      return <RiPagesLine className={`text-4xl ${color}`} />;
     case 'CgWebsite':
-      return <Icon as={CgWebsite} fontSize={iconSize} color={color} />;
+      return <CgWebsite className={`text-4xl ${color}`} />;
     default:
       return null;
   }
@@ -30,100 +28,29 @@ export const Services = ({
   services: Array<{ icon: string; title: string; description: string }>;
   servicesTagline: string;
 }) => {
-  const [isDesktop] = useMediaQuery('(min-width: 1025px)');
-  const gridSpacing = isDesktop ? 24 : 16;
-  const mobileGridPadding = 12;
-
-  const servicesMobileView = () => {
-    return (
-      <Box p={4}>
-        <Box>
-          <Heading as={'h2'} size={'h2'}>
-            Services
-          </Heading>
-        </Box>
-
-        <SimpleGrid columns={[1, 2]} spacing={gridSpacing}>
-          {services?.map((service, index) => (
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} key={index}>
-              <Box>
-                {getIcon(service.icon)}
-                <Heading as={'h6'} size={'h6'}>
-                  {service.title}
-                </Heading>
-                <Text>{service.description}</Text>
-              </Box>
-            </motion.div>
-          ))}
-        </SimpleGrid>
-      </Box>
-    );
-  };
-
-  const servicesTabletView = () => {
-    return (
-      <Box>
-        <Box>
-          <Heading as={'h2'} size={'h2'}>
-            Services
-          </Heading>
-        </Box>
-
-        <SimpleGrid columns={2} spacing={gridSpacing}>
-          {services?.map((service, index) => (
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} key={index}>
-              <Box my={mobileGridPadding}>
-                {getIcon(service.icon)}
-                <Heading as={'h6'} size={'h6'}>
-                  {service.title}
-                </Heading>
-                <Text>{service.description}</Text>
-              </Box>
-            </motion.div>
-          ))}
-        </SimpleGrid>
-      </Box>
-    );
-  };
-
-  const servicesDesktopView = () => {
-    return (
-      <Flex align={'center'} h={500}>
-        <Flex justify={'center'} align={'flex-start'}>
-          <Box mr={32}>
-            <Text fontSize={'xl'} as={'p'} fontWeight={'bold'}>
-              Services
-            </Text>
-            <Heading as={'h3'} size={'h3'}>
-              {servicesTagline}
-            </Heading>
-          </Box>
-
-          <SimpleGrid columns={2} spacing={gridSpacing}>
-            {services?.map((service, index) => {
-              return (
-                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} key={index}>
-                  <Box>
-                    {getIcon(service.icon)}
-                    <Heading as={'h6'} size={'h6'} mb={4}>
-                      {service.title}
-                    </Heading>
-                    <Text>{service.description}</Text>
-                  </Box>
-                </motion.div>
-              );
-            })}
-          </SimpleGrid>
-        </Flex>
-      </Flex>
-    );
-  };
-
   return (
     <>
-      <Show breakpoint={'(min-width: 1025px)'}>{servicesDesktopView()}</Show>
-      <Show breakpoint={'(min-width: 768px) and (max-width: 1024px)'}>{servicesTabletView()}</Show>
-      <Show breakpoint={'(max-width: 768px)'}>{servicesMobileView()}</Show>
+      <h2 className='text-5xl lg:hidden mb-8 text-center sm:text-left'>Services</h2>
+      <div className='flex'>
+        <div className='mr-8 hidden md:block'>
+          <h4>Services</h4>
+          <h2 className='text-5xl'>{servicesTagline}</h2>
+        </div>
+
+        <div className='block sm:grid grid-cols-2 gap-8'>
+          {services?.map((service, index) => {
+            return (
+              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} key={index}>
+                <div className='pb-16 sm:pb-8 text-center sm:text-left'>
+                  {getIcon(service.icon)}
+                  <h6 className='text-2xl mb-2'>{service.title}</h6>
+                  <p className=''>{service.description}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
     </>
   );
 };

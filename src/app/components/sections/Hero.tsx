@@ -1,7 +1,7 @@
 import React from 'react';
-import { Heading, Text, Box, Container, Avatar, Center } from '@chakra-ui/react';
-import { colors } from '../../theme/colorScheme';
 import { motion } from 'framer-motion';
+import { MaxWidthContainer } from '../blocks/MaxWidthContainer';
+import { AvatarImg } from '../Avatar';
 
 type Props = {
   title: string;
@@ -10,52 +10,39 @@ type Props = {
   variant?: string;
 };
 
-export const Hero = ({ title, subtext, actions, variant = 'slate' }: Props) => {
+export const Hero = ({ title, subtext, actions }: Props) => {
   return (
-    <Container bg={colors[variant].bgColor} py={[8, 12, 24, 24]} w={['full']}>
-      <Container maxW={1024} w={['85%', '90%', '80%']}>
-        <Box as='div' textAlign={'center'} mb={8}>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.25, duration: 1, ease: 'linear' }}
-          >
-            <Center>
-              <Box w={200} h={200} position={'relative'}>
-                <Avatar src='me.jpg' size={'full'} />
-              </Box>
-            </Center>
-          </motion.div>
-        </Box>
+    <MaxWidthContainer>
+      <div>
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: 'linear' }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.25, duration: 1, ease: 'linear' }}
         >
-          <Box as='div'>
-            <Heading
-              color={colors[variant].heroHeaderColor}
-              as='h1'
-              size='h1'
-              textAlign='center'
-              lineHeight={'none'}
-              my={-1}
-            >
-              {title}
-            </Heading>
-          </Box>
-          <Box as='div' mt={8} mb={actions ? 8 : 0}>
-            <Text align='center' fontSize={['md', 'lg', '2xl']} color={colors[variant].heroHeaderSubColor}>
-              {subtext}
-            </Text>
-          </Box>
-          <Box textAlign='center'>
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 2 }}>
-              {actions ? actions : null}
-            </motion.div>
-          </Box>
+          <div className='flex justify-center'>
+            <AvatarImg />
+          </div>
         </motion.div>
-      </Container>
-    </Container>
+      </div>
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: 'linear' }}
+      >
+        <div className='flex justify-center'>
+          <div>
+            <div className='text-center my-8'>
+              <h1 className='mb-4'>{title}</h1>
+              <p>{subtext}</p>
+            </div>
+            <div>
+              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 2 }}>
+                {actions ? actions : null}
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </MaxWidthContainer>
   );
 };

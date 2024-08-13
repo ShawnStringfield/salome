@@ -7,7 +7,7 @@ export default async function Home() {
 
   return (
     <div>
-      <Landing landingData={data} />;
+      <Landing landingData={data} />
     </div>
   );
 }
