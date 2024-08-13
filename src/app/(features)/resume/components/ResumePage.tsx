@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Button, Flex } from '@chakra-ui/react';
+import { Button } from '@/components/ui/button';
 import { Hero } from '../../../components/sections/Hero';
 import { FeatureText } from '../../../components/sections/FeatureText';
 import Link from 'next/link';
@@ -32,9 +32,7 @@ type ResumeItem = {
 const buttonActions = () => {
   return (
     <Link href='/resume.pdf'>
-      <Button size={['md', 'lg', 'lg']} variant='brand'>
-        Download Resume
-      </Button>
+      <Button className='bg-secondary font-bold text-lg'>Download Resume</Button>
     </Link>
   );
 };
@@ -57,15 +55,11 @@ export const ResumePage = () => {
         title: 'Software Engineer',
         subtext:
           "Imagine a world where every website you visit feels like coming home - intuitive, cozy, and just what you need. That's the world I build as a Front-End Engineer.",
-        actions: (
-          <Flex gridGap={4} justify={'center'}>
-            {buttonActions()}
-          </Flex>
-        ),
+        actions: <div className='flex justify-center'>{buttonActions()}</div>,
       })}
 
       <MaxWidthContainer>
-        <div className='grid grid-cols-2 gap-8'>
+        <div className='block md:grid grid-cols-2 gap-8'>
           {resume.map((item: ResumeItem) =>
             item.experience.map((exp: Experience, index: number) => {
               return (

@@ -1,5 +1,5 @@
-import { Flex, Heading, Box, Text, useMediaQuery, Card, CardBody } from '@chakra-ui/react';
-import { colors } from '../../theme/colorScheme';
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+
 import { motion } from 'framer-motion';
 import React from 'react';
 
@@ -12,51 +12,18 @@ type FeatureTextProps = {
   footerRight?: React.ReactNode | string;
 };
 
-export const FeatureText = ({
-  title,
-  text,
-  subTitle,
-  footerLeft,
-  footerRight,
-  colorScheme = 'blue',
-}: FeatureTextProps) => {
-  const [isMobile] = useMediaQuery('(min-width: 480px)');
-
+export const FeatureText = ({ title, text, subTitle, footerLeft }: FeatureTextProps) => {
   return (
     <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1, ease: 'linear' }}>
-      <Card size={['sm', 'md', 'lg']} minH={250} lineHeight={'1.5rem'} color={'slate.500'}>
-        <CardBody>
-          <Box>
-            <Box>
-              <Text fontSize='sm' color={colors[colorScheme].textColor} fontWeight={600}>
-                {subTitle}
-              </Text>
-            </Box>
-            <Box>
-              <Heading as='h6' size='h6'>
-                {title}
-              </Heading>
-            </Box>
-            <Box my={4}>
-              <Text fontSize={'16px'}>{text}</Text>
-            </Box>
-          </Box>
-          {isMobile ? (
-            <Flex>
-              <Box fontSize={'sm'}>{footerLeft}</Box>
-              <Flex flex={1} justifyContent={'flex-end'} color={colors[colorScheme].textColor}>
-                <Text fontSize={'md'}>{footerRight}</Text>
-              </Flex>
-            </Flex>
-          ) : (
-            <Box>
-              <Box>{footerLeft}</Box>
-              <Box color={colors[colorScheme].textColor}>
-                <Text fontSize={'md'}>{footerRight}</Text>
-              </Box>
-            </Box>
-          )}
-        </CardBody>
+      <Card className='mb-8 md:mb-0 text-slate-500 text-base min-h-72'>
+        <CardHeader>
+          <div className='text-primary -mb-2 font-bold'>{subTitle}</div>
+          <h4>{title}</h4>
+        </CardHeader>
+        <CardContent>
+          <div>{text}</div>
+        </CardContent>
+        <CardFooter>{footerLeft}</CardFooter>
       </Card>
     </motion.div>
   );

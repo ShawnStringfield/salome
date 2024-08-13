@@ -11,9 +11,6 @@ import { shadows } from './foundations/shadows';
 import { typography } from './foundations/typography';
 import { sizes } from './foundations/sizes';
 
-// import '@fontsource/inter/400.css';
-// import '@fontsource/work-sans/700.css';
-
 export const theme = extendTheme({
   styles: globals,
   sizes: sizes,

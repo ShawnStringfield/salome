@@ -1,5 +1,4 @@
 import React from 'react';
-import { Providers } from './providers';
 import { Navigation } from './components/nav/Navigation';
 
 import './globals.css';
@@ -13,7 +12,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <Navigation />
-        <Providers>{children}</Providers>
+        {children}
       </body>
     </html>
   );
