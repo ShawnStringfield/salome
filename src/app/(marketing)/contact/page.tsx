@@ -1,40 +1,27 @@
 'use client';
 
 import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { Box, Flex, Center, Heading, Text, Hide, Show, Input, Textarea, chakra } from '@chakra-ui/react';
-import { MaxWidthContainer } from '../../components/blocks/MaxWidthContainer';
-import { MarketingNav } from '../../components/nav/MarketingNav';
-import { sendEmail } from '../../emails/send';
-import { motion } from 'framer-motion';
-import { NavDrawer } from '../../components/sections/NavDrawer';
+// import { useForm, SubmitHandler } from 'react-hook-form';
+// import { sendEmail } from '../../emails/send';
+// import { motion } from 'framer-motion';
 
-type Inputs = {
-  name: string;
-  email: string;
-  message: string;
-};
+// type Inputs = {
+//   name: string;
+//   email: string;
+//   message: string;
+// };
 
 export default function Contact() {
-  const { register, handleSubmit } = useForm<Inputs>();
+  // const { register, handleSubmit } = useForm<Inputs>();
 
-  const MaxContainer = chakra(MaxWidthContainer);
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    sendEmail(data.name, data.email);
-  };
+  // const onSubmit: SubmitHandler<Inputs> = (data) => {
+  //   sendEmail(data.name, data.email);
+  // };
 
   return (
     <>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
-        <Show breakpoint={'(max-width: 431px)'}>
-          <Box m={5}>
-            <NavDrawer />
-          </Box>
-        </Show>
-        <Hide breakpoint={'(max-width: 431px)'}>
-          <MarketingNav />
-        </Hide>
+      {/* <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
+      <></>
       </motion.div>
       <MaxContainer w={'auto'}>
         <Center mt={48}>
@@ -80,7 +67,7 @@ export default function Contact() {
             </Box>
           </Box>
         </Center>
-      </MaxContainer>
+      </MaxContainer> */}
     </>
   );
 }
