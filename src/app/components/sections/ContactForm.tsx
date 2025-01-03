@@ -1,39 +1,10 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
 
 interface ContactFormProps {
   title: string;
 }
 
 export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          Accept: 'application/json',
-        },
-        body: new URLSearchParams({
-          'form-name': 'contact',
-          ...Object.fromEntries(formData),
-        }).toString(),
-      });
-
-      if (response.ok) {
-        alert('Thank you for your message! We will get back to you soon.');
-        (e.target as HTMLFormElement).reset();
-      } else {
-        throw new Error(`Response status: ${response.status}`);
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting the form. Please try again.');
-    }
-  };
-
   return (
     <div className='py-16 w-full'>
       <h2 className='text-3xl font-bold text-center mb-8'>{title}</h2>
@@ -42,8 +13,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
         method='POST'
         data-netlify='true'
         netlify-honeypot='bot-field'
-        action='/'
-        onSubmit={handleSubmit}
         className='w-full max-w-xl mx-auto space-y-6 bg-white rounded-lg shadow-sm p-8'
       >
         <input type='hidden' name='form-name' value='contact' />
