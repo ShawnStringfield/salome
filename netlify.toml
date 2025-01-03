@@ -1,6 +1,32 @@
 [build]
-  command = "npm run build"
+  command = "next build"
   publish = ".next"
+
+[build.environment]
+  NEXT_TELEMETRY_DISABLED = "1"
+  NEXT_USE_NETLIFY_EDGE = "true"
+  NEXT_FORCE_SERVER_RESPONSE_HEADERS = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[functions]
+  included_files = ["public/**"]
+
+# Forms configuration
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.images]
+  compress = true
