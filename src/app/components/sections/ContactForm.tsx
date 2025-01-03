@@ -1,4 +1,5 @@
 import React from 'react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface ContactFormProps {
   title: string;
@@ -109,53 +110,52 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
               <label htmlFor='projectType' className='block text-sm font-medium text-gray-700'>
                 Project Type *
               </label>
-              <select
-                name='projectType'
-                id='projectType'
-                required
-                className='block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white'
-              >
-                <option value=''>Select a project type</option>
-                <option value='website'>Website Development</option>
-                <option value='webapp'>Web Application</option>
-                <option value='ecommerce'>E-commerce Solution</option>
-                <option value='maintenance'>Maintenance & Support</option>
-                <option value='other'>Other</option>
-              </select>
+              <Select name='projectType' required>
+                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6 text-gray-500'>
+                  <SelectValue placeholder='Select a project type' />
+                </SelectTrigger>
+                <SelectContent className='text-xl text-gray-500'>
+                  <SelectItem value='website'>Website Development</SelectItem>
+                  <SelectItem value='webapp'>Web Application</SelectItem>
+                  <SelectItem value='ecommerce'>E-commerce Solution</SelectItem>
+                  <SelectItem value='maintenance'>Maintenance & Support</SelectItem>
+                  <SelectItem value='other'>Other</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div className='space-y-2'>
               <label htmlFor='budget' className='block text-sm font-medium text-gray-700'>
                 Budget Range
               </label>
-              <select
-                name='budget'
-                id='budget'
-                className='block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white'
-              >
-                <option value=''>Select a budget range</option>
-                <option value='small'>$5,000 - $10,000</option>
-                <option value='medium'>$10,000 - $25,000</option>
-                <option value='large'>$25,000 - $50,000</option>
-                <option value='enterprise'>$50,000+</option>
-              </select>
+              <Select name='budget'>
+                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6 text-gray-500'>
+                  <SelectValue placeholder='Select a budget range' />
+                </SelectTrigger>
+                <SelectContent className='text-xl text-gray-500'>
+                  <SelectItem value='small'>$5,000 - $10,000</SelectItem>
+                  <SelectItem value='medium'>$10,000 - $25,000</SelectItem>
+                  <SelectItem value='large'>$25,000 - $50,000</SelectItem>
+                  <SelectItem value='enterprise'>$50,000+</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div className='space-y-2'>
               <label htmlFor='timeline' className='block text-sm font-medium text-gray-700'>
                 Desired Timeline
               </label>
-              <select
-                name='timeline'
-                id='timeline'
-                className='block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white'
-              >
-                <option value=''>Select a timeline</option>
-                <option value='urgent'>Less than 1 month</option>
-                <option value='normal'>1-3 months</option>
-                <option value='relaxed'>3-6 months</option>
-                <option value='planning'>6+ months</option>
-              </select>
+              <Select name='timeline'>
+                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6 text-gray-500 '>
+                  <SelectValue placeholder='Select a timeline' />
+                </SelectTrigger>
+                <SelectContent className='text-xl text-gray-500'>
+                  <SelectItem value='urgent'>Less than 1 month</SelectItem>
+                  <SelectItem value='normal'>1-3 months</SelectItem>
+                  <SelectItem value='relaxed'>3-6 months</SelectItem>
+                  <SelectItem value='planning'>6+ months</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
             <div className='space-y-2'>
