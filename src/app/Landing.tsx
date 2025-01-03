@@ -78,11 +78,11 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
         </div>
       </motion.div>
 
-      {/* <div className='bg-slate-200' id={'contact'}>
+      <div className='bg-slate-200' id={'contact'}>
         <MaxWidthContainer>
           <ContactForm title="Let's Create Something Together" />
         </MaxWidthContainer>
-      </div> */}
+      </div>
     </>
   );
 };

@@ -12,15 +12,21 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
     try {
       const response = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Accept: 'application/json',
+        },
+        body: new URLSearchParams({
+          'form-name': 'contact',
+          ...Object.fromEntries(formData),
+        }).toString(),
       });
 
       if (response.ok) {
         alert('Thank you for your message! We will get back to you soon.');
         (e.target as HTMLFormElement).reset();
       } else {
-        alert('There was an error submitting the form. Please try again.');
+        throw new Error(`Response status: ${response.status}`);
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -36,6 +42,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
         method='POST'
         data-netlify='true'
         netlify-honeypot='bot-field'
+        action='/'
         onSubmit={handleSubmit}
         className='w-full max-w-xl mx-auto space-y-6 bg-white rounded-lg shadow-sm p-8'
       >

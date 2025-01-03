@@ -9,8 +9,6 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    disableForms = true
 
 [functions]
   included_files = ["public/**"]
