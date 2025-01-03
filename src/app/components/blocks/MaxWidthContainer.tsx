@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 type Props = {
-  children: JSX.Element | JSX.Element[];
+  children: ReactNode;
   className?: string;
 };
 
