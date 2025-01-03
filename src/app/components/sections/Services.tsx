@@ -46,9 +46,10 @@ export const Services = ({
 }) => {
   return (
     <>
-      <h2 className='text-5xl lg:hidden mb-8 text-center sm:text-left'>Services</h2>
+      <h2 className='text-5xl lg:hidden mb-8 text-center '>Services</h2>
+      <h2 className='text-4xl text-center md: lg:hidden mb-16'>{servicesTagline}</h2>
       <div className='flex'>
-        <div className='mr-8 hidden md:block'>
+        <div className='mr-8 hidden lg:block'>
           <h4>Services</h4>
           <h2 className='text-5xl'>{servicesTagline}</h2>
         </div>
