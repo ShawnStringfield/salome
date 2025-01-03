@@ -10,7 +10,6 @@ import { formatShortDate } from '../../../utils/dates';
 import { motion } from 'framer-motion';
 
 type Experience = {
-  map: (arg0: (exp: Experience, index: number) => import('react/jsx-runtime').JSX.Element) => JSX.Element[];
   jobTitle: string;
   company: string;
   description: string;
@@ -19,14 +18,8 @@ type Experience = {
   tools: string;
 };
 
-type ResumeItem = {
-  experience: Experience;
-  jobTitle: string;
-  company: string;
-  description: string;
-  startDate: string;
-  endDate: string;
-  tools: string;
+type ResumeData = {
+  experience: Experience[];
 };
 
 const buttonActions = () => {
@@ -38,7 +31,7 @@ const buttonActions = () => {
 };
 
 export const ResumePage = () => {
-  const [resume, setResume] = useState([]);
+  const [resume, setResume] = useState<ResumeData[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('/resume.json');
@@ -60,19 +53,17 @@ export const ResumePage = () => {
 
       <MaxWidthContainer>
         <div className='block md:grid grid-cols-2 gap-8'>
-          {resume.map((item: ResumeItem) =>
-            item.experience.map((exp: Experience, index: number) => {
-              return (
-                <FeatureText
-                  key={index}
-                  title={exp.jobTitle}
-                  subTitle={exp.company}
-                  text={exp.description}
-                  footerLeft={`${formatShortDate(exp.startDate)} - ${formatShortDate(exp.endDate)}`}
-                  footerRight={exp.tools}
-                />
-              );
-            })
+          {resume.flatMap((item: ResumeData) =>
+            item.experience.map((exp: Experience, index: number) => (
+              <FeatureText
+                key={index}
+                title={exp.jobTitle}
+                subTitle={exp.company}
+                text={exp.description}
+                footerLeft={`${formatShortDate(exp.startDate)} - ${formatShortDate(exp.endDate)}`}
+                footerRight={exp.tools}
+              />
+            ))
           )}
         </div>
       </MaxWidthContainer>
