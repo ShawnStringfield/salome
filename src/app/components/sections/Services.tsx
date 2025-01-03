@@ -9,13 +9,29 @@ const getIcon = (icon: string) => {
   const color = 'text-slate-400';
   switch (icon) {
     case 'TbRulerMeasure':
-      return <TbRulerMeasure className={`text-4xl ${color}`} />;
+      return (
+        <div className='flex justify-center sm:justify-start mb-4'>
+          <TbRulerMeasure className={`text-4xl ${color}`} />
+        </div>
+      );
     case 'TbPhotoEdit':
-      return <TbPhotoEdit className={`text-4xl ${color}`} />;
+      return (
+        <div className='flex justify-center sm:justify-start mb-4'>
+          <TbPhotoEdit className={`text-4xl ${color}`} />
+        </div>
+      );
     case 'RiPagesLine':
-      return <RiPagesLine className={`text-4xl ${color}`} />;
+      return (
+        <div className='flex justify-center sm:justify-start mb-4'>
+          <RiPagesLine className={`text-4xl ${color}`} />
+        </div>
+      );
     case 'CgWebsite':
-      return <CgWebsite className={`text-4xl ${color}`} />;
+      return (
+        <div className='flex justify-center sm:justify-start mb-4'>
+          <CgWebsite className={`text-4xl ${color}`} />
+        </div>
+      );
     default:
       return null;
   }

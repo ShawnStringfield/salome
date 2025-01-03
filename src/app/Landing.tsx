@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Services } from './components/sections/Services';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
+import { ContactForm } from './components/sections/ContactForm';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -63,10 +64,8 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
             return (
               <div key={index}>
                 <div className='container mx-auto py-16'>
-                  <div className='flex'>
-                    <h4 className='mb-4 w-3/4'>{item.company}</h4>
-                    <p className='text-sm mb-4 self-center justify-end w-1/4 text-right'>{item.dateCreated}</p>
-                  </div>
+                  <h4 className='text-lg mb-1 text-gray-400 font-medium'>{item.dateCreated}</h4>
+                  <h4 className='mb-4'>{item.company}</h4>
                   <Link target='_blank' href={item.link}>
                     <div className='rounded-md border-2 border-slate-200'>
                       <Image width={600} height={0} src={item.image} alt={item.company} className='rounded-md' />
@@ -81,11 +80,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
 
       <div className='bg-slate-200' id={'contact'}>
         <MaxWidthContainer>
-          <h2>{'Let’s Create Something Together'}</h2>
-          <p>Phone: +1 (202) 215-1120</p>
-          <p>
-            <a href='mailto:info@shawnstringfield.com'>info@shawnstringfield.com</a>
-          </p>
+          <ContactForm title="Let's Create Something Together" />
         </MaxWidthContainer>
       </div>
     </>
