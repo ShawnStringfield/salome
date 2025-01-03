@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
+import { animate } from 'framer-motion';
 
 type HeroSplitProps = {
   tagline?: string;
@@ -10,6 +11,24 @@ type HeroSplitProps = {
 };
 
 export const HeroSplit = ({ tagline, subTagline, title }: HeroSplitProps) => {
+  const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - 50; // 50px offset for better positioning
+
+      animate(document.documentElement.scrollTop, offsetPosition, {
+        duration: 0.8,
+        type: 'spring',
+        bounce: 0.2,
+        onUpdate: (value) => {
+          document.documentElement.scrollTop = value;
+        },
+      });
+    }
+  };
+
   return (
     <>
       <div className='mx-8'>
@@ -28,13 +47,13 @@ export const HeroSplit = ({ tagline, subTagline, title }: HeroSplitProps) => {
               <span className='text-primary'>{subTagline}</span>
             </h2>
             <div className='mt-8 mb-8'>
-              <Link href='#contact'>
-                <Button className='font-bold text-lg'>{"Let's Work Together"}</Button>
+              <Link href='#contact' onClick={scrollToContact}>
+                <Button className='font-bold text-lg py-6'>{"Let's Work Together"}</Button>
               </Link>
             </div>
           </div>
 
-          <div className='hidden lg:block ml-8'>
+          <div className='hidden lg:block -mr-8'>
             <Avatar className='w-64 h-64 border-4 border-white'>
               <AvatarImage src={'/me2.jpg'} />
               <AvatarFallback>SS</AvatarFallback>

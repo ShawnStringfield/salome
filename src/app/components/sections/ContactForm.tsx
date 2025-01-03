@@ -7,7 +7,7 @@ interface ContactFormProps {
 
 export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
   return (
-    <div className='py-16 w-full bg-transparent'>
+    <div id='contact' className='py-16 w-full bg-transparent'>
       <div className='max-w-4xl mx-auto px-4'>
         <h2 className='text-4xl font-bold text-center mb-3'>{title}</h2>
         <p className='text-gray-600 text-center mb-8 max-w-2xl mx-auto'>
