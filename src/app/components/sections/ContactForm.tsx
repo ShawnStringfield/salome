@@ -12,9 +12,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
         name='contact'
         method='POST'
         data-netlify='true'
+        netlify-honeypot='bot-field'
         className='w-full max-w-xl mx-auto space-y-6 bg-white rounded-lg shadow-sm p-8'
       >
-        <input type='hidden' name='contact' value='contact' />
+        <input type='hidden' name='form-name' value='contact' />
+        <div hidden>
+          <input name='bot-field' />
+        </div>
 
         <div className='space-y-2'>
           <label htmlFor='name' className='block text-sm font-medium text-gray-700'>
