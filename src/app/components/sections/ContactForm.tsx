@@ -9,10 +9,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
     <div className='py-16 w-full'>
       <h2 className='text-3xl font-bold text-center mb-8'>{title}</h2>
       <form
+        data-netlify='true'
         name='contact'
         method='POST'
-        data-netlify='true'
-        netlify-honeypot='bot-field'
+        action='/success'
+        data-netlify-honeypot='bot-field'
         className='w-full max-w-xl mx-auto space-y-6 bg-white rounded-lg shadow-sm p-8'
       >
         <input type='hidden' name='form-name' value='contact' />
