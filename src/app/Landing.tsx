@@ -1,65 +1,73 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Services } from './components/sections/Services';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
-import { ContactForm } from './components/sections/ContactForm';
-import { motion } from 'framer-motion';
+import { Services } from './components/sections/Services';
 import ProjectCard from './components/sections/ProjectCard';
+import { ContactForm } from './components/sections/ContactForm';
+import work from '../../public/work.json';
 
-type LandingData = {
-  name?: string;
-  title?: string;
-  tagline?: string;
-  subTagline?: string;
+interface Service {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface LandingData {
+  title: string;
+  tagline: string;
+  subTagline: string;
+  services?: Service[];
   servicesTagline?: string;
-  whyChooseUsDescription?: string;
-  services?: Array<{
-    icon: string;
-    title: string;
-    description: string;
-  }>;
-  whyChooseUs?: Array<{
-    title: string;
-    description: string;
-  }>;
-};
+}
 
 type LandingDataTypes = {
   landingData: LandingData;
 };
 
 export const Landing = ({ landingData }: LandingDataTypes) => {
-  const [work, setWork] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const work = await fetch('/work.json');
-      const workData = await work.json();
-      setWork(workData.portfolio);
-    };
-    fetchData();
-  }, []);
+  const portfolio = work.portfolio || [];
 
   return (
     <>
-      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <MaxWidthContainer>
-          <HeroSplit title={landingData.title} tagline={landingData.tagline} subTagline={landingData.subTagline} />
+          <HeroSplit
+            title={landingData.title}
+            tagline={landingData.tagline}
+            subTagline={landingData.subTagline}
+          />
         </MaxWidthContainer>
       </motion.div>
 
-      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div className='bg-slate-200 bg-[url("/radial.svg")] bg-cover py-8'>
           <MaxWidthContainer>
-            <Services services={landingData.services ?? []} servicesTagline={landingData.servicesTagline || ''} />
+            <Services
+              services={landingData.services ?? []}
+              servicesTagline={landingData.servicesTagline || ''}
+            />
           </MaxWidthContainer>
         </div>
       </motion.div>
 
-      <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <div>
-          {work.map((item: any, index: number) => (
+          {portfolio.map((item, index) => (
             <ProjectCard
               key={index}
               company={item.company}
@@ -68,18 +76,25 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
               alt={item.alt}
               dateCreated={item.dateCreated}
               tech={item.tech}
+              hasCaseStudy={item.hasCaseStudy}
               index={index}
-              isLast={index === work.length - 1}
+              isLast={index === portfolio.length - 1}
             />
           ))}
         </div>
       </motion.div>
 
-      <div className='bg-slate-200' id={'contact'}>
-        <MaxWidthContainer>
-          <ContactForm title="Let's Create Something Together" />
-        </MaxWidthContainer>
-      </div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className='bg-slate-200' id='contact'>
+          <MaxWidthContainer>
+            <ContactForm title="Let's Create Something Together" />
+          </MaxWidthContainer>
+        </div>
+      </motion.div>
     </>
   );
 };

@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 interface ProjectCardProps {
   company: string;
@@ -11,9 +13,20 @@ interface ProjectCardProps {
   tech: string[];
   index: number;
   isLast?: boolean;
+  hasCaseStudy?: boolean;
 }
 
-const ProjectCard = ({ company, link, image, alt, dateCreated, tech, index, isLast }: ProjectCardProps) => {
+const ProjectCard = ({
+  company,
+  link,
+  image,
+  alt,
+  dateCreated,
+  tech,
+  index,
+  isLast,
+  hasCaseStudy,
+}: ProjectCardProps) => {
   const isEven = index % 2 === 0;
 
   return (
@@ -36,15 +49,32 @@ const ProjectCard = ({ company, link, image, alt, dateCreated, tech, index, isLa
           </div>
 
           {/* Project Title and Date */}
-          <div className='flex justify-between items-baseline mb-8'>
-            <h2 className={`text-4xl font-bold ${isEven ? 'text-white' : 'text-slate-900'}`}>{company}</h2>
+          <div className='flex justify-between items-baseline mb-4'>
+            <h2 className={`text-4xl font-bold ${isEven ? 'text-white' : 'text-slate-900'}`}>
+              {company}
+            </h2>
             <h5 className={isEven ? 'text-gray-400' : 'text-gray-500'}>{dateCreated}</h5>
           </div>
+
+          {/* Case Study Button */}
+          {hasCaseStudy && (
+            <div className='mb-8'>
+              <Link href={link}>
+                <Button
+                  variant={isEven ? 'outline' : 'default'}
+                  className={`group ${isEven ? 'border-gray-700 text-gray-300 hover:bg-gray-800' : ''}`}
+                >
+                  View Case Study
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Project Screenshot with Link */}
         <div className='overflow-hidden'>
-          <Link href={link} target='_blank'>
+          <Link href={hasCaseStudy ? link : link} target={hasCaseStudy ? undefined : '_blank'}>
             <div className='relative -mb-10'>
               <Image
                 src={image}

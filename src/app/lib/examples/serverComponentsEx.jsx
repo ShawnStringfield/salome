@@ -1,21 +1,30 @@
 import { cookies } from 'next/headers';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 
-export const ServerComponentsEx = async () => {
-  // Necessary for getting user from supabase on BE
+export default async function ServerComponent() {
   const cookieStore = cookies();
   const supabase = createServerComponentClient({ cookies: () => cookieStore });
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  try {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-  console.log('user from book page', user);
+    if (!user) {
+      throw new Error('User not found');
+    }
 
-  return (
-    <div>
-      <h1>Hello, Server Components!</h1>
-      <p>This is an example of a modern React component using server components.</p>
-    </div>
-  );
-};
+    return (
+      <div>
+        <h1>Hello, {user.email}</h1>
+        {/* Rest of your component */}
+      </div>
+    );
+  } catch (error) {
+    return (
+      <div>
+        <h1>Error loading user data</h1>
+      </div>
+    );
+  }
+}
