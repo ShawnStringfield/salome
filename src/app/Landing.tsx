@@ -8,6 +8,7 @@ import { ContactForm } from './components/sections/ContactForm';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import ProjectCard from './components/sections/ProjectCard';
 
 type LandingData = {
   name?: string;
@@ -59,22 +60,20 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
       </motion.div>
 
       <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-        <div className='container mx-auto justify-center sm:flex gap-8 px-8 sm:px-8'>
-          {work.map((item: any, index) => {
-            return (
-              <div key={index}>
-                <div className='container mx-auto py-16'>
-                  <h4 className='text-lg mb-1 text-gray-400 font-medium'>{item.dateCreated}</h4>
-                  <h4 className='mb-4'>{item.company}</h4>
-                  <Link target='_blank' href={item.link}>
-                    <div className='rounded-md border-2 border-slate-200'>
-                      <Image width={600} height={0} src={item.image} alt={item.company} className='rounded-md' />
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
+        <div>
+          {work.map((item: any, index: number) => (
+            <ProjectCard
+              key={index}
+              company={item.company}
+              link={item.link}
+              image={item.image}
+              alt={item.alt}
+              dateCreated={item.dateCreated}
+              tech={item.tech}
+              index={index}
+              isLast={index === work.length - 1}
+            />
+          ))}
         </div>
       </motion.div>
 
