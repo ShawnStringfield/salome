@@ -74,8 +74,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
   });
 
   const onSubmit = async (data: FormValues) => {
-    // Just validate the data, let the native form submission handle the rest
-    console.log('Form validated:', data);
+    try {
+      // Get the form element
+      const form = document.querySelector('form[name="contact"]') as HTMLFormElement;
+      if (!form) return;
+
+      // Manually submit the form after validation passes
+      form.submit();
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
   };
 
   return (
