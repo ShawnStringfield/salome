@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/app/components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@/app/components/ui/avatar';
 import Link from 'next/link';
 import { animate } from 'framer-motion';
 
@@ -22,7 +22,7 @@ export const HeroSplit = ({ tagline, subTagline, title }: HeroSplitProps) => {
         duration: 0.8,
         type: 'spring',
         bounce: 0.2,
-        onUpdate: (value) => {
+        onUpdate: value => {
           document.documentElement.scrollTop = value;
         },
       });
@@ -40,7 +40,9 @@ export const HeroSplit = ({ tagline, subTagline, title }: HeroSplitProps) => {
         </div>
         <div className='flex items-center'>
           <div className='text-center lg:text-left'>
-            <h1 className='text-4xl lg:text-7xl text-center lg:text-left mb-4 mt-8 lg:mt-0'>{title}</h1>
+            <h1 className='text-4xl lg:text-7xl text-center lg:text-left mb-4 mt-8 lg:mt-0'>
+              {title}
+            </h1>
             <h2 className='text-xl sm:text-2xl lg:text-4xl/[46px]'>
               {tagline}
               {tagline ? ':' : ''} {''}

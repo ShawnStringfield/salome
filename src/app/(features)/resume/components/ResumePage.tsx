@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/app/components/ui/button';
 import { Hero } from '../../../components/sections/Hero';
 import { FeatureText } from '../../../components/sections/FeatureText';
 import Link from 'next/link';
@@ -43,7 +43,11 @@ export const ResumePage = () => {
 
   return (
     <>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}></motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+      ></motion.div>
       {Hero({
         title: 'Software Engineer',
         subtext:

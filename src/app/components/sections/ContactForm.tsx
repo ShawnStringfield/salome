@@ -1,10 +1,17 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/app/components/ui/select';
+import { Input } from '@/app/components/ui/input';
+import { Textarea } from '@/app/components/ui/textarea';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { cn } from '@/lib/utils';
+import { cn } from '@/app/lib/utils';
 import { AlertCircle } from 'lucide-react';
 
 const formSchema = z.object({
@@ -104,8 +111,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
       <div className='max-w-4xl mx-auto px-4'>
         <h2 className='text-4xl font-bold text-center mb-3'>{title}</h2>
         <p className='text-gray-600 text-center mb-8 max-w-2xl mx-auto'>
-          I&apos;m excited to learn about your project. Please fill out the form below with as much detail as possible,
-          and I&apos;ll get back to you within 24 hours.
+          I&apos;m excited to learn about your project. Please fill out the form below with as much
+          detail as possible, and I&apos;ll get back to you within 24 hours.
         </p>
 
         <form
@@ -125,7 +132,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
 
           {/* Personal Information Section */}
           <div className='space-y-6'>
-            <h3 className='text-2xl font-bold border-b border-gray-200/50 pb-3 mt-16'>Personal Information</h3>
+            <h3 className='text-2xl font-bold border-b border-gray-200/50 pb-3 mt-16'>
+              Personal Information
+            </h3>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
               <FormField label='First Name' error={errors.firstName?.message} required>
                 <Input
@@ -193,11 +202,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
 
           {/* Project Details Section */}
           <div className='space-y-6'>
-            <h3 className='text-2xl font-bold border-b border-gray-200/50 pb-3 mt-16'>Project Details</h3>
+            <h3 className='text-2xl font-bold border-b border-gray-200/50 pb-3 mt-16'>
+              Project Details
+            </h3>
 
             <FormField label='Project Type' error={errors.projectType?.message} required>
               <Select
-                onValueChange={(value) => {
+                onValueChange={value => {
                   setValue('projectType', value);
                   trigger('projectType');
                 }}
@@ -222,7 +233,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
 
             <FormField label='Budget Range' error={errors.budget?.message}>
               <Select
-                onValueChange={(value) => {
+                onValueChange={value => {
                   setValue('budget', value);
                   trigger('budget');
                 }}
@@ -241,7 +252,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
 
             <FormField label='Desired Timeline' error={errors.timeline?.message}>
               <Select
-                onValueChange={(value) => {
+                onValueChange={value => {
                   setValue('timeline', value);
                   trigger('timeline');
                 }}
@@ -259,13 +270,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
             </FormField>
 
             <FormField label='Project Description' error={errors.message?.message} required>
-              <textarea
+              <Textarea
                 {...register('message')}
                 id='message'
                 rows={6}
                 className={cn(
-                  'block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white',
-                  errors.message && 'border-red-600 focus:border-red-600 focus:ring-red-600'
+                  'bg-white/90 hover:bg-white text-base',
+                  errors.message && 'border-red-600 focus-visible:ring-red-600'
                 )}
                 placeholder="Please describe your project, including any specific requirements, features, or challenges you'd like to address."
               />

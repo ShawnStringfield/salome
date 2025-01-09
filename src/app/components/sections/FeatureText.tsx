@@ -1,4 +1,4 @@
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader } from '@/app/components/ui/card';
 
 import { motion } from 'framer-motion';
 import React from 'react';
@@ -14,7 +14,11 @@ type FeatureTextProps = {
 
 export const FeatureText = ({ title, text, subTitle, footerLeft }: FeatureTextProps) => {
   return (
-    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1, ease: 'linear' }}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1, ease: 'linear' }}
+    >
       <Card className='mb-8 md:mb-0 text-slate-500 text-base min-h-72'>
         <CardHeader>
           <div className='text-primary -mb-2 font-bold'>{subTitle}</div>
