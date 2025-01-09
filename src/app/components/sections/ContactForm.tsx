@@ -73,14 +73,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (_data: FormValues, e: React.BaseSyntheticEvent | undefined) => {
-    try {
-      if (e) {
-        e.target.submit();
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-    }
+  const onSubmit = async () => {
+    // Form validation passed, let the native form submission handle it
+    return true;
   };
 
   return (
@@ -98,7 +93,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
           method='POST'
           data-netlify='true'
           action='/success'
-          netlify-honeypot='bot-field'
           className='w-full mx-auto space-y-8'
         >
           <input type='hidden' name='form-name' value='contact' />
