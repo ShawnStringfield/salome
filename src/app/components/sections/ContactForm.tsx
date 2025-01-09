@@ -73,9 +73,31 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (data: FormValues) => {
-    // Your form submission logic here
-    console.log(data);
+  const onSubmit = async () => {
+    try {
+      // Get the form element
+      const form = document.querySelector('form[name="contact"]') as HTMLFormElement;
+      if (!form) return;
+
+      // Create a new FormData instance and append all fields
+      const formData = new FormData(form);
+
+      // Manually trigger the native form submission
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      })
+        .then(() => {
+          // Redirect to success page (Netlify will handle this automatically)
+          window.location.href = '/success';
+        })
+        .catch((error) => {
+          console.error('Form submission error:', error);
+        });
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
   };
 
   return (
