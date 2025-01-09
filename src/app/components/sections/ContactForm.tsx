@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { cn } from '@/lib/utils';
@@ -105,49 +106,49 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
             <h3 className='text-2xl font-bold border-b border-gray-200/50 pb-3 mt-16'>Personal Information</h3>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
               <FormField label='First Name' error={errors.firstName?.message} required>
-                <input
+                <Input
                   {...register('firstName')}
                   type='text'
                   id='firstName'
                   className={cn(
-                    'block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white',
-                    errors.firstName && 'border-red-600 focus:border-red-600 focus:ring-red-600'
+                    'bg-white/90 hover:bg-white',
+                    errors.firstName && 'border-red-600 focus-visible:ring-red-600'
                   )}
                   placeholder='John'
                 />
               </FormField>
 
               <FormField label='Last Name' error={errors.lastName?.message} required>
-                <input
+                <Input
                   {...register('lastName')}
                   type='text'
                   id='lastName'
                   className={cn(
-                    'block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white',
-                    errors.lastName && 'border-red-600 focus:border-red-600 focus:ring-red-600'
+                    'bg-white/90 hover:bg-white',
+                    errors.lastName && 'border-red-600 focus-visible:ring-red-600'
                   )}
                   placeholder='Doe'
                 />
               </FormField>
 
               <FormField label='Company Name' error={errors.company?.message}>
-                <input
+                <Input
                   {...register('company')}
                   type='text'
                   id='company'
-                  className='block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white'
+                  className='bg-white/90 hover:bg-white'
                   placeholder='Your Company Ltd.'
                 />
               </FormField>
 
               <FormField label='Phone Number' error={errors.phone?.message}>
-                <input
+                <Input
                   {...register('phone')}
                   type='tel'
                   id='phone'
                   className={cn(
-                    'block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white',
-                    errors.phone && 'border-red-600 focus:border-red-600 focus:ring-red-600'
+                    'bg-white/90 hover:bg-white',
+                    errors.phone && 'border-red-600 focus-visible:ring-red-600'
                   )}
                   placeholder='+1 (555) 000-0000'
                 />
@@ -155,13 +156,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
             </div>
 
             <FormField label='Email Address' error={errors.email?.message} required>
-              <input
+              <Input
                 {...register('email')}
                 type='email'
                 id='email'
                 className={cn(
-                  'block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white',
-                  errors.email && 'border-red-600 focus:border-red-600 focus:ring-red-600'
+                  'bg-white/90 hover:bg-white',
+                  errors.email && 'border-red-600 focus-visible:ring-red-600'
                 )}
                 placeholder='john@example.com'
               />
