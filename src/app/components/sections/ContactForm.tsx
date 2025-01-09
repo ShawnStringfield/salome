@@ -1,11 +1,82 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { cn } from '@/lib/utils';
+import { AlertCircle } from 'lucide-react';
+
+const formSchema = z.object({
+  firstName: z.string().min(1, 'First name is required'),
+  lastName: z.string().min(1, 'Last name is required'),
+  company: z.string().optional(),
+  phone: z
+    .string()
+    .regex(/^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/, 'Invalid phone number format')
+    .optional(),
+  email: z.string().email('Invalid email format').min(1, 'Email is required'),
+  projectType: z.string().min(1, 'Project type is required'),
+  budget: z.string().optional(),
+  timeline: z.string().optional(),
+  message: z.string().min(1, 'Project description is required'),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 interface ContactFormProps {
   title: string;
 }
 
+interface FormErrorProps {
+  message?: string;
+}
+
+const FormError = ({ message }: FormErrorProps) => {
+  if (!message) return null;
+
+  return (
+    <div className='flex items-center gap-x-2 mt-1.5'>
+      <AlertCircle className='h-4 w-4 text-red-600' />
+      <p className='text-sm text-red-600 font-medium'>{message}</p>
+    </div>
+  );
+};
+
+interface FormFieldProps {
+  label: string;
+  error?: string;
+  required?: boolean;
+  children: React.ReactNode;
+}
+
+const FormField = ({ label, error, required, children }: FormFieldProps) => {
+  return (
+    <div className='space-y-2'>
+      <label className='block text-sm font-medium text-gray-700'>
+        {label} {required && <span className='text-red-600'>*</span>}
+      </label>
+      {children}
+      <FormError message={error} />
+    </div>
+  );
+};
+
 export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    setValue,
+    trigger,
+  } = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+  });
+
+  const onSubmit = async (data: FormValues) => {
+    // Your form submission logic here
+    console.log(data);
+  };
+
   return (
     <div id='contact' className='py-16 w-full bg-transparent'>
       <div className='max-w-4xl mx-auto px-4'>
@@ -16,6 +87,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
         </p>
 
         <form
+          onSubmit={handleSubmit(onSubmit)}
           data-netlify='true'
           name='contact'
           method='POST'
@@ -32,86 +104,87 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
           <div className='space-y-6'>
             <h3 className='text-2xl font-bold border-b border-gray-200/50 pb-3 mt-16'>Personal Information</h3>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-              <div className='space-y-2'>
-                <label htmlFor='firstName' className='block text-sm font-medium text-gray-700'>
-                  First Name *
-                </label>
+              <FormField label='First Name' error={errors.firstName?.message} required>
                 <input
+                  {...register('firstName')}
                   type='text'
-                  name='firstName'
                   id='firstName'
-                  required
-                  className='block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white'
+                  className={cn(
+                    'block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white',
+                    errors.firstName && 'border-red-600 focus:border-red-600 focus:ring-red-600'
+                  )}
                   placeholder='John'
                 />
-              </div>
+              </FormField>
 
-              <div className='space-y-2'>
-                <label htmlFor='lastName' className='block text-sm font-medium text-gray-700'>
-                  Last Name *
-                </label>
+              <FormField label='Last Name' error={errors.lastName?.message} required>
                 <input
+                  {...register('lastName')}
                   type='text'
-                  name='lastName'
                   id='lastName'
-                  required
-                  className='block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white'
+                  className={cn(
+                    'block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white',
+                    errors.lastName && 'border-red-600 focus:border-red-600 focus:ring-red-600'
+                  )}
                   placeholder='Doe'
                 />
-              </div>
+              </FormField>
 
-              <div className='space-y-2'>
-                <label htmlFor='company' className='block text-sm font-medium text-gray-700'>
-                  Company Name
-                </label>
+              <FormField label='Company Name' error={errors.company?.message}>
                 <input
+                  {...register('company')}
                   type='text'
-                  name='company'
                   id='company'
                   className='block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white'
                   placeholder='Your Company Ltd.'
                 />
-              </div>
+              </FormField>
 
-              <div className='space-y-2'>
-                <label htmlFor='phone' className='block text-sm font-medium text-gray-700'>
-                  Phone Number
-                </label>
+              <FormField label='Phone Number' error={errors.phone?.message}>
                 <input
+                  {...register('phone')}
                   type='tel'
-                  name='phone'
                   id='phone'
-                  className='block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white'
+                  className={cn(
+                    'block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white',
+                    errors.phone && 'border-red-600 focus:border-red-600 focus:ring-red-600'
+                  )}
                   placeholder='+1 (555) 000-0000'
                 />
-              </div>
+              </FormField>
             </div>
 
-            <div className='space-y-2'>
-              <label htmlFor='email' className='block text-sm font-medium text-gray-700'>
-                Email Address *
-              </label>
+            <FormField label='Email Address' error={errors.email?.message} required>
               <input
+                {...register('email')}
                 type='email'
-                name='email'
                 id='email'
-                required
-                className='block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white'
+                className={cn(
+                  'block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white',
+                  errors.email && 'border-red-600 focus:border-red-600 focus:ring-red-600'
+                )}
                 placeholder='john@example.com'
               />
-            </div>
+            </FormField>
           </div>
 
           {/* Project Details Section */}
           <div className='space-y-6'>
             <h3 className='text-2xl font-bold border-b border-gray-200/50 pb-3 mt-16'>Project Details</h3>
 
-            <div className='space-y-2'>
-              <label htmlFor='projectType' className='block text-sm font-medium text-gray-700'>
-                Project Type *
-              </label>
-              <Select name='projectType' required>
-                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6 text-gray-500'>
+            <FormField label='Project Type' error={errors.projectType?.message} required>
+              <Select
+                onValueChange={(value) => {
+                  setValue('projectType', value);
+                  trigger('projectType');
+                }}
+              >
+                <SelectTrigger
+                  className={cn(
+                    'w-full bg-white/90 hover:bg-white text-xl py-6 text-gray-500',
+                    errors.projectType && 'border-red-600 focus:border-red-600 focus:ring-red-600'
+                  )}
+                >
                   <SelectValue placeholder='Select a project type' />
                 </SelectTrigger>
                 <SelectContent className='text-xl text-gray-500'>
@@ -122,13 +195,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
                   <SelectItem value='other'>Other</SelectItem>
                 </SelectContent>
               </Select>
-            </div>
+            </FormField>
 
-            <div className='space-y-2'>
-              <label htmlFor='budget' className='block text-sm font-medium text-gray-700'>
-                Budget Range
-              </label>
-              <Select name='budget'>
+            <FormField label='Budget Range' error={errors.budget?.message}>
+              <Select
+                onValueChange={(value) => {
+                  setValue('budget', value);
+                  trigger('budget');
+                }}
+              >
                 <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6 text-gray-500'>
                   <SelectValue placeholder='Select a budget range' />
                 </SelectTrigger>
@@ -139,14 +214,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
                   <SelectItem value='enterprise'>$50,000+</SelectItem>
                 </SelectContent>
               </Select>
-            </div>
+            </FormField>
 
-            <div className='space-y-2'>
-              <label htmlFor='timeline' className='block text-sm font-medium text-gray-700'>
-                Desired Timeline
-              </label>
-              <Select name='timeline'>
-                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6 text-gray-500 '>
+            <FormField label='Desired Timeline' error={errors.timeline?.message}>
+              <Select
+                onValueChange={(value) => {
+                  setValue('timeline', value);
+                  trigger('timeline');
+                }}
+              >
+                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6 text-gray-500'>
                   <SelectValue placeholder='Select a timeline' />
                 </SelectTrigger>
                 <SelectContent className='text-xl text-gray-500'>
@@ -156,29 +233,32 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
                   <SelectItem value='planning'>6+ months</SelectItem>
                 </SelectContent>
               </Select>
-            </div>
+            </FormField>
 
-            <div className='space-y-2'>
-              <label htmlFor='message' className='block text-sm font-medium text-gray-700'>
-                Project Description *
-              </label>
+            <FormField label='Project Description' error={errors.message?.message} required>
               <textarea
-                name='message'
+                {...register('message')}
                 id='message'
                 rows={6}
-                required
-                className='block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white'
+                className={cn(
+                  'block w-full rounded-lg border border-gray-200 px-4 py-2.5 focus:border-blue-500 focus:ring-blue-500 transition duration-150 bg-white/90 hover:bg-white',
+                  errors.message && 'border-red-600 focus:border-red-600 focus:ring-red-600'
+                )}
                 placeholder="Please describe your project, including any specific requirements, features, or challenges you'd like to address."
               />
-            </div>
+            </FormField>
           </div>
 
           <div className='flex justify-center pt-4'>
             <button
               type='submit'
-              className='rounded-lg bg-blue-600 px-8 py-3 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 font-medium text-base shadow-sm hover:shadow-md'
+              disabled={isSubmitting}
+              className={cn(
+                'rounded-lg bg-blue-600 px-8 py-3 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 font-medium text-base shadow-sm hover:shadow-md',
+                isSubmitting && 'opacity-50 cursor-not-allowed'
+              )}
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </div>
         </form>
