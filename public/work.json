@@ -6,7 +6,7 @@
       "image": "/portfolio/harmonia.png",
       "alt": "Harmonia Connect",
       "dateCreated": "2024-02-06",
-      "tech": ["React", "Node", "Express", "MongoDB"]
+      "tech": ["React", "TailwindCSS"]
     },
     {
       "company": "Solace Solstice Counseling",
@@ -14,7 +14,7 @@
       "image": "/portfolio/solace.jpg",
       "alt": "Solace Solstice Counseling",
       "dateCreated": "2024-03-06",
-      "tech": ["React", "Node", "Express", "MongoDB"]
+      "tech": ["React", "TailwindCSS"]
     }
   ]
 }

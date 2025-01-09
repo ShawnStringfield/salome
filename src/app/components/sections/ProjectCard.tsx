@@ -38,14 +38,14 @@ const ProjectCard = ({ company, link, image, alt, dateCreated, tech, index, isLa
           {/* Project Title and Date */}
           <div className='flex justify-between items-baseline mb-8'>
             <h2 className={`text-4xl font-bold ${isEven ? 'text-white' : 'text-slate-900'}`}>{company}</h2>
-            <span className={isEven ? 'text-gray-400' : 'text-gray-500'}>{dateCreated}</span>
+            <h5 className={isEven ? 'text-gray-400' : 'text-gray-500'}>{dateCreated}</h5>
           </div>
         </div>
 
         {/* Project Screenshot with Link */}
         <div className='overflow-hidden'>
-          <Link href={link} target='_blank' className='block transition-transform hover:scale-[1.02] duration-500'>
-            <div className='relative -mb-1'>
+          <Link href={link} target='_blank'>
+            <div className='relative -mb-10'>
               <Image
                 src={image}
                 alt={alt}

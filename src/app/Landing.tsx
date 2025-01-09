@@ -6,8 +6,6 @@ import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
 import { ContactForm } from './components/sections/ContactForm';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
 import ProjectCard from './components/sections/ProjectCard';
 
 type LandingData = {
