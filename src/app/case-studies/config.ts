@@ -1,119 +1,41 @@
-export const CASE_STUDIES = [
-  {
-    slug: 'harmonia-connect',
-    company: 'Harmonia Connect',
-    link: '/case-studies/harmonia-connect',
-    image: '/portfolio/harmonia.png',
-    alt: 'Harmonia Connect',
-    dateCreated: '2024-02-06',
-    tech: ['React', 'TypeScript', 'TailwindCSS', 'Next.js'],
-    hasCaseStudy: true,
-    caseStudy: {
-      title: 'EcoConnect Platform: MVP Landing Page Case Study',
-      metadata: {
-        date: 'January 2025',
-        category: 'Web Development',
-        stage: 'Validation Stage',
-        duration: '5 weeks',
-      },
-      clientInformation: {
-        title: 'Client Information',
-        content:
-          'EcoConnect is a startup in the environmental technology sector, focusing on connecting community-driven environmental initiatives with potential volunteers and supporters. The founders identified a gap in the market for a platform that could unite local environmental projects with willing participants while tracking impact metrics. At the validation stage, they needed a compelling landing page to test market interest and gather early signups.',
-      },
-      projectOverview: {
-        title: 'Project Overview',
-        summary:
-          "Our team developed a conversion-optimized landing page for EcoConnect's beta launch.",
-        goals: [
-          'Validate market interest in the platform concept',
-          'Build a waitlist of potential early adopters',
-          'Gather initial user feedback on proposed features',
-          'Create a professional brand presence for investor presentations',
-        ],
-        outcome:
-          'The project resulted in a modern, responsive landing page with clear messaging and strong calls-to-action, built using Tailwind CSS for rapid development and easy iteration based on user feedback.',
-      },
-      problemStatement: {
-        title: 'Problem Statement',
-        challenges: [
-          {
-            title: 'No Web Presence',
-            description:
-              'As a new startup, they lacked a professional digital presence to showcase their concept to potential users and investors.',
-          },
-          {
-            title: 'Unclear Value Proposition',
-            description:
-              'While the platform concept was solid, they struggled to communicate its benefits concisely to different stakeholder groups.',
-          },
-          {
-            title: 'No User Validation',
-            description:
-              'They needed a way to gauge market interest and collect potential user information before committing to full platform development.',
-          },
-          {
-            title: 'Limited Budget',
-            description:
-              'As an early-stage startup, they required a solution that could be quickly modified based on user feedback without incurring significant development costs.',
-          },
-        ],
-      },
-      solution: {
-        title: 'Solution',
-        intro: 'We approached this project with a focus on rapid deployment and easy iteration:',
-        technicalStack: {
-          title: 'Technical Stack',
-          items: [
-            {
-              name: 'Frontend Framework',
-              description: 'React for component-based architecture',
-            },
-            {
-              name: 'Styling',
-              description: 'Tailwind CSS for utility-first styling and rapid prototyping',
-            },
-            {
-              name: 'Analytics',
-              description: 'Simple analytics integration for tracking user behavior',
-            },
-            {
-              name: 'Form Handling',
-              description: 'Serverless functions for waitlist signups',
-            },
-            {
-              name: 'Hosting',
-              description: 'Vercel for automatic deployments and easy A/B testing',
-            },
-          ],
-        },
-      },
-      results: {
-        title: 'Results',
-        timeframe: 'Within the first month after launch',
-        metrics: [
-          {
-            label: 'Waitlist Signups',
-            value: '500+',
-            suffix: '',
-          },
-          {
-            label: 'Conversion Rate',
-            value: '45',
-            suffix: '%',
-          },
-          {
-            label: 'Feedback Score',
-            value: '3.5',
-            suffix: '/5',
-          },
-          {
-            label: 'Page Load Time',
-            value: '2.1',
-            suffix: 's',
-          },
-        ],
-      },
-    },
-  },
-] as const;
+import workData from '../../../public/work.json';
+import { PortfolioItem, WorkData } from '../types/work';
+
+interface CaseStudyWithSlug extends PortfolioItem {
+  slug: string;
+}
+
+// Type assertion for the imported data
+const typedWorkData = workData as WorkData;
+
+// Convert portfolio items to case studies with slugs
+export const CASE_STUDIES: readonly CaseStudyWithSlug[] = typedWorkData.portfolio
+  .filter((item: PortfolioItem) => item.hasCaseStudy)
+  .map((item: PortfolioItem) => ({
+    ...item,
+    slug: item.link.split('/').pop() || '',
+  }));
+
+// Utility functions from the previous config
+export function isValidCaseStudy(slug: string): boolean {
+  // Exclude icon and asset requests
+  if (
+    slug.endsWith('.ico') ||
+    slug.endsWith('.png') ||
+    slug.includes('favicon') ||
+    slug.includes('apple-touch-icon')
+  ) {
+    return false;
+  }
+  return CASE_STUDIES.some(study => study.slug === slug);
+}
+
+export function getCaseStudy(slug: string): CaseStudyWithSlug {
+  const study = CASE_STUDIES.find(s => s.slug === slug);
+  if (!study) {
+    throw new Error(`Case study not found: ${slug}`);
+  }
+  return study;
+}
+
+export type { CaseStudyWithSlug };
