@@ -79,17 +79,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
       const form = document.querySelector('form[name="contact"]') as HTMLFormElement;
       if (!form) return;
 
-      // Create a new FormData instance and append all fields
+      // Create a new FormData instance
       const formData = new FormData(form);
 
-      // Manually trigger the native form submission
+      // Submit to Netlify
       fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
+        body: formData,
       })
         .then(() => {
-          // Redirect to success page (Netlify will handle this automatically)
           window.location.href = '/success';
         })
         .catch((error) => {
@@ -114,14 +112,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
           data-netlify='true'
           name='contact'
           method='POST'
-          action='/success'
-          data-netlify-honeypot='bot-field'
           className='w-full mx-auto space-y-8'
+          netlify-honeypot='bot-field'
         >
           <input type='hidden' name='form-name' value='contact' />
-          <div hidden>
-            <input name='bot-field' />
-          </div>
+          <p className='hidden'>
+            <label>
+              Don&apos;t fill this out if you&apos;re human: <input name='bot-field' />
+            </label>
+          </p>
 
           {/* Personal Information Section */}
           <div className='space-y-6'>
