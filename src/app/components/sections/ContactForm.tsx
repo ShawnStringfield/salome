@@ -73,7 +73,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async () => {
     try {
       // Get the form element
       const form = document.querySelector('form[name="contact"]') as HTMLFormElement;
