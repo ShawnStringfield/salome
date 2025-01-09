@@ -73,10 +73,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (data: FormValues, e: React.BaseSyntheticEvent | undefined) => {
+  const onSubmit = async (_data: FormValues, e: React.BaseSyntheticEvent | undefined) => {
     try {
       if (e) {
-        // Let the form submit naturally after validation
         e.target.submit();
       }
     } catch (error) {
