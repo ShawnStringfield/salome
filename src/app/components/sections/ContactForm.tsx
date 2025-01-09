@@ -73,9 +73,30 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async () => {
-    // Form validation passed, let the native form submission handle it
-    return true;
+  const onSubmit = async (data: FormValues) => {
+    try {
+      const formData = new URLSearchParams();
+      formData.append('form-name', 'contact');
+
+      // Append all form fields
+      Object.entries(data).forEach(([key, value]) => {
+        if (value) {
+          formData.append(key, value.toString());
+        }
+      });
+
+      // Submit to Netlify
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData.toString(),
+      });
+
+      // Redirect to success page
+      window.location.href = '/success';
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
   };
 
   return (
