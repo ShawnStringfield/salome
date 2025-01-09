@@ -73,14 +73,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: FormValues, e: React.BaseSyntheticEvent | undefined) => {
     try {
-      // Get the form element
-      const form = document.querySelector('form[name="contact"]') as HTMLFormElement;
-      if (!form) return;
-
-      // Manually submit the form after validation passes
-      form.submit();
+      if (e) {
+        // Let the form submit naturally after validation
+        e.target.submit();
+      }
     } catch (error) {
       console.error('Form submission error:', error);
     }
@@ -100,9 +98,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
           name='contact'
           method='POST'
           data-netlify='true'
-          className='w-full mx-auto space-y-8'
           action='/success'
           netlify-honeypot='bot-field'
+          className='w-full mx-auto space-y-8'
         >
           <input type='hidden' name='form-name' value='contact' />
           <p className='hidden'>
