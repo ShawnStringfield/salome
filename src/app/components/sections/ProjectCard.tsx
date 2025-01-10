@@ -47,12 +47,14 @@ const ProjectCard = ({
                 </span>
               ))}
             </div>
-            <Link href={link} className='hidden md:block'>
-              <Button variant='ghost' className='group px-0'>
-                View Case Study
-                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-              </Button>
-            </Link>
+            {hasCaseStudy && (
+              <Link href={link} className='hidden md:block'>
+                <Button variant='ghost' className='group px-0'>
+                  View Case Study
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Project Title */}
@@ -83,13 +85,15 @@ const ProjectCard = ({
 
             {/* Mobile Navigation */}
             <div className='md:hidden flex justify-between items-center mt-4'>
-              <Link href={link}>
-                <Button variant='ghost' className='group px-0'>
-                  View Case Study
-                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-                </Button>
-              </Link>
-              <div className='flex gap-2'>
+              {hasCaseStudy && (
+                <Link href={link}>
+                  <Button variant='ghost' className='group px-0'>
+                    View Case Study
+                    <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                  </Button>
+                </Link>
+              )}
+              <div className='flex gap-2 ml-auto'>
                 <Button
                   variant='default'
                   size='icon'
