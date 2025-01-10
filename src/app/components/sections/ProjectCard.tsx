@@ -24,7 +24,6 @@ const ProjectCard = ({
   image,
   alt,
   tech,
-  index,
   isLast,
   hasCaseStudy,
   onPrevious,

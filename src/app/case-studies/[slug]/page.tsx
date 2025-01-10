@@ -69,7 +69,7 @@ export default function Page({ params }: PageProps): JSX.Element {
           </div>
         </div>
 
-        {/* Client Information */}
+        {/* Client Informations */}
         <section className='py-16 border-t border-gray-200'>
           <h2 className='text-3xl font-bold mb-8'>{caseStudy.clientInformation.title}</h2>
           <p className='text-lg text-gray-600 leading-relaxed'>
