@@ -66,6 +66,7 @@ export interface CaseStudy {
 export interface PortfolioItem {
   company: string;
   link: string;
+  url?: string;
   image: string;
   alt: string;
   dateCreated: string;

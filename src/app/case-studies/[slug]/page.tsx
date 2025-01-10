@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
 import type { PortfolioItem, WorkData } from '@/app/types/work';
 import Image from 'next/image';
+import { Button } from '@/app/components/ui/button';
 
 interface PageProps {
   params: {
@@ -78,8 +79,13 @@ export default function Page({ params }: PageProps): JSX.Element {
     <div className='min-h-screen bg-slate-50'>
       <MaxWidthContainer className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
         {/* Hero Section */}
-        <div className='py-16'>
-          <h1 className='text-6xl font-bold text-slate-900 mb-6'>{caseStudy.title}</h1>
+        <div className='py-16 text-center'>
+          <h1 className='text-6xl font-bold text-slate-900 mb-4'>{caseStudy.title}</h1>
+          <Button variant='ghost' size='lg' className='group text-lg font-medium !p-0 mt-6' asChild>
+            <a href='https://harmoniaconnect.org' target='_blank' rel='noopener noreferrer'>
+              Visit Website
+            </a>
+          </Button>
         </div>
       </MaxWidthContainer>
 
