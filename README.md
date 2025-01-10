@@ -91,28 +91,11 @@ src/
 - Uses Tailwind's utility classes for styling
 - Includes comprehensive Git hooks for code quality
 
-## 🔐 Environment Variables
-
-Required environment variables:
-
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `NOTION_API_KEY`
-- `RESEND_API_KEY`
-
 ## 📚 Additional Tools
 
 - NGrok for local tunneling
 - NextUI components library integration
 - Custom Google Font optimization with `next/font`
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## 📄 License
 
