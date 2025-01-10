@@ -9,13 +9,13 @@
     "lint": "next lint",
     "serve": "nodemon src/server.js",
     "lint-staged": "lint-staged",
-    "prepare": "husky"
+    "prepare": "husky",
+    "type-check": "tsc --noEmit"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix --max-warnings=0",
       "prettier --write",
-      "tsc --noEmit"
+      "eslint --fix --max-warnings=0"
     ]
   },
   "dependencies": {

@@ -1,7 +1,6 @@
-import React from 'react';
 import { MaxWidthContainer } from '@/app/components/blocks/MaxWidthContainer';
 import { notFound } from 'next/navigation';
-import { CASE_STUDIES } from '../config';
+import { CASE_STUDIES, CaseStudyWithSlug } from '../config';
 import type { Metadata } from 'next';
 
 interface PageProps {
@@ -12,7 +11,6 @@ interface PageProps {
 
 // Validate if a slug is a valid case study
 function isValidCaseStudy(slug: string): boolean {
-  // Exclude icon and asset requests
   if (
     slug.endsWith('.ico') ||
     slug.endsWith('.png') ||
@@ -21,23 +19,23 @@ function isValidCaseStudy(slug: string): boolean {
   ) {
     return false;
   }
-  return CASE_STUDIES.some(study => study.slug === slug);
+  return CASE_STUDIES.some((study: CaseStudyWithSlug) => study.slug === slug);
 }
 
-function getCaseStudy(slug: string) {
+function getCaseStudy(slug: string): CaseStudyWithSlug {
   if (!isValidCaseStudy(slug)) {
     notFound();
   }
-  const study = CASE_STUDIES.find(s => s.slug === slug);
-  if (!study) {
+  const study = CASE_STUDIES.find((s: CaseStudyWithSlug) => s.slug === slug);
+  if (!study || !study.caseStudy) {
     notFound();
   }
   return study;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const study = CASE_STUDIES.find(s => s.slug === params.slug);
-  if (!study) {
+  const study = CASE_STUDIES.find((s: CaseStudyWithSlug) => s.slug === params.slug);
+  if (!study || !study.caseStudy) {
     return {
       title: 'Case Study Not Found',
     };
@@ -51,6 +49,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default function Page({ params }: PageProps): JSX.Element {
   const project = getCaseStudy(params.slug);
+
+  if (!project.caseStudy) {
+    notFound();
+  }
+
   const { caseStudy } = project;
 
   return (
@@ -69,7 +72,7 @@ export default function Page({ params }: PageProps): JSX.Element {
           </div>
         </div>
 
-        {/* Client Informations */}
+        {/* Client Information */}
         <section className='py-16 border-t border-gray-200'>
           <h2 className='text-3xl font-bold mb-8'>{caseStudy.clientInformation.title}</h2>
           <p className='text-lg text-gray-600 leading-relaxed'>

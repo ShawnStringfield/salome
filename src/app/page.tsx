@@ -1,4 +1,3 @@
-import React from 'react';
 import { jsonImporter } from './lib/jsonImporter';
 import { Landing } from './Landing';
 
