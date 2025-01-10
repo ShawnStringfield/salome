@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "serve": "nodemon src/server.js",
+    "lint-staged": "lint-staged",
     "prepare": "husky"
   },
   "lint-staged": {
