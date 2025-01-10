@@ -30,7 +30,7 @@ const ProjectCard = ({
   const isEven = index % 2 === 0;
 
   return (
-    <div className={`relative w-full ${isEven ? 'bg-slate-900' : 'bg-gray-50'}`}>
+    <div className={`relative w-full ${isEven ? 'bg-slate-900' : 'bg-slate-100'}`}>
       <div className='relative max-w-4xl mx-auto px-8'>
         {/* Content Section */}
         <div className='pt-16 pb-8'>
