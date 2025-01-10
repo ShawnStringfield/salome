@@ -9,7 +9,7 @@
       "tech": ["React", "TypeScript", "TailwindCSS", "Next.js"],
       "hasCaseStudy": true,
       "caseStudy": {
-        "title": "EcoConnect Platform: MVP Landing Page Case Study",
+        "title": "Harmonia Connect Platform: MVP Landing Page Case Study",
         "metadata": {
           "date": "January 2025",
           "category": "Web Development",
@@ -18,11 +18,11 @@
         },
         "clientInformation": {
           "title": "Client Information",
-          "content": "EcoConnect is a startup in the environmental technology sector, focusing on connecting community-driven environmental initiatives with potential volunteers and supporters. The founders identified a gap in the market for a platform that could unite local environmental projects with willing participants while tracking impact metrics. At the validation stage, they needed a compelling landing page to test market interest and gather early signups."
+          "content": "Harmonia Connect is a startup in the environmental technology sector, focusing on connecting community-driven environmental initiatives with potential volunteers and supporters. The founders identified a gap in the market for a platform that could unite local environmental projects with willing participants while tracking impact metrics. At the validation stage, they needed a compelling landing page to test market interest and gather early signups."
         },
         "projectOverview": {
           "title": "Project Overview",
-          "summary": "Our team developed a conversion-optimized landing page for EcoConnect's beta launch.",
+          "summary": "Our team developed a conversion-optimized landing page for Harmonia Connect's beta launch.",
           "goals": [
             "Validate market interest in the platform concept",
             "Build a waitlist of potential early adopters",
