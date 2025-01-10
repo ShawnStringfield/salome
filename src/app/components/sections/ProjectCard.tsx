@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/app/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ProjectCardProps {
   company: string;
@@ -14,6 +14,8 @@ interface ProjectCardProps {
   index: number;
   isLast?: boolean;
   hasCaseStudy?: boolean;
+  onPrevious?: () => void;
+  onNext?: () => void;
 }
 
 const ProjectCard = ({
@@ -21,55 +23,94 @@ const ProjectCard = ({
   link,
   image,
   alt,
-  dateCreated,
   tech,
   index,
   isLast,
   hasCaseStudy,
+  onPrevious,
+  onNext,
 }: ProjectCardProps) => {
-  const isEven = index % 2 === 0;
-
   return (
-    <div className={`relative w-full ${isEven ? 'bg-slate-900' : 'bg-slate-100'}`}>
+    <div className='relative w-full bg-slate-100'>
       <div className='relative max-w-4xl mx-auto px-8'>
         {/* Content Section */}
         <div className='pt-16 pb-8'>
-          {/* Tech Stack Pills */}
-          <div className='flex flex-wrap gap-2 mb-6'>
-            {tech.map((item, index) => (
-              <span
-                key={index}
-                className={`px-4 py-1 rounded-full border ${
-                  isEven ? 'border-gray-700 text-gray-300' : 'border-gray-200 text-gray-600'
-                } text-sm`}
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-
-          {/* Project Title and Date */}
-          <div className='flex justify-between items-baseline mb-4'>
-            <h2 className={`text-4xl font-bold ${isEven ? 'text-white' : 'text-slate-900'}`}>
-              {company}
-            </h2>
-            <h5 className={isEven ? 'text-gray-400' : 'text-gray-500'}>{dateCreated}</h5>
-          </div>
-
-          {/* Case Study Button */}
-          {hasCaseStudy && (
-            <div className='mb-8'>
-              <Link href={link}>
-                <Button
-                  variant={isEven ? 'outline' : 'default'}
-                  className={`group ${isEven ? 'border-gray-700 text-gray-300 hover:bg-gray-800' : ''}`}
+          {/* Tech Stack Pills and Case Study Button (Desktop) */}
+          <div className='flex justify-between items-center mb-6'>
+            <div className='flex flex-wrap gap-2'>
+              {tech.map((item, index) => (
+                <span
+                  key={index}
+                  className='px-4 py-1 rounded-full border border-gray-200 text-gray-600 text-sm'
                 >
+                  {item}
+                </span>
+              ))}
+            </div>
+            <Link href={link} className='hidden md:block'>
+              <Button variant='ghost' className='group px-0'>
+                View Case Study
+                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+              </Button>
+            </Link>
+          </div>
+
+          {/* Project Title */}
+          <div className='mb-4'>
+            <div className='flex justify-between items-center'>
+              <h2 className='text-3xl md:text-4xl font-bold text-slate-900'>{company}</h2>
+              <div className='hidden md:flex gap-2'>
+                <Button
+                  variant='default'
+                  size='icon'
+                  className='h-8 w-8 rounded-full'
+                  onClick={onPrevious}
+                  aria-label='Previous project'
+                >
+                  <ChevronLeft className='h-4 w-4' />
+                </Button>
+                <Button
+                  variant='default'
+                  size='icon'
+                  className='h-8 w-8 rounded-full'
+                  onClick={onNext}
+                  aria-label='Next project'
+                >
+                  <ChevronRight className='h-4 w-4' />
+                </Button>
+              </div>
+            </div>
+
+            {/* Mobile Navigation */}
+            <div className='md:hidden flex justify-between items-center mt-4'>
+              <Link href={link}>
+                <Button variant='ghost' className='group px-0'>
                   View Case Study
                   <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
                 </Button>
               </Link>
+              <div className='flex gap-2'>
+                <Button
+                  variant='default'
+                  size='icon'
+                  className='h-8 w-8 rounded-full'
+                  onClick={onPrevious}
+                  aria-label='Previous project'
+                >
+                  <ChevronLeft className='h-4 w-4' />
+                </Button>
+                <Button
+                  variant='default'
+                  size='icon'
+                  className='h-8 w-8 rounded-full'
+                  onClick={onNext}
+                  aria-label='Next project'
+                >
+                  <ChevronRight className='h-4 w-4' />
+                </Button>
+              </div>
             </div>
-          )}
+          </div>
         </div>
 
         {/* Project Screenshot with Link */}

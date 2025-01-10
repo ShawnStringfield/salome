@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { MaxWidthContainer } from './components/blocks/MaxWidthContainer';
 import { HeroSplit } from './components/sections/HeroSplit';
 import { Services } from './components/sections/Services';
-import ProjectCard from './components/sections/ProjectCard';
+import { ProjectSlider } from './components/sections/ProjectSlider';
 import { ContactForm } from './components/sections/ContactForm';
 import work from '../../public/work.json';
 
@@ -66,22 +66,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <div>
-          {portfolio.map((item, index) => (
-            <ProjectCard
-              key={index}
-              company={item.company}
-              link={item.link}
-              image={item.image}
-              alt={item.alt}
-              dateCreated={item.dateCreated}
-              tech={item.tech}
-              hasCaseStudy={item.hasCaseStudy}
-              index={index}
-              isLast={index === portfolio.length - 1}
-            />
-          ))}
-        </div>
+        <ProjectSlider projects={portfolio} />
       </motion.div>
 
       <motion.div
