@@ -36,7 +36,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <MaxWidthContainer>
+        <MaxWidthContainer className='mx-4 md:mx-8 lg:mx-16 xl:mx-auto max-w-7xl'>
           <HeroSplit
             title={landingData.title}
             tagline={landingData.tagline}
@@ -50,8 +50,8 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <div className='bg-slate-200 bg-[url("/radial.svg")] bg-cover py-8'>
-          <MaxWidthContainer>
+        <div className='bg-slate-200 bg-[url("/radial.svg")] bg-cover py-16'>
+          <MaxWidthContainer className='mx-4 md:mx-8 lg:mx-16 xl:mx-auto max-w-7xl'>
             <Services
               services={landingData.services ?? []}
               servicesTagline={landingData.servicesTagline || ''}
@@ -74,7 +74,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
         transition={{ duration: 1 }}
       >
         <div className='bg-slate-200' id='contact'>
-          <MaxWidthContainer>
+          <MaxWidthContainer className='mx-4 md:mx-8 lg:mx-16 xl:mx-auto max-w-7xl'>
             <ContactForm title="Let's Create Something Together" />
           </MaxWidthContainer>
         </div>

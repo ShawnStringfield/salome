@@ -58,7 +58,7 @@ export const Services = ({
           {services?.map((service, index) => {
             return (
               <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} key={index}>
-                <div className='pb-16 sm:pb-8 text-center sm:text-left'>
+                <div className='text-center sm:text-left'>
                   {getIcon(service.icon)}
                   <h6 className='text-2xl mb-2'>{service.title}</h6>
                   <p className=''>{service.description}</p>
