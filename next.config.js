@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -11,4 +13,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

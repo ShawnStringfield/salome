@@ -60,23 +60,28 @@
             "items": [
               {
                 "name": "Frontend Framework",
-                "description": "React for component-based architecture"
+                "description": "React for component-based architecture",
+                "iconName": "Code2"
               },
               {
                 "name": "Styling",
-                "description": "Tailwind CSS for utility-first styling and rapid prototyping"
+                "description": "Tailwind CSS for utility-first styling and rapid prototyping",
+                "iconName": "Paintbrush"
               },
               {
                 "name": "Analytics",
-                "description": "Simple analytics integration for tracking user behavior"
+                "description": "Simple analytics integration for tracking user behavior",
+                "iconName": "BarChart"
               },
               {
                 "name": "Form Handling",
-                "description": "Serverless functions for waitlist signups"
+                "description": "Serverless functions for waitlist signups",
+                "iconName": "FormInput"
               },
               {
                 "name": "Hosting",
-                "description": "Vercel for automatic deployments and easy A/B testing"
+                "description": "Vercel for automatic deployments and easy A/B testing",
+                "iconName": "Cloud"
               }
             ]
           }

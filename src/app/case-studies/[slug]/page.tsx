@@ -7,6 +7,15 @@ import { motion } from 'framer-motion';
 import type { PortfolioItem, WorkData } from '@/app/types/work';
 import Image from 'next/image';
 import { Button } from '@/app/components/ui/button';
+import { Code2, Paintbrush, BarChart, FormInput, Cloud } from 'lucide-react';
+
+const iconMap = {
+  Code2,
+  Paintbrush,
+  BarChart,
+  FormInput,
+  Cloud,
+} as const;
 
 interface PageProps {
   params: {
@@ -110,16 +119,16 @@ export default function Page({ params }: PageProps): JSX.Element {
       {/* Metadata Section */}
       <div className='border-t border-b border-slate-200 bg-white'>
         <div className='mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl'>
-          <dl className='grid grid-cols-2 md:grid-cols-4 gap-x-16 gap-y-6 py-12 justify-items-center'>
+          <dl className='grid grid-cols-2 md:grid-cols-4 gap-6 py-12'>
             {Object.entries(caseStudy.metadata).map(([key, value]) => (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
                 key={key}
-                className='space-y-2 text-left'
+                className='flex flex-col items-center text-center'
               >
-                <dt className='text-sm font-medium text-slate-500 uppercase'>{key}</dt>
+                <dt className='text-sm font-medium text-slate-500 uppercase mb-1'>{key}</dt>
                 <dd className='text-base font-medium text-slate-900'>{String(value)}</dd>
               </motion.div>
             ))}
@@ -127,9 +136,9 @@ export default function Page({ params }: PageProps): JSX.Element {
         </div>
       </div>
 
-      <MaxWidthContainer className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
+      <MaxWidthContainer className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl mt-16'>
         {/* Client Information */}
-        <section className='py-20'>
+        <section className='py-16'>
           <div>
             <h2 className='text-4xl font-bold mb-8 text-slate-900'>
               {caseStudy.clientInformation.title}
@@ -141,7 +150,7 @@ export default function Page({ params }: PageProps): JSX.Element {
         </section>
 
         {/* Project Overview */}
-        <section className='py-20'>
+        <section className='py-16'>
           <div className='bg-white rounded-2xl shadow-sm p-12 border border-slate-200'>
             <h2 className='text-4xl font-bold mb-8 text-slate-900'>
               {caseStudy.projectOverview.title}
@@ -170,15 +179,17 @@ export default function Page({ params }: PageProps): JSX.Element {
               </ul>
             </div>
 
-            <div className='bg-slate-50 p-8 rounded-xl'>
-              <h3 className='text-2xl font-bold mb-4 text-slate-900'>Outcome</h3>
-              <p className='text-lg text-slate-700'>{caseStudy.projectOverview.outcome}</p>
+            <div className='-mx-12 bg-slate-50 px-12 py-8 border-t border-b border-slate-200'>
+              <div className='max-w-none'>
+                <h3 className='text-2xl font-bold mb-4 text-slate-900'>Outcome</h3>
+                <p className='text-lg text-slate-700'>{caseStudy.projectOverview.outcome}</p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Problem Statement */}
-        <section className='py-20'>
+        <section className='py-16'>
           <h2 className='text-4xl font-bold mb-12 text-slate-900'>
             {caseStudy.problemStatement.title}
           </h2>
@@ -191,10 +202,7 @@ export default function Page({ params }: PageProps): JSX.Element {
                 key={index}
                 className='bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200'
               >
-                <div className='flex items-center mb-6'>
-                  <span className='w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center mr-4'>
-                    <span className='text-xl font-bold text-slate-600'>{index + 1}</span>
-                  </span>
+                <div className='mb-6'>
                   <h3 className='text-2xl font-bold text-slate-900'>{challenge.title}</h3>
                 </div>
                 <p className='text-lg text-slate-600 leading-relaxed'>{challenge.description}</p>
@@ -217,10 +225,26 @@ export default function Page({ params }: PageProps): JSX.Element {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1 }}
                   key={index}
-                  className='bg-slate-800/50 backdrop-blur-lg p-6 rounded-xl hover:bg-slate-800/70 transition-colors duration-300'
+                  className='group bg-slate-800/50 backdrop-blur-lg p-8 rounded-xl hover:bg-slate-800/70 transition-all duration-300'
                 >
-                  <h4 className='text-xl font-bold mb-3'>{item.name}</h4>
-                  <p className='text-slate-300'>{item.description}</p>
+                  <div className='flex items-start space-x-4'>
+                    <div className='flex items-center justify-center w-12 h-12 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors duration-300'>
+                      {(() => {
+                        const Icon = iconMap[item.iconName as keyof typeof iconMap];
+                        return Icon ? (
+                          <Icon className='w-6 h-6 text-slate-300 group-hover:text-white transition-colors duration-300' />
+                        ) : null;
+                      })()}
+                    </div>
+                    <div className='flex-1'>
+                      <h4 className='text-xl font-bold mb-2 text-slate-50 group-hover:text-white transition-colors duration-300'>
+                        {item.name}
+                      </h4>
+                      <p className='text-slate-400 group-hover:text-slate-300 transition-colors duration-300'>
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>

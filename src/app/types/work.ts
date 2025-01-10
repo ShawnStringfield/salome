@@ -30,6 +30,7 @@ export interface ProblemStatement {
 export interface TechnicalStackItem {
   name: string;
   description: string;
+  iconName: string;
 }
 
 export interface Solution {

@@ -17,5 +17,16 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": ["node_modules/", ".next/", "out/", "public/", "*.config.js", "*.config.ts"]
+  "ignorePatterns": ["node_modules/", ".next/", "out/", "public/"],
+  "overrides": [
+    {
+      "files": ["*.config.js", "*.config.ts"],
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
 }
