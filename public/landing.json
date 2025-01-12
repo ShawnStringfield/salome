@@ -6,24 +6,24 @@
   "servicesTagline": "Connecting users through visually stunning experiences",
   "services": [
     {
-      "icon": "TbRulerMeasure",
-      "title": "Design",
-      "description": "I design digital products that are intuitive, easy to use, and delightful to interact with."
+      "icon": "Braces",
+      "title": "Web Design & Development",
+      "description": "Beautiful, responsive websites that make a lasting impression and drive results."
     },
     {
-      "icon": "TbPhotoEdit",
-      "title": "Content Management",
-      "description": "Imagine updating your website as easily as posting on Facebook."
+      "icon": "PanelsTopLeft",
+      "title": "Custom Software Solutions",
+      "description": "Tailored web applications that solve your unique business challenges."
     },
     {
-      "icon": "RiPagesLine",
+      "icon": "LayoutDashboard",
       "title": "Landing Pages",
-      "description": "We design landing pages that do more than just look good—they're crafted to turn visitors into customers."
+      "description": "High-converting landing pages designed to transform visitors into customers."
     },
     {
-      "icon": "CgWebsite",
+      "icon": "SquareChartGantt",
       "title": "Marketing Websites",
-      "description": "Our marketing websites are like having a seasoned salesperson who works 24/7."
+      "description": "Strategic website design that tells your story and grows your business 24/7."
     }
   ],
   "whyChooseUsDescription": "I stand at the crossroads of technology and human connection, leading the way in a digital era that values simplicity, emotional engagement, and a harmonious relationship through effortless transactions. My focus is on creating digital experiences that reflect my core values and deeply resonate with audiences. This strategy aims to foster genuine human connections in a world increasingly driven by technology.",

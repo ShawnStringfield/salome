@@ -9,7 +9,16 @@ import { ContactForm } from './components/sections/ContactForm';
 import work from '../../public/work.json';
 
 interface Service {
-  icon: string;
+  icon:
+    | 'Layout'
+    | 'Code2'
+    | 'FileCode'
+    | 'Globe'
+    | 'ChevronsLeftRightEllipsis'
+    | 'Braces'
+    | 'PanelsTopLeft'
+    | 'LayoutDashboard'
+    | 'SquareChartGantt';
   title: string;
   description: string;
 }

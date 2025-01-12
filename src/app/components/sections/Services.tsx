@@ -1,73 +1,59 @@
 import { motion } from 'framer-motion';
+import {
+  Layout,
+  Code2,
+  FileCode,
+  Globe,
+  ChevronsLeftRightEllipsis,
+  Braces,
+  PanelsTopLeft,
+  LayoutDashboard,
+  SquareChartGantt,
+} from 'lucide-react';
 
-import { TbRulerMeasure } from 'react-icons/tb';
-import { TbPhotoEdit } from 'react-icons/tb';
-import { RiPagesLine } from 'react-icons/ri';
-import { CgWebsite } from 'react-icons/cg';
-
-const getIcon = (icon: string) => {
-  const color = 'text-slate-400';
-  switch (icon) {
-    case 'TbRulerMeasure':
-      return (
-        <div className='flex justify-center sm:justify-start mb-4'>
-          <TbRulerMeasure className={`text-4xl ${color}`} />
-        </div>
-      );
-    case 'TbPhotoEdit':
-      return (
-        <div className='flex justify-center sm:justify-start mb-4'>
-          <TbPhotoEdit className={`text-4xl ${color}`} />
-        </div>
-      );
-    case 'RiPagesLine':
-      return (
-        <div className='flex justify-center sm:justify-start mb-4'>
-          <RiPagesLine className={`text-4xl ${color}`} />
-        </div>
-      );
-    case 'CgWebsite':
-      return (
-        <div className='flex justify-center sm:justify-start mb-4'>
-          <CgWebsite className={`text-4xl ${color}`} />
-        </div>
-      );
-    default:
-      return null;
-  }
+const iconMap = {
+  Layout: Layout,
+  Code2: Code2,
+  FileCode: FileCode,
+  Globe: Globe,
+  ChevronsLeftRightEllipsis: ChevronsLeftRightEllipsis,
+  Braces: Braces,
+  PanelsTopLeft: PanelsTopLeft,
+  LayoutDashboard: LayoutDashboard,
+  SquareChartGantt: SquareChartGantt,
 };
 
 export const Services = ({
   services,
   servicesTagline,
 }: {
-  services: Array<{ icon: string; title: string; description: string }>;
+  services: Array<{ title: string; description: string; icon: keyof typeof iconMap }>;
   servicesTagline: string;
 }) => {
   return (
-    <>
-      <h2 className='text-5xl lg:hidden mb-8 text-center '>Services</h2>
-      <h2 className='text-4xl text-center md: lg:hidden mb-16'>{servicesTagline}</h2>
-      <div className='flex'>
-        <div className='mr-8 hidden lg:block'>
-          <h4>Services</h4>
-          <h2 className='text-5xl'>{servicesTagline}</h2>
-        </div>
-
-        <div className='block sm:grid grid-cols-2 gap-8'>
-          {services?.map((service, index) => {
-            return (
-              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} key={index}>
-                <div className='text-center sm:text-left'>
-                  {getIcon(service.icon)}
-                  <h6 className='text-2xl mb-2'>{service.title}</h6>
-                  <p className=''>{service.description}</p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+    <div className='min-h-[400px] flex flex-col lg:flex-row items-start lg:items-center gap-8'>
+      <div className='lg:w-1/3 text-center lg:text-left mb-12 lg:mb-0'>
+        <h4>Services</h4>
+        <h2 className='text-4xl'>{servicesTagline}</h2>
       </div>
-    </>
+
+      <div className='block sm:grid grid-cols-2 gap-8 lg:w-2/3'>
+        {services?.map((service, index) => {
+          const Icon = iconMap[service.icon];
+          return (
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} key={index}>
+              <div className='text-left sm:text-left text-center my-12 sm:my-0 space-y-4'>
+                <Icon
+                  className='h-8 w-8 text-brand-emphasis mb-2 mx-auto sm:mx-0'
+                  strokeWidth={2}
+                />
+                <h6 className='text-2xl'>{service.title}</h6>
+                <p className=''>{service.description}</p>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
   );
 };

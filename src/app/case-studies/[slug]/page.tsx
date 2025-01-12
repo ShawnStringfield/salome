@@ -163,10 +163,10 @@ export default function Page({ params }: PageProps): JSX.Element {
                 </ul>
               </div>
 
-              <div className='-mx-12 bg-slate-50 px-12 py-8 border-t border-b border-slate-200'>
+              <div className='-mx-12 bg-slate-800 px-12 py-8 border-t border-b border-slate-700/60'>
                 <div className='max-w-none'>
-                  <h3 className='text-2xl font-bold mb-4 text-slate-900'>Outcome</h3>
-                  <p className='text-lg text-slate-700'>{caseStudy.projectOverview.outcome}</p>
+                  <h3 className='text-2xl font-bold mb-4 text-slate-200'>Outcome</h3>
+                  <p className='text-lg text-slate-300'>{caseStudy.projectOverview.outcome}</p>
                 </div>
               </div>
             </div>
