@@ -73,6 +73,7 @@ export interface PortfolioItem {
   dateCreated: string;
   tech: string[];
   hasCaseStudy: boolean;
+  websiteUrl?: string;
   caseStudy?: CaseStudy;
 }
 

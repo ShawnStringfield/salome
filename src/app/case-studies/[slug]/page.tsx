@@ -6,16 +6,6 @@ import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
 import type { PortfolioItem, WorkData } from '@/app/types/work';
 import Image from 'next/image';
-import { Button } from '@/app/components/ui/button';
-import { Code2, Paintbrush, BarChart, FormInput, Cloud } from 'lucide-react';
-
-const iconMap = {
-  Code2,
-  Paintbrush,
-  BarChart,
-  FormInput,
-  Cloud,
-} as const;
 
 interface PageProps {
   params: {
@@ -85,22 +75,35 @@ export default function Page({ params }: PageProps): JSX.Element {
   const { caseStudy } = project;
 
   return (
-    <div className='min-h-screen bg-slate-50'>
+    <div className='min-h-screen'>
       <MaxWidthContainer className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
         {/* Hero Section */}
         <div className='py-16 text-center'>
-          <h1 className='text-6xl font-bold text-slate-900 mb-4'>{caseStudy.title}</h1>
-          <Button variant='ghost' size='lg' className='group text-lg font-medium !p-0 mt-6' asChild>
-            <a href='https://harmoniaconnect.org' target='_blank' rel='noopener noreferrer'>
-              Visit Website
-            </a>
-          </Button>
+          <h1 className='text-6xl mb-4'>{caseStudy.title}</h1>
         </div>
       </MaxWidthContainer>
 
-      {/* Project Screenshot */}
-      <div className='relative w-full bg-slate-100 pt-24'>
-        <div className='relative max-w-4xl mx-auto px-8'>
+      {/* Project Screenshot with Metadata */}
+      <div className='relative w-full bg-slate-200 pt-16'>
+        <div className='relative max-w-4xl mx-auto '>
+          {/* Metadata Section */}
+          <dl className='grid grid-cols-2 gap-6 mb-4'>
+            {Object.entries(caseStudy.metadata)
+              .filter(([key]) => key === 'date' || key === 'duration')
+              .map(([key, value]) => (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  key={key}
+                  className={`flex flex-col ${key === 'date' ? 'items-start' : 'items-end'}`}
+                >
+                  <dt className='text-sm font-medium text-slate-500 uppercase mb-1'>{key}</dt>
+                  <dd className='text-base font-medium text-slate-900'>{String(value)}</dd>
+                </motion.div>
+              ))}
+          </dl>
+
           <div className='overflow-hidden'>
             <div className='relative -mb-10'>
               <Image
@@ -116,30 +119,10 @@ export default function Page({ params }: PageProps): JSX.Element {
         </div>
       </div>
 
-      {/* Metadata Section */}
-      <div className='border-t border-b border-slate-200 bg-white'>
-        <div className='mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl'>
-          <dl className='grid grid-cols-2 md:grid-cols-4 gap-6 py-12'>
-            {Object.entries(caseStudy.metadata).map(([key, value]) => (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                key={key}
-                className='flex flex-col items-center text-center'
-              >
-                <dt className='text-sm font-medium text-slate-500 uppercase mb-1'>{key}</dt>
-                <dd className='text-base font-medium text-slate-900'>{String(value)}</dd>
-              </motion.div>
-            ))}
-          </dl>
-        </div>
-      </div>
-
       <MaxWidthContainer className='mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl mt-16'>
         {/* Client Information */}
         <section className='py-16'>
-          <div>
+          <div className='max-w-4xl mx-auto'>
             <h2 className='text-4xl font-bold mb-8 text-slate-900'>
               {caseStudy.clientInformation.title}
             </h2>
@@ -151,106 +134,76 @@ export default function Page({ params }: PageProps): JSX.Element {
 
         {/* Project Overview */}
         <section className='py-16'>
-          <div className='bg-white rounded-2xl shadow-sm p-12 border border-slate-200'>
-            <h2 className='text-4xl font-bold mb-8 text-slate-900'>
-              {caseStudy.projectOverview.title}
-            </h2>
-            <p className='text-xl text-slate-600 mb-12 leading-relaxed'>
-              {caseStudy.projectOverview.summary}
-            </p>
+          <div className='max-w-4xl mx-auto'>
+            <div className='bg-white rounded-2xl shadow-sm p-12 border border-slate-200'>
+              <h2 className='text-4xl font-bold mb-8 text-slate-900'>
+                {caseStudy.projectOverview.title}
+              </h2>
+              <p className='text-xl text-slate-600 mb-12 leading-relaxed'>
+                {caseStudy.projectOverview.summary}
+              </p>
 
-            <div className='mb-12'>
-              <h3 className='text-2xl font-bold mb-6 text-slate-900'>Project Goals</h3>
-              <ul className='grid gap-4'>
-                {caseStudy.projectOverview.goals.map((goal: string, index: number) => (
-                  <motion.li
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    key={index}
-                    className='flex items-start space-x-3'
-                  >
-                    <span className='flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center mt-1'>
-                      <span className='w-2 h-2 rounded-full bg-slate-600' />
-                    </span>
-                    <span className='text-lg text-slate-700'>{goal}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
+              <div className='mb-12'>
+                <h3 className='text-2xl font-bold mb-6 text-slate-900'>Project Goals</h3>
+                <ul className='grid gap-4'>
+                  {caseStudy.projectOverview.goals.map((goal: string, index: number) => (
+                    <motion.li
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      key={index}
+                      className='flex items-start space-x-3'
+                    >
+                      <span className='flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center mt-1'>
+                        <span className='w-2 h-2 rounded-full bg-slate-600' />
+                      </span>
+                      <span className='text-lg text-slate-700'>{goal}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
 
-            <div className='-mx-12 bg-slate-50 px-12 py-8 border-t border-b border-slate-200'>
-              <div className='max-w-none'>
-                <h3 className='text-2xl font-bold mb-4 text-slate-900'>Outcome</h3>
-                <p className='text-lg text-slate-700'>{caseStudy.projectOverview.outcome}</p>
+              <div className='-mx-12 bg-slate-50 px-12 py-8 border-t border-b border-slate-200'>
+                <div className='max-w-none'>
+                  <h3 className='text-2xl font-bold mb-4 text-slate-900'>Outcome</h3>
+                  <p className='text-lg text-slate-700'>{caseStudy.projectOverview.outcome}</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
-
-        {/* Problem Statement */}
-        <section className='py-16'>
-          <h2 className='text-4xl font-bold mb-12 text-slate-900'>
-            {caseStudy.problemStatement.title}
-          </h2>
-          <div className='grid md:grid-cols-2 gap-8'>
-            {caseStudy.problemStatement.challenges.map((challenge, index) => (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                key={index}
-                className='bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-slate-200'
-              >
-                <div className='mb-6'>
-                  <h3 className='text-2xl font-bold text-slate-900'>{challenge.title}</h3>
-                </div>
-                <p className='text-lg text-slate-600 leading-relaxed'>{challenge.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Solution */}
-        <section className='py-20'>
-          <h2 className='text-4xl font-bold mb-8 text-slate-900'>{caseStudy.solution.title}</h2>
-          <p className='text-xl text-slate-600 mb-16 max-w-4xl'>{caseStudy.solution.intro}</p>
-
-          <div className='bg-slate-900 text-white rounded-2xl p-12 mb-16'>
-            <h3 className='text-3xl font-bold mb-12'>{caseStudy.solution.technicalStack.title}</h3>
-            <div className='grid md:grid-cols-2 gap-8'>
-              {caseStudy.solution.technicalStack.items.map((item, index) => (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
-                  key={index}
-                  className='group bg-slate-800/50 backdrop-blur-lg p-8 rounded-xl hover:bg-slate-800/70 transition-all duration-300'
-                >
-                  <div className='flex items-start space-x-4'>
-                    <div className='flex items-center justify-center w-12 h-12 rounded-lg bg-slate-700/50 group-hover:bg-slate-700 transition-colors duration-300'>
-                      {(() => {
-                        const Icon = iconMap[item.iconName as keyof typeof iconMap];
-                        return Icon ? (
-                          <Icon className='w-6 h-6 text-slate-300 group-hover:text-white transition-colors duration-300' />
-                        ) : null;
-                      })()}
-                    </div>
-                    <div className='flex-1'>
-                      <h4 className='text-xl font-bold mb-2 text-slate-50 group-hover:text-white transition-colors duration-300'>
-                        {item.name}
-                      </h4>
-                      <p className='text-slate-400 group-hover:text-slate-300 transition-colors duration-300'>
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
       </MaxWidthContainer>
+
+      {/* Visit Website Button */}
+      <div className='py-16 text-center'>
+        {project.websiteUrl && (
+          <motion.a
+            href={project.websiteUrl}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl'
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <span>Visit Website</span>
+            <svg
+              className='ml-2 -mr-1 w-5 h-5'
+              fill='none'
+              stroke='currentColor'
+              viewBox='0 0 24 24'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'
+              />
+            </svg>
+          </motion.a>
+        )}
+      </div>
     </div>
   );
 }

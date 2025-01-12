@@ -8,6 +8,7 @@
       "dateCreated": "2024-02-06",
       "tech": ["React", "TypeScript", "TailwindCSS", "Next.js"],
       "hasCaseStudy": true,
+      "websiteUrl": "https://harmoniaconnect.org/",
       "caseStudy": {
         "title": "Harmonia Connect Platform: MVP Landing Page Case Study",
         "metadata": {
@@ -116,7 +117,8 @@
     },
     {
       "company": "Solace Solstice Counseling",
-      "link": "https://solacesolstice.org",
+      "link": "",
+      "websiteUrl": "https://solacesolstice.org",
       "image": "/portfolio/solace.jpg",
       "alt": "Solace Solstice Counseling",
       "dateCreated": "2024-03-06",

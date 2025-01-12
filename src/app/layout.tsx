@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navigation } from './components/nav/Navigation';
+import { Footer } from './components/Footer';
 
 import './globals.css';
 
@@ -13,6 +14,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body>
         <Navigation />
         {children}
+        <Footer />
       </body>
     </html>
   );
