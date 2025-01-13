@@ -2,7 +2,7 @@
 
 import { IoIosMenu } from 'react-icons/io';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
 import {
@@ -61,35 +61,37 @@ export const Navigation = ({ useDesktopMenuOnMobile = false }: NavigationProps) 
           <div className='flex items-center justify-center'>
             {/* Navigation Items */}
             <nav className='flex items-center gap-2 bg-slate-200 rounded-full px-1 py-1 relative font-bold'>
-              {navItems.map(item => {
-                const isActive = pathname === item.href;
-                return (
-                  <Link key={item.href} href={item.href} prefetch>
-                    <div
-                      className={`relative px-4 py-1 rounded-full text-sm transition-colors z-10 ${
-                        isActive ? 'text-white' : 'text-brand-emphasis hover:text-gray-900'
-                      }`}
-                    >
-                      {isActive && (
-                        <motion.div
-                          key={pathname}
-                          layoutId='pill'
-                          className='absolute inset-0 bg-brand rounded-full -z-10'
-                          transition={{
-                            type: 'spring',
-                            duration: 0.6,
-                            bounce: 0.2,
-                            stiffness: 100,
-                            damping: 15,
-                          }}
-                          initial={false}
-                        />
-                      )}
-                      {item.label}
-                    </div>
-                  </Link>
-                );
-              })}
+              <AnimatePresence mode='wait'>
+                {navItems.map(item => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link key={item.href} href={item.href} prefetch>
+                      <div
+                        className={`relative px-4 py-1 rounded-full text-sm transition-colors z-10 ${
+                          isActive ? 'text-white' : 'text-brand-emphasis hover:text-gray-900'
+                        }`}
+                      >
+                        {isActive && (
+                          <motion.div
+                            layoutId='navigation-pill'
+                            className='absolute inset-0 bg-brand rounded-full -z-10'
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{
+                              type: 'spring',
+                              stiffness: 500,
+                              damping: 30,
+                              duration: 0.15,
+                            }}
+                          />
+                        )}
+                        {item.label}
+                      </div>
+                    </Link>
+                  );
+                })}
+              </AnimatePresence>
             </nav>
           </div>
         </div>
