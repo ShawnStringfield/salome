@@ -6,6 +6,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 interface ProjectCardProps {
   company: string;
   link: string;
+  websiteUrl?: string;
   image: string;
   alt: string;
   dateCreated: string;
@@ -20,6 +21,7 @@ interface ProjectCardProps {
 const ProjectCard = ({
   company,
   link,
+  websiteUrl,
   image,
   alt,
   tech,
@@ -28,6 +30,8 @@ const ProjectCard = ({
   onPrevious,
   onNext,
 }: ProjectCardProps) => {
+  const href = hasCaseStudy ? link : websiteUrl || link;
+
   return (
     <div className='relative w-full bg-slate-100'>
       <div className='relative max-w-4xl mx-auto px-8'>
@@ -45,17 +49,20 @@ const ProjectCard = ({
                 </span>
               ))}
             </div>
-            {hasCaseStudy && (
-              <Link href={link} className='hidden md:block'>
-                <Button
-                  variant='ghost'
-                  className='group p-0 h-auto font-normal text-brand-emphasis hover:bg-transparent hover:opacity-100'
-                >
-                  View Case Study
-                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-                </Button>
-              </Link>
-            )}
+            <Link
+              href={href}
+              target={hasCaseStudy ? undefined : '_blank'}
+              rel={hasCaseStudy ? undefined : 'noopener noreferrer'}
+              className='hidden md:block'
+            >
+              <Button
+                variant='ghost'
+                className='group p-0 h-auto font-normal text-brand-emphasis hover:bg-transparent hover:opacity-100'
+              >
+                {hasCaseStudy ? 'View Case Study' : 'Visit Website'}
+                <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+              </Button>
+            </Link>
           </div>
 
           {/* Project Title */}
@@ -86,17 +93,19 @@ const ProjectCard = ({
 
             {/* Mobile Navigation */}
             <div className='md:hidden flex justify-between items-center mt-4'>
-              {hasCaseStudy && (
-                <Link href={link}>
-                  <Button
-                    variant='link'
-                    className='group p-0 h-auto font-normal  hover:text-brand-strong'
-                  >
-                    View Case Study
-                    <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
-                  </Button>
-                </Link>
-              )}
+              <Link
+                href={href}
+                target={hasCaseStudy ? undefined : '_blank'}
+                rel={hasCaseStudy ? undefined : 'noopener noreferrer'}
+              >
+                <Button
+                  variant='link'
+                  className='group p-0 h-auto font-normal hover:text-brand-strong'
+                >
+                  {hasCaseStudy ? 'View Case Study' : 'Visit Website'}
+                  <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
+                </Button>
+              </Link>
               <div className='flex gap-2 ml-auto'>
                 <Button
                   variant='default'
@@ -123,7 +132,11 @@ const ProjectCard = ({
 
         {/* Project Screenshot with Link */}
         <div className='overflow-hidden'>
-          <Link href={hasCaseStudy ? link : link} target={hasCaseStudy ? undefined : '_blank'}>
+          <Link
+            href={href}
+            target={hasCaseStudy ? undefined : '_blank'}
+            rel={hasCaseStudy ? undefined : 'noopener noreferrer'}
+          >
             <div className='relative -mb-10'>
               <Image
                 src={image}

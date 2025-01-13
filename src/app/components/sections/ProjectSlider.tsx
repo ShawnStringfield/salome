@@ -5,6 +5,7 @@ import ProjectCard from './ProjectCard';
 interface Project {
   company: string;
   link: string;
+  websiteUrl?: string;
   image: string;
   alt: string;
   dateCreated: string;
