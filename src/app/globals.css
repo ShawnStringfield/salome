@@ -109,3 +109,11 @@
     }
   }
 }
+
+/* Disable transitions */
+.no-transition,
+.no-transition * {
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+}
