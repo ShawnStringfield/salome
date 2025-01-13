@@ -120,7 +120,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
           onSubmit={handleSubmit(onSubmit)}
           name='contact'
           method='POST'
-          data-netlify='true'
+          data-netlify='false'
           action='/success'
           className='w-full mx-auto space-y-8'
         >
