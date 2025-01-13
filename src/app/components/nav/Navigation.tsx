@@ -72,9 +72,17 @@ export const Navigation = ({ useDesktopMenuOnMobile = false }: NavigationProps) 
                     >
                       {isActive && (
                         <motion.div
+                          key={pathname}
                           layoutId='pill'
                           className='absolute inset-0 bg-brand rounded-full -z-10'
-                          transition={{ type: 'spring', duration: 0.6, bounce: 0.2 }}
+                          transition={{
+                            type: 'spring',
+                            duration: 0.6,
+                            bounce: 0.2,
+                            stiffness: 100,
+                            damping: 15,
+                          }}
+                          initial={false}
                         />
                       )}
                       {item.label}
