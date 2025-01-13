@@ -13,58 +13,77 @@ import {
   DrawerTrigger,
 } from '@/app/components/ui/drawer';
 
-export const Navigation = () => {
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/resume', label: 'Resume' },
+];
+
+interface NavigationProps {
+  useDesktopMenuOnMobile?: boolean;
+}
+
+export const Navigation = ({ useDesktopMenuOnMobile = false }: NavigationProps) => {
   const pathname = usePathname();
 
   return (
     <>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
-        <Drawer>
-          <div className='display:block sm:hidden container mt-8'>
-            <div className='flex justify-end text-4xl'>
-              <DrawerTrigger>
-                <IoIosMenu />
-              </DrawerTrigger>
+        {!useDesktopMenuOnMobile && (
+          <Drawer>
+            <div className='display:block sm:hidden container mt-8'>
+              <div className='flex justify-end text-4xl'>
+                <DrawerTrigger>
+                  <IoIosMenu />
+                </DrawerTrigger>
+              </div>
             </div>
-          </div>
-          <DrawerContent>
-            <DrawerFooter className='pb-8'>
-              <Link href={'/'}>
-                <DrawerClose>
-                  <div color={`${pathname === '/' ? 'blue.300' : 'white'} `}>Home</div>
+            <DrawerContent>
+              <DrawerFooter className='pb-8'>
+                {navItems.map(item => (
+                  <Link key={item.href} href={item.href}>
+                    <DrawerClose>
+                      <div color={`${pathname === item.href ? 'blue.300' : 'white'} `}>
+                        {item.label}
+                      </div>
+                    </DrawerClose>
+                  </Link>
+                ))}
+                <DrawerClose className='absolute top-5 right-5'>
+                  <div>X</div>
                 </DrawerClose>
-              </Link>
-              <Link href={'/resume'}>
-                <DrawerClose>
-                  <div color={`${pathname === '/resume' ? 'blue.300' : 'white'} `}>Resume</div>
-                </DrawerClose>
-              </Link>
-              <DrawerClose className='absolute top-5 right-5'>
-                <div>X</div>
-              </DrawerClose>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        )}
 
-        <div className='hidden sm:block container mx-auto text-base font-bold pt-8 sm:pb-8 px-16'>
-          <div className='flex'>
-            <div className='flex items-center text-slate-400'>
-              <div className='w-3 h-3 bg-blue-400 rounded-full mr-2' />
-              <Link href={'/'}>
-                <div>Shawn Stringfield</div>
-              </Link>
-            </div>
-            <div className='flex flex-1 justify-end space-x-4'>
-              <Link href={'/#contact'}>
-                <div color='blue.500'>
-                  <div color={`${pathname === '/' ? 'blue.300' : ''} `}>Home</div>
-                </div>
-              </Link>
-              <Link href={'/resume'}>
-                <div color='blue.500'>
-                  <div color={`${pathname === '/resume' ? 'blue.300' : ''} `}>Resume</div>
-                </div>
-              </Link>
+        {/* Desktop Navigation (shown on desktop or when useDesktopMenuOnMobile is true) */}
+        <div className={`${useDesktopMenuOnMobile ? 'block' : 'hidden sm:block'}`}>
+          <div className='container mx-auto px-8 py-3 mt-6'>
+            <div className='flex items-center justify-center'>
+              {/* Navigation Items */}
+              <nav className='flex items-center gap-2 bg-slate-200 rounded-full px-1 py-1 relative font-bold'>
+                {navItems.map(item => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link key={item.href} href={item.href}>
+                      <div
+                        className={`relative px-4 py-1 rounded-full text-sm transition-colors z-10 ${
+                          isActive ? 'text-white' : 'text-brand-emphasis hover:text-gray-900'
+                        }`}
+                      >
+                        {isActive && (
+                          <motion.div
+                            layoutId='pill'
+                            className='absolute inset-0 bg-brand rounded-full -z-10'
+                            transition={{ type: 'spring', duration: 0.6, bounce: 0.2 }}
+                          />
+                        )}
+                        {item.label}
+                      </div>
+                    </Link>
+                  );
+                })}
+              </nav>
             </div>
           </div>
         </div>

@@ -32,14 +32,14 @@ const ProjectCard = ({
     <div className='relative w-full bg-slate-100'>
       <div className='relative max-w-4xl mx-auto px-8'>
         {/* Content Section */}
-        <div className='pt-16 pb-8'>
+        <div className='pt-24 md:pt-32'>
           {/* Tech Stack Pills and Case Study Button (Desktop) */}
           <div className='flex justify-between items-center mb-6'>
             <div className='flex flex-wrap gap-2'>
               {tech.map((item, index) => (
                 <span
                   key={index}
-                  className='px-4 py-1 rounded-full border border-gray-200 text-gray-600 text-sm'
+                  className='px-4 py-1 rounded-full border border-brand-emphasis/30 text-brand-emphasis text-sm'
                 >
                   {item}
                 </span>
@@ -47,7 +47,10 @@ const ProjectCard = ({
             </div>
             {hasCaseStudy && (
               <Link href={link} className='hidden md:block'>
-                <Button variant='ghost' className='group px-0'>
+                <Button
+                  variant='ghost'
+                  className='group p-0 h-auto font-normal text-brand-emphasis hover:bg-transparent hover:opacity-100'
+                >
                   View Case Study
                   <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
                 </Button>
@@ -58,7 +61,7 @@ const ProjectCard = ({
           {/* Project Title */}
           <div className='mb-4'>
             <div className='flex justify-between items-center'>
-              <h2 className='text-3xl md:text-4xl font-bold text-slate-900'>{company}</h2>
+              <h2 className='text-3xl md:text-4xl font-bold'>{company}</h2>
               <div className='hidden md:flex gap-2'>
                 <Button
                   variant='default'
@@ -85,7 +88,10 @@ const ProjectCard = ({
             <div className='md:hidden flex justify-between items-center mt-4'>
               {hasCaseStudy && (
                 <Link href={link}>
-                  <Button variant='ghost' className='group px-0'>
+                  <Button
+                    variant='link'
+                    className='group p-0 h-auto font-normal  hover:text-brand-strong'
+                  >
                     View Case Study
                     <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:translate-x-1' />
                   </Button>

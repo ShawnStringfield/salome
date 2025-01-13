@@ -9,6 +9,7 @@ import {
 } from '@/app/components/ui/select';
 import { Input } from '@/app/components/ui/input';
 import { Textarea } from '@/app/components/ui/textarea';
+import { Button } from '@/app/components/ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { cn } from '@/app/lib/utils';
@@ -44,8 +45,8 @@ const FormError = ({ message }: FormErrorProps) => {
 
   return (
     <div className='flex items-center gap-x-2 mt-1.5'>
-      <AlertCircle className='h-4 w-4 text-red-600' />
-      <p className='text-sm text-red-600 font-medium'>{message}</p>
+      <AlertCircle className='h-4 w-4' />
+      <p className='text-sm font-medium'>{message}</p>
     </div>
   );
 };
@@ -60,8 +61,8 @@ interface FormFieldProps {
 const FormField = ({ label, error, required, children }: FormFieldProps) => {
   return (
     <div className='space-y-2'>
-      <label className='block text-sm font-medium text-gray-700'>
-        {label} {required && <span className='text-red-600'>*</span>}
+      <label className='block text-sm font-medium'>
+        {label} {required && <span>*</span>}
       </label>
       {children}
       <FormError message={error} />
@@ -107,10 +108,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
   };
 
   return (
-    <div id='contact' className='py-16 w-full bg-transparent'>
+    <div id='contact' className='pt-24 md:pt-32 pb-24 md:pb-32 w-full bg-transparent'>
       <div className='max-w-4xl mx-auto px-4'>
         <h2 className='text-4xl font-bold text-center mb-3'>{title}</h2>
-        <p className='text-gray-600 text-center mb-8 max-w-2xl mx-auto'>
+        <p className='text-center mb-8 max-w-2xl mx-auto'>
           I&apos;m excited to learn about your project. Please fill out the form below with as much
           detail as possible, and I&apos;ll get back to you within 24 hours.
         </p>
@@ -215,13 +216,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
               >
                 <SelectTrigger
                   className={cn(
-                    'w-full bg-white/90 hover:bg-white text-xl py-6 text-gray-500',
+                    'w-full bg-white/90 hover:bg-white text-xl py-6',
                     errors.projectType && 'border-red-600 focus:border-red-600 focus:ring-red-600'
                   )}
                 >
                   <SelectValue placeholder='Select a project type' />
                 </SelectTrigger>
-                <SelectContent className='text-xl text-gray-500'>
+                <SelectContent className='text-xl'>
                   <SelectItem value='website'>Website Development</SelectItem>
                   <SelectItem value='webapp'>Web Application</SelectItem>
                   <SelectItem value='ecommerce'>E-commerce Solution</SelectItem>
@@ -238,10 +239,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
                   trigger('budget');
                 }}
               >
-                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6 text-gray-500'>
+                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6'>
                   <SelectValue placeholder='Select a budget range' />
                 </SelectTrigger>
-                <SelectContent className='text-xl text-gray-500'>
+                <SelectContent className='text-xl'>
                   <SelectItem value='small'>$5,000 - $10,000</SelectItem>
                   <SelectItem value='medium'>$10,000 - $25,000</SelectItem>
                   <SelectItem value='large'>$25,000 - $50,000</SelectItem>
@@ -257,10 +258,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
                   trigger('timeline');
                 }}
               >
-                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6 text-gray-500'>
+                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6'>
                   <SelectValue placeholder='Select a timeline' />
                 </SelectTrigger>
-                <SelectContent className='text-xl text-gray-500'>
+                <SelectContent className='text-xl'>
                   <SelectItem value='urgent'>Less than 1 month</SelectItem>
                   <SelectItem value='normal'>1-3 months</SelectItem>
                   <SelectItem value='relaxed'>3-6 months</SelectItem>
@@ -283,17 +284,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
             </FormField>
           </div>
 
-          <div className='flex justify-center pt-4'>
-            <button
-              type='submit'
-              disabled={isSubmitting}
-              className={cn(
-                'rounded-lg bg-blue-600 px-8 py-3 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 font-medium text-base shadow-sm hover:shadow-md',
-                isSubmitting && 'opacity-50 cursor-not-allowed'
-              )}
-            >
+          <div className='flex justify-end pt-4'>
+            <Button type='submit' disabled={isSubmitting} variant='default' size='lg'>
               {isSubmitting ? 'Sending...' : 'Send Message'}
-            </button>
+            </Button>
           </div>
         </form>
       </div>

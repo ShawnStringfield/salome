@@ -33,10 +33,14 @@ export const Hero = ({ title, subtext, actions }: Props) => {
           <div>
             <div className='text-center my-8'>
               <h1 className='mb-4'>{title}</h1>
-              <p>{subtext}</p>
+              <p className='w-3/4 mx-auto'>{subtext}</p>
             </div>
             <div>
-              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 2 }}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 2 }}
+              >
                 {actions ? actions : null}
               </motion.div>
             </div>

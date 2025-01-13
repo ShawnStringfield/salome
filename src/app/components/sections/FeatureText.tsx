@@ -18,16 +18,19 @@ export const FeatureText = ({ title, text, subTitle, footerLeft }: FeatureTextPr
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1, ease: 'linear' }}
+      className='h-full'
     >
-      <Card className='mb-8 md:mb-0 text-slate-500 text-base min-h-72'>
-        <CardHeader>
-          <div className='text-primary -mb-2 font-bold'>{subTitle}</div>
-          <h4>{title}</h4>
+      <Card className='bg-white shadow-sm hover:shadow-md transition-shadow h-full flex flex-col'>
+        <CardHeader className='space-y-2'>
+          <div className='text-brand-emphasis font-medium'>{subTitle}</div>
+          <h4 className='text-xl font-semibold'>{title}</h4>
         </CardHeader>
-        <CardContent>
-          <div>{text}</div>
+        <CardContent className='flex-1'>
+          <p className='text-slate-600 text-base leading-relaxed'>{text}</p>
         </CardContent>
-        <CardFooter>{footerLeft}</CardFooter>
+        <CardFooter>
+          <span className='text-sm text-slate-500'>{footerLeft}</span>
+        </CardFooter>
       </Card>
     </motion.div>
   );

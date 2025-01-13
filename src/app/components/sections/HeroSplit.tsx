@@ -2,14 +2,16 @@ import React from 'react';
 import { Button } from '@/app/components/ui/button';
 import Link from 'next/link';
 import { animate } from 'framer-motion';
+import { AvatarImg } from '@/app/components/Avatar';
 
 type HeroSplitProps = {
   tagline?: string;
   subTagline?: string;
   title?: string;
+  showAvatar?: boolean;
 };
 
-export const HeroSplit = ({ tagline, subTagline, title }: HeroSplitProps) => {
+export const HeroSplit = ({ tagline, subTagline, title, showAvatar = true }: HeroSplitProps) => {
   const scrollToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const contactSection = document.getElementById('contact');
@@ -30,8 +32,13 @@ export const HeroSplit = ({ tagline, subTagline, title }: HeroSplitProps) => {
 
   return (
     <div className='mx-8'>
-      <div className='flex justify-center items-center min-h-[30vh] mt-8'>
+      <div className='flex justify-center items-center min-h-[40vh] py-16'>
         <div className='text-center w-full'>
+          {showAvatar && (
+            <div className='flex justify-center mb-8'>
+              <AvatarImg />
+            </div>
+          )}
           <h1 className='text-4xl lg:text-7xl mb-4'>{title}</h1>
           <h2 className='text-xl sm:text-2xl lg:text-4xl/[46px]'>
             {tagline}

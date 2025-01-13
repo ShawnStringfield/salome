@@ -28,13 +28,13 @@ export const ProjectSlider: React.FC<ProjectSliderProps> = ({ projects }) => {
   };
 
   return (
-    <div className='relative w-full bg-slate-100'>
+    <div className='relative w-full bg-slate-100 overflow-hidden'>
       <AnimatePresence mode='wait'>
         <motion.div
           key={currentIndex}
-          initial={{ opacity: 0, x: 100 }}
+          initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
+          exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.3 }}
         >
           <ProjectCard

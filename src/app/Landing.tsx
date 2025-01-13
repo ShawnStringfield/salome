@@ -50,6 +50,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
             title={landingData.title}
             tagline={landingData.tagline}
             subTagline={landingData.subTagline}
+            showAvatar={false}
           />
         </MaxWidthContainer>
       </motion.div>
@@ -64,6 +65,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
             <Services
               services={landingData.services ?? []}
               servicesTagline={landingData.servicesTagline || ''}
+              showIcons={false}
             />
           </MaxWidthContainer>
         </div>

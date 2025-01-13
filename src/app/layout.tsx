@@ -12,7 +12,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link rel='icon' href='apple-touch-icon.ico' />
       </head>
       <body>
-        <Navigation />
+        <Navigation useDesktopMenuOnMobile={true} />
         {children}
         <Footer />
       </body>

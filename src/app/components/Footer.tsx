@@ -23,7 +23,7 @@ export function Footer() {
       </h2>
       <div className='mx-auto max-w-7xl px-6 py-12 md:py-16 lg:px-8'>
         <div className='space-y-8 flex flex-col items-center text-center'>
-          <h2 className='text-2xl md:text-3xl lg:text-4xl leading-tight text-slate-200 font-bold tracking-wide max-w-4xl'>
+          <h2 className='text-2xl md:text-3xl lg:text-4xl leading-tight text-brand-surface font-bold tracking-wide max-w-4xl'>
             Frontend Engineer specializing in React, TypeScript, and modern web technologies.
           </h2>
           <div className='flex space-x-8'>
