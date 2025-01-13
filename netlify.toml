@@ -2,9 +2,6 @@
   command = "next build"
   publish = ".next"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
 
@@ -25,7 +22,3 @@
 
 [build.processing.images]
   compress = true
-
-# Enable form detection in SPA
-[build.processing.html]
-  force_opt_in = true
