@@ -6,20 +6,20 @@
       "image": "/portfolio/harmonia.png",
       "alt": "Harmonia Connect",
       "dateCreated": "2024-02-06",
-      "tech": ["React", "TypeScript", "TailwindCSS", "Next.js"],
+      "tech": ["React", "TailwindCSS"],
       "hasCaseStudy": true,
       "websiteUrl": "https://harmoniaconnect.org/",
       "caseStudy": {
         "title": "Harmonia Connect Platform: MVP Landing Page Case Study",
         "metadata": {
-          "date": "January 2025",
+          "date": "March 2024",
           "category": "Web Development",
           "stage": "Validation Stage",
-          "duration": "5 weeks"
+          "duration": "3 Days"
         },
         "clientInformation": {
           "title": "Client Information",
-          "content": "Harmonia Connect is a startup in the environmental technology sector, focusing on connecting community-driven environmental initiatives with potential volunteers and supporters. The founders identified a gap in the market for a platform that could unite local environmental projects with willing participants while tracking impact metrics. At the validation stage, they needed a compelling landing page to test market interest and gather early signups."
+          "content": "Harmonia Connect is a startup in the environmental technology sector, focusing on connecting community-driven environmental initiatives with potential volunteers and supporters. The founders identified a gap in the market for a platform that could unite local environmental projects with willing participants while tracking impact metrics. At the validation stage, they needed a compelling but simple website to test market interest and gather early signups."
         },
         "projectOverview": {
           "title": "Project Overview",
@@ -30,7 +30,7 @@
             "Gather initial user feedback on proposed features",
             "Create a professional brand presence for investor presentations"
           ],
-          "outcome": "The project resulted in a modern, responsive landing page with clear messaging and strong calls-to-action, built using Tailwind CSS for rapid development and easy iteration based on user feedback."
+          "outcome": "The project resulted in a modern, responsive website with clear messaging and strong calls-to-action, built using Tailwind CSS for rapid development and easy iteration based on user feedback."
         },
         "problemStatement": {
           "title": "Problem Statement",
