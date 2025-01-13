@@ -25,3 +25,7 @@
 
 [build.processing.images]
   compress = true
+
+# Enable form detection in SPA
+[build.processing.html]
+  force_opt_in = true
