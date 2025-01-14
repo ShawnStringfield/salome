@@ -1,12 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/app/components/ui/select';
 import { Input } from '@/app/components/ui/input';
 import { Textarea } from '@/app/components/ui/textarea';
 import { Button } from '@/app/components/ui/button';
@@ -19,14 +12,7 @@ const formSchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
   lastName: z.string().min(1, 'Last name is required'),
   company: z.string().optional(),
-  phone: z
-    .string()
-    .regex(/^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/, 'Invalid phone number format')
-    .optional(),
   email: z.string().email('Invalid email format').min(1, 'Email is required'),
-  projectType: z.string().min(1, 'Project type is required'),
-  budget: z.string().optional(),
-  timeline: z.string().optional(),
   message: z.string().min(1, 'Project description is required'),
 });
 
@@ -75,8 +61,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    setValue,
-    trigger,
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
@@ -173,103 +157,22 @@ export const ContactForm: React.FC<ContactFormProps> = ({ title }) => {
                 />
               </FormField>
 
-              <FormField label='Phone Number' error={errors.phone?.message}>
+              <FormField label='Email Address' error={errors.email?.message} required>
                 <Input
-                  {...register('phone')}
-                  type='tel'
-                  id='phone'
+                  {...register('email')}
+                  type='email'
+                  id='email'
                   className={cn(
                     'bg-white/90 hover:bg-white',
-                    errors.phone && 'border-red-600 focus-visible:ring-red-600'
+                    errors.email && 'border-red-600 focus-visible:ring-red-600'
                   )}
-                  placeholder='+1 (555) 000-0000'
+                  placeholder='john@example.com'
                 />
               </FormField>
             </div>
-
-            <FormField label='Email Address' error={errors.email?.message} required>
-              <Input
-                {...register('email')}
-                type='email'
-                id='email'
-                className={cn(
-                  'bg-white/90 hover:bg-white',
-                  errors.email && 'border-red-600 focus-visible:ring-red-600'
-                )}
-                placeholder='john@example.com'
-              />
-            </FormField>
           </div>
 
-          {/* Project Details Section */}
           <div className='space-y-6'>
-            <h3 className='text-2xl font-bold border-b border-gray-200/50 pb-3 mt-16'>
-              Project Details
-            </h3>
-
-            <FormField label='Project Type' error={errors.projectType?.message} required>
-              <Select
-                onValueChange={value => {
-                  setValue('projectType', value);
-                  trigger('projectType');
-                }}
-              >
-                <SelectTrigger
-                  className={cn(
-                    'w-full bg-white/90 hover:bg-white text-xl py-6',
-                    errors.projectType && 'border-red-600 focus:border-red-600 focus:ring-red-600'
-                  )}
-                >
-                  <SelectValue placeholder='Select a project type' />
-                </SelectTrigger>
-                <SelectContent className='text-xl'>
-                  <SelectItem value='website'>Website Development</SelectItem>
-                  <SelectItem value='webapp'>Web Application</SelectItem>
-                  <SelectItem value='ecommerce'>E-commerce Solution</SelectItem>
-                  <SelectItem value='maintenance'>Maintenance & Support</SelectItem>
-                  <SelectItem value='other'>Other</SelectItem>
-                </SelectContent>
-              </Select>
-            </FormField>
-
-            <FormField label='Budget Range' error={errors.budget?.message}>
-              <Select
-                onValueChange={value => {
-                  setValue('budget', value);
-                  trigger('budget');
-                }}
-              >
-                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6'>
-                  <SelectValue placeholder='Select a budget range' />
-                </SelectTrigger>
-                <SelectContent className='text-xl'>
-                  <SelectItem value='small'>$5,000 - $10,000</SelectItem>
-                  <SelectItem value='medium'>$10,000 - $25,000</SelectItem>
-                  <SelectItem value='large'>$25,000 - $50,000</SelectItem>
-                  <SelectItem value='enterprise'>$50,000+</SelectItem>
-                </SelectContent>
-              </Select>
-            </FormField>
-
-            <FormField label='Desired Timeline' error={errors.timeline?.message}>
-              <Select
-                onValueChange={value => {
-                  setValue('timeline', value);
-                  trigger('timeline');
-                }}
-              >
-                <SelectTrigger className='w-full bg-white/90 hover:bg-white text-xl py-6'>
-                  <SelectValue placeholder='Select a timeline' />
-                </SelectTrigger>
-                <SelectContent className='text-xl'>
-                  <SelectItem value='urgent'>Less than 1 month</SelectItem>
-                  <SelectItem value='normal'>1-3 months</SelectItem>
-                  <SelectItem value='relaxed'>3-6 months</SelectItem>
-                  <SelectItem value='planning'>6+ months</SelectItem>
-                </SelectContent>
-              </Select>
-            </FormField>
-
             <FormField label='Project Description' error={errors.message?.message} required>
               <Textarea
                 {...register('message')}
