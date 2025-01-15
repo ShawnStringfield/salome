@@ -116,6 +116,16 @@
       }
     },
     {
+      "company": "Salome",
+      "link": "",
+      "websiteUrl": "https://salomebooks.netlify.app/",
+      "image": "/portfolio/salomebooks.jpg",
+      "alt": "Salome Books",
+      "dateCreated": "2025-01-06",
+      "tech": ["Next.js", "Firebase", "React", "TailwindCSS"],
+      "hasCaseStudy": false
+    },
+    {
       "company": "Solace Solstice Counseling",
       "link": "",
       "websiteUrl": "https://solacesolstice.org",
