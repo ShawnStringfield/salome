@@ -1,17 +1,9 @@
 'use client';
 
-import { IoIosMenu } from 'react-icons/io';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  DrawerTrigger,
-} from '@/app/components/ui/drawer';
+import { MobileMenu } from './MobileMenu';
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -27,33 +19,7 @@ export const Navigation = ({ useDesktopMenuOnMobile = false }: NavigationProps) 
 
   return (
     <div className='relative z-50'>
-      {!useDesktopMenuOnMobile && (
-        <Drawer>
-          <div className='display:block sm:hidden container mt-8'>
-            <div className='flex justify-end text-4xl'>
-              <DrawerTrigger>
-                <IoIosMenu />
-              </DrawerTrigger>
-            </div>
-          </div>
-          <DrawerContent>
-            <DrawerFooter className='pb-8'>
-              {navItems.map(item => (
-                <Link key={item.href} href={item.href} prefetch>
-                  <DrawerClose>
-                    <div color={`${pathname === item.href ? 'blue.300' : 'white'} `}>
-                      {item.label}
-                    </div>
-                  </DrawerClose>
-                </Link>
-              ))}
-              <DrawerClose className='absolute top-5 right-5'>
-                <div>X</div>
-              </DrawerClose>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
-      )}
+      {!useDesktopMenuOnMobile && <MobileMenu navItems={navItems} />}
 
       {/* Desktop Navigation (shown on desktop or when useDesktopMenuOnMobile is true) */}
       <div className={`${useDesktopMenuOnMobile ? 'block' : 'hidden sm:block'}`}>
