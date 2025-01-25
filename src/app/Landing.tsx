@@ -61,7 +61,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className='py-10 bg-slate-300'
+        className='py-10 bg-slate-800'
       >
         <MaxWidthContainer className='mx-4 md:mx-8 lg:mx-16 xl:mx-auto max-w-7xl'>
           <h2 className='text-3xl font-bold text-center mb-4 text-white'>
