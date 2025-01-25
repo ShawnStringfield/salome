@@ -52,7 +52,7 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
             title={landingData.title}
             tagline={landingData.tagline}
             subTagline={landingData.subTagline}
-            showAvatar={true}
+            showAvatar={false}
           />
         </MaxWidthContainer>
       </motion.div>
