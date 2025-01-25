@@ -19,14 +19,14 @@ export const InfiniteMovingCards = ({
   const [duplicatedItems, setDuplicatedItems] = useState<Logo[]>([]);
 
   useEffect(() => {
-    // Duplicate items to create a seamless loop
-    setDuplicatedItems([...items, ...items]);
+    // Triple the items to ensure seamless looping
+    setDuplicatedItems([...items, ...items, ...items]);
   }, [items]);
 
   const getSpeed = () => {
     switch (speed) {
       case 'slow':
-        return 180;
+        return 100;
       case 'fast':
         return 60;
       default:
@@ -43,8 +43,10 @@ export const InfiniteMovingCards = ({
     >
       <motion.div
         className='flex w-fit'
-        initial={{ x: direction === 'left' ? 0 : -100 }}
-        animate={{ x: direction === 'left' ? '-100%' : 0 }}
+        initial={{ x: 0 }}
+        animate={{
+          x: direction === 'left' ? '-33.33%' : '33.33%',
+        }}
         transition={{
           duration: getSpeed(),
           repeat: Infinity,
