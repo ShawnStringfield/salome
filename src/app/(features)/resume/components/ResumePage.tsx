@@ -45,8 +45,6 @@ export const ResumePage = () => {
       <div className='pt-24'>
         {Hero({
           title: 'Software Engineer',
-          subtext:
-            "Imagine a world where every website you visit feels like coming home - intuitive, cozy, and just what you need. That's the world I build as a Front-End Engineer.",
           actions: <div className='flex justify-center'>{buttonActions()}</div>,
         })}
 

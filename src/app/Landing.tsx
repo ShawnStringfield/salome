@@ -6,6 +6,8 @@ import { HeroSplit } from './components/sections/HeroSplit';
 import { Services } from './components/sections/Services';
 import { ProjectSlider } from './components/sections/ProjectSlider';
 import { ContactForm } from './components/sections/ContactForm';
+import { InfiniteMovingCards } from './components/sections/InfiniteMovingCards';
+import { clientLogos } from './config/clientLogos';
 import work from '../../public/work.json';
 
 interface Service {
@@ -50,8 +52,22 @@ export const Landing = ({ landingData }: LandingDataTypes) => {
             title={landingData.title}
             tagline={landingData.tagline}
             subTagline={landingData.subTagline}
-            showAvatar={false}
+            showAvatar={true}
           />
+        </MaxWidthContainer>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className='py-10 bg-slate-300'
+      >
+        <MaxWidthContainer className='mx-4 md:mx-8 lg:mx-16 xl:mx-auto max-w-7xl'>
+          <h2 className='text-3xl font-bold text-center mb-4 text-white'>
+            Trusted By Industry Leaders
+          </h2>
+          <InfiniteMovingCards items={clientLogos} speed='slow' />
         </MaxWidthContainer>
       </motion.div>
 

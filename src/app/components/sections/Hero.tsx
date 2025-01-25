@@ -5,7 +5,7 @@ import { AvatarImg } from '../Avatar';
 
 type Props = {
   title: string;
-  subtext: string;
+  subtext?: string;
   actions?: React.ReactNode;
   variant?: string;
 };
