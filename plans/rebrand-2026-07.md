@@ -2,7 +2,7 @@
 
 Date: 2026-07-22
 Owner: Keys
-Status: in progress
+Status: SHIPPED 2026-07-22 — live at shawnstringfield.com (salome@82f72ef; revert point 8fa23c9)
 
 ## Goal
 

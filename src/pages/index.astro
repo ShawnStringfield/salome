@@ -20,6 +20,8 @@
   <style is:global>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     :root {
       --bg: #0a0b12;
       --text: #ede9e3;
@@ -74,7 +76,7 @@
 
     .hero h1 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 54px;
+      font-size: 64px;
       font-weight: 700;
       line-height: 1;
       letter-spacing: -0.02em;
@@ -111,7 +113,7 @@
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.4em;
-      color: var(--label);
+      color: var(--gold);
       margin-bottom: 20px;
     }
 
@@ -142,8 +144,8 @@
       position: absolute;
       top: -1px;
       left: 36px;
-      width: 100px;
-      height: 2px;
+      width: 120px;
+      height: 3px;
       border-radius: 1px;
     }
 
@@ -152,7 +154,7 @@
 
     .card h2 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 30px;
+      font-size: 34px;
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.02em;
@@ -167,7 +169,24 @@
       margin-bottom: 28px;
     }
 
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
     .card .cta-row { margin-top: auto; }
+
+    .setup-detail .cta-row {
+      justify-content: flex-start;
+      gap: 24px;
+    }
+
+    .setup-detail .cta-note {
+      margin-bottom: 0;
+      max-width: 300px;
+      order: 2;
+    }
 
     /* ── CTAS ── */
     .cta-gold {
@@ -188,23 +207,19 @@
 
     .cta-blue {
       display: inline-block;
-      background: transparent;
-      color: var(--blue);
-      border: 1px solid var(--blue);
+      background: var(--blue);
+      color: var(--bg);
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       text-decoration: none;
-      padding: 14px 32px;
+      padding: 15px 36px;
       border-radius: 3px;
-      transition: color 0.25s, background 0.25s;
+      transition: background 0.25s;
     }
 
-    .cta-blue:hover {
-      background: var(--blue);
-      color: var(--bg);
-    }
+    .cta-blue:hover { background: var(--blue-hover); }
 
     .cta-note {
       display: block;
@@ -213,6 +228,96 @@
       line-height: 1.6;
       color: var(--muted);
     }
+
+    .detail-link {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .detail-link:hover { color: var(--blue-hover); }
+
+    /* ── SETUP DETAIL ── */
+    .setup-detail {
+      padding: 80px 0;
+    }
+
+    .setup-detail .section-label {
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--separator);
+      margin-bottom: 32px;
+    }
+
+    .setup-detail h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .setup-detail .intro {
+      color: var(--body);
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .setup-detail .list-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 40px 0 20px;
+    }
+
+    .deliverables {
+      list-style: none;
+      margin-bottom: 48px;
+    }
+
+    .deliverables li {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--separator);
+      color: var(--body);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .deliverables li:first-child { padding-top: 0; }
+    .deliverables li:last-child { border-bottom: none; }
+
+    .deliverables strong {
+      display: block;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .setup-detail .arc {
+      color: var(--body);
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .setup-detail .price-line {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .setup-detail .price-line .amount { color: var(--blue); }
 
     /* ── STORY ── */
     .story {
@@ -228,7 +333,7 @@
 
     .story p.lead {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 700;
       line-height: 1.3;
       letter-spacing: -0.01em;
@@ -251,7 +356,7 @@
 
     .pull-quote blockquote {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 32px;
+      font-size: 40px;
       font-weight: 700;
       line-height: 1.35;
       color: var(--text);
@@ -333,6 +438,8 @@
       .card h2 { font-size: 26px; }
       .story { padding: 60px 0; }
       .story p.lead { font-size: 22px; }
+      .setup-detail { padding: 60px 0; }
+      .setup-detail h2 { font-size: 32px; }
       .pull-quote { padding: 60px 24px; }
       .pull-quote blockquote { font-size: 24px; }
       .connect { padding: 60px 0 0; }
@@ -367,8 +474,8 @@
           <h2>The Setup</h2>
           <p>The done-with-you version. I take a few people each month and build their system with them — your tools, your week, your hands on the keyboard. Two live sessions and a check-in, and you walk away running it yourself.</p>
           <div class="cta-row">
-            <span class="cta-note">Tell me the one thing you're tired of carrying. That's where we start.</span>
             <a href="mailto:hello@wellrooted.io?subject=The%20Setup" class="cta-blue">Get in Touch</a>
+            <a href="#the-setup" class="detail-link">What you get &darr;</a>
           </div>
         </div>
 
@@ -380,13 +487,54 @@
 
     <!-- ════════ THE STORY ════════ -->
     <section class="story">
-      <p class="lead">I built software all day and still came home to a life that ran on sticky notes.</p>
+      <p class="lead">For years, the most reliable system in my life was my own memory — and it never got a night off.</p>
 
-      <p>I'm a systems thinker who spent years thinking about other people's systems. Meanwhile the wiring of my own week — the appointments, the follow-ups, the things I promised people — lived in my head. Nothing was broken. I was just carrying all of it by hand.</p>
+      <p>On paper I was organized. In real life I paid a late fee on a bill I knew was coming, remembered appointments in parking lots, and wrote replies in my head that never made it to the phone. Every errand, renewal, and promise was filed in one place — my head — and my head was the only copy.</p>
 
-      <p>So I built what I needed out of the tools I already owned. A morning that starts with one calm view instead of six apps. A way to capture a thought before it dies in my camera roll. A week that mostly runs itself — and catches what I drop.</p>
+      <p>So I built myself a backstop out of the apps I was already paying for. The first version was more nag than help. Pieces broke — one failed so quietly it took me four days to notice. I kept rebuilding until it earned trust the only way a system can: it started catching what I dropped.</p>
 
-      <p>That work became <em>The AI Survival Kit</em>, and then it became the thing I do for other people. Not with new apps, and not with a course in becoming a different person — with the phone already in your pocket, connected around the way your life actually works.</p>
+      <p>Here's what that bought me. The late fees stopped. Mornings start with coffee and one screen, not a scramble through apps. A thought I catch in a checkout line comes back exactly when it's useful. And while I'm at work, my life keeps moving without me — bills get flagged, errands get queued, loose ends get chased. The hours and headroom it handed back are how I wrote a book in the margins of a full-time job.</p>
+
+      <p>That book is <em>The AI Survival Kit</em>, and the system behind it became the thing I build with other people — no new apps, just the phone already in your pocket, wired around the way your life actually runs.</p>
+    </section>
+
+    <hr class="section-break" />
+
+    <!-- ════════ THE SETUP — DETAIL ════════ -->
+    <section class="setup-detail" id="the-setup">
+      <div class="section-label">Work With Me</div>
+      <h2>The Setup</h2>
+      <p class="intro">You're the one everybody counts on to remember everything. The tools are already on your phone — the calendar, the notes, the assistant you pay for every month. What's missing is the wiring between them. It lives in your head, and you never get to set it down.</p>
+      <p class="intro">That's what we fix. You walk away with four things:</p>
+
+      <h3 class="list-heading">What you get</h3>
+      <ul class="deliverables">
+        <li>
+          <strong>One place you look each morning</strong>
+          Your week pulled into a single view — what's on, what's due, what's about to slip. Out of your head, onto one screen.
+        </li>
+        <li>
+          <strong>One reliable way to capture</strong>
+          A thought, a screenshot, an errand — so it comes back when you need it instead of dying in your camera roll.
+        </li>
+        <li>
+          <strong>Your #1 recurring dread, handled start to finish</strong>
+          The dinner decision, the schedule juggling, the bill that always sneaks up. Pick one. We finish it.
+        </li>
+        <li>
+          <strong>A plain-language map of your system</strong>
+          What we built, where it lives, and what to do if it breaks. No diagrams, no jargon. Yours to keep.
+        </li>
+      </ul>
+
+      <p class="arc">The whole thing is a short, fixed arc — about three weeks, two live sessions and a check-in, roughly two hours of your time on calls. Built with your hands on the keyboard, on the tools you already pay for. Nothing new to buy, and nothing that keeps billing you after we're done.</p>
+
+      <p class="price-line"><span class="amount">$300.</span> Two live sessions, one check-in, and a system that's yours to keep.</p>
+
+      <div class="cta-row">
+        <span class="cta-note">Tell me the one thing you're tired of carrying. That's where we start.</span>
+        <a href="mailto:hello@wellrooted.io?subject=The%20Setup" class="cta-blue">Get in Touch</a>
+      </div>
     </section>
 
     <hr class="section-break" />
