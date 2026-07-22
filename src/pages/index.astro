@@ -1,0 +1,420 @@
+---
+
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shawn Stringfield</title>
+  <meta name="description" content="Software engineer and author of The AI Survival Kit. I help people connect the tools they already own into a small system that runs their week." />
+  <meta property="og:title" content="Shawn Stringfield" />
+  <meta property="og:description" content="Software engineer and author of The AI Survival Kit. I help people connect the tools they already own into a small system that runs their week." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shawn Stringfield" />
+  <meta name="twitter:description" content="Software engineer and author of The AI Survival Kit." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style is:global>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0b12;
+      --text: #ede9e3;
+      --body: #b0aea5;
+      --muted: #7a7570;
+      --label: #45423e;
+      --blue: #89b4d4;
+      --blue-hover: #a3c8e4;
+      --gold: #e8a838;
+      --gold-hover: #d4952e;
+      --separator: rgba(255, 255, 255, 0.055);
+      --surface: rgba(255, 255, 255, 0.03);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 0 36px;
+    }
+
+    .container.narrow {
+      max-width: 700px;
+    }
+
+    /* ── HERO (statement band, centered) ── */
+    .hero {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 88px 36px 56px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-image: url('/shawn.jpg');
+      background-size: cover;
+      background-position: center 20%;
+      margin: 0 auto 32px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 54px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .hero .tagline {
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── ACCENT RULE ── */
+    .rule {
+      width: 32px;
+      height: 1px;
+      background: var(--blue);
+      margin: 0 auto;
+    }
+
+    .section-break {
+      border: none;
+      border-top: 1px solid var(--separator);
+      margin: 0;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: var(--label);
+      margin-bottom: 20px;
+    }
+
+    /* ── OFFERS (first viewport, two-up) ── */
+    .offers {
+      padding: 40px 0 80px;
+    }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    /* Card with top-line callout — gold for the Kit, blue for the Setup */
+    .card {
+      background: var(--surface);
+      padding: 40px 36px;
+      border-radius: 6px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 36px;
+      width: 100px;
+      height: 2px;
+      border-radius: 1px;
+    }
+
+    .card.gold::before { background: var(--gold); }
+    .card.blue::before { background: var(--blue); }
+
+    .card h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .card p {
+      color: var(--body);
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .card .cta-row { margin-top: auto; }
+
+    /* ── CTAS ── */
+    .cta-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 15px 36px;
+      border-radius: 3px;
+      transition: background 0.25s;
+    }
+
+    .cta-gold:hover { background: var(--gold-hover); }
+
+    .cta-blue {
+      display: inline-block;
+      background: transparent;
+      color: var(--blue);
+      border: 1px solid var(--blue);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 3px;
+      transition: color 0.25s, background 0.25s;
+    }
+
+    .cta-blue:hover {
+      background: var(--blue);
+      color: var(--bg);
+    }
+
+    .cta-note {
+      display: block;
+      margin-bottom: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    /* ── STORY ── */
+    .story {
+      padding: 80px 0;
+    }
+
+    .story p {
+      margin-bottom: 28px;
+      color: var(--body);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .story p.lead {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 36px;
+    }
+
+    .story p:last-child { margin-bottom: 0; }
+
+    .story em {
+      font-style: italic;
+      color: var(--text);
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      padding: 100px 36px;
+      text-align: center;
+    }
+
+    .pull-quote blockquote {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .pull-quote .accent { color: var(--blue); }
+
+    /* ── CONNECT ── */
+    .connect {
+      padding: 80px 0 0;
+    }
+
+    .connect .section-label {
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--separator);
+      margin-bottom: 32px;
+    }
+
+    .connect-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .connect-links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.25s;
+      position: relative;
+    }
+
+    .connect-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--blue);
+      transition: width 0.3s;
+    }
+
+    .connect-links a:hover { color: var(--text); }
+    .connect-links a:hover::after { width: 100%; }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 80px 0 48px;
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--label);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 760px) {
+      .offers-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 24px; }
+      .hero { padding: 56px 24px 40px; }
+      .avatar { width: 92px; height: 92px; margin: 0 auto 24px; }
+      .hero h1 { font-size: 36px; }
+      .hero .tagline { font-size: 16px; }
+      .offers { padding: 28px 0 60px; }
+      .card { padding: 32px 24px; }
+      .card::before { left: 24px; }
+      .card h2 { font-size: 26px; }
+      .story { padding: 60px 0; }
+      .story p.lead { font-size: 22px; }
+      .pull-quote { padding: 60px 24px; }
+      .pull-quote blockquote { font-size: 24px; }
+      .connect { padding: 60px 0 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════ HERO — statement band ════════ -->
+  <section class="hero">
+    <div class="avatar"></div>
+    <h1>Shawn Stringfield</h1>
+    <p class="tagline">Software engineer. Builder of systems.</p>
+  </section>
+
+  <!-- ════════ OFFERS — first viewport ════════ -->
+  <div class="container">
+    <section class="offers">
+      <div class="offers-grid">
+
+        <div class="card gold">
+          <div class="section-label">The Book</div>
+          <h2>The AI Survival Kit</h2>
+          <p>A field guide to connecting the tools you already own into a small system that runs your week. Written for real life — dinner, errands, the paperwork you keep meaning to do — not for engineers.</p>
+          <div class="cta-row">
+            <a href="https://wellrooted.io" class="cta-gold">Get the Kit</a>
+          </div>
+        </div>
+
+        <div class="card blue">
+          <div class="section-label">Work With Me</div>
+          <h2>The Setup</h2>
+          <p>The done-with-you version. I take a few people each month and build their system with them — your tools, your week, your hands on the keyboard. Two live sessions and a check-in, and you walk away running it yourself.</p>
+          <div class="cta-row">
+            <span class="cta-note">Tell me the one thing you're tired of carrying. That's where we start.</span>
+            <a href="mailto:hello@wellrooted.io?subject=The%20Setup" class="cta-blue">Get in Touch</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <div class="container narrow">
+
+    <!-- ════════ THE STORY ════════ -->
+    <section class="story">
+      <p class="lead">I built software all day and still came home to a life that ran on sticky notes.</p>
+
+      <p>I'm a systems thinker who spent years thinking about other people's systems. Meanwhile the wiring of my own week — the appointments, the follow-ups, the things I promised people — lived in my head. Nothing was broken. I was just carrying all of it by hand.</p>
+
+      <p>So I built what I needed out of the tools I already owned. A morning that starts with one calm view instead of six apps. A way to capture a thought before it dies in my camera roll. A week that mostly runs itself — and catches what I drop.</p>
+
+      <p>That work became <em>The AI Survival Kit</em>, and then it became the thing I do for other people. Not with new apps, and not with a course in becoming a different person — with the phone already in your pocket, connected around the way your life actually works.</p>
+    </section>
+
+    <hr class="section-break" />
+
+    <!-- ════════ PULL QUOTE ════════ -->
+    <div class="pull-quote">
+      <blockquote>Your tools were never the problem.<br /><span class="accent">The wiring was.</span></blockquote>
+    </div>
+
+    <hr class="section-break" />
+
+    <!-- ════════ CONNECT ════════ -->
+    <section class="connect">
+      <div class="section-label">Connect</div>
+      <div class="connect-links">
+        <a href="https://linkedin.com/in/shawnstringfield" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/shawnstringfield" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:hello@wellrooted.io">Email</a>
+      </div>
+    </section>
+
+    <!-- ════════ FOOTER ════════ -->
+    <footer class="footer">
+      <div class="rule" style="margin-bottom: 24px;"></div>
+      <p>Shawn Stringfield &middot; Wellrooted &middot; 2026</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

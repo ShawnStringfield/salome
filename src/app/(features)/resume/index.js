@@ -1,1 +1,0 @@
-export { ResumePage } from "@/src/app/(features)/resume/components/ResumePage";

@@ -1,102 +1,43 @@
-# Salome
+# Astro Starter Kit: Minimal
 
-A modern web application built with Next.js 14, React 18, TypeScript, and Tailwind CSS. This project serves as a personal dashboard with journal capabilities, book tracking, and life management features.
-
-## 🚀 Features
-
-- Journal entries management
-- Kindle book synchronization via Notion
-- Calendar integration
-- Personal dashboard
-- Life tracking capabilities
-
-## 🛠️ Tech Stack
-
-- **Framework:** Next.js 14
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **UI Components:**
-  - Shadcn UI
-  - Radix UI primitives
-  - Framer Motion for animations
-- **Authentication:** Supabase Auth
-- **Database:** Supabase
-- **Form Handling:** React Hook Form with Zod validation
-- **API Integration:** Notion API for book syncing
-- **Email Service:** Resend
-- **Development Tools:**
-  - ESLint for linting
-  - Prettier for code formatting
-  - Husky for git hooks
-  - Lint-staged for pre-commit checks
-
-## 📦 Installation
-
-1. Clone the repository:
-
-```bash
-git clone [repository-url]
-cd salome
+```sh
+npm create astro@latest -- --template minimal
 ```
 
-2. Install dependencies:
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-```bash
-yarn install
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-3. Set up environment variables:
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-```bash
-cp .env.example .env.local
-```
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-4. Start the development server:
+Any static assets, like images, can be placed in the `public/` directory.
 
-```bash
-yarn dev
-```
+## 🧞 Commands
 
-The application will be available at [http://localhost:3000](http://localhost:3000).
+All commands are run from the root of the project, from a terminal:
 
-## 🔧 Scripts
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-- `yarn dev` - Run development server
-- `yarn build` - Build production bundle
-- `yarn start` - Start production server
-- `yarn lint` - Run ESLint
-- `yarn type-check` - Run TypeScript type checking
-- `yarn prepare` - Setup Husky hooks
+## 👀 Want to learn more?
 
-## 📁 Project Structure
-
-```
-src/
-├── app/
-│   ├── components/     # Reusable UI components
-│   ├── lib/           # Utility functions and configurations
-│   ├── types/         # TypeScript type definitions
-│   ├── utils/         # Helper functions
-│   └── (features)/    # Feature-specific components and logic
-├── assets/           # Static assets
-└── styles/          # Global styles and Tailwind configurations
-```
-
-## 🧪 Development
-
-- The project uses TypeScript for type safety
-- Follows React best practices and functional components
-- Implements proper error handling and loading states
-- Ensures accessibility compliance (WCAG 2.1)
-- Uses Tailwind's utility classes for styling
-- Includes comprehensive Git hooks for code quality
-
-## 📚 Additional Tools
-
-- NGrok for local tunneling
-- NextUI components library integration
-- Custom Google Font optimization with `next/font`
-
-## 📄 License
-
-This project is private and not open for public use.
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
